@@ -1,4 +1,4 @@
-# @cyrene/model-catalog
+# @playa0v0/model-catalog
 
 离线可用的模型元数据与能力解析层。给 Harness / Agent 客户端回答一个问题：
 
@@ -149,6 +149,10 @@ SSE 流式、工具调用与 `tool_choice=auto` 全部支持；并行工具与�
 
 ## 开发
 
+从 Git（版本管理工具）仓库安装时，固定完整提交编号，安装准备阶段通过 `prepare`（安装准备脚本）编译已提交的快照并输出 `dist`。此阶段不刷新 models.dev，也不调用模型接口。包自身的编译依赖由仓库锁文件记录，消费方不需要复制源目录或使用自己的编译器构建本包。
+
+包入口和类型入口均指向编译产物。干净仓库安装需要允许本包的准备脚本执行；安装失败时检查构建输出，不依赖本机已有 `dist`。维护人工规则时才运行下方的生成命令，普通安装与编译不生成新快照。
+
 ```bash
 npm run build:catalog   # 抓取 models.dev 快照并生成 src/generated/catalog.ts
 npm run refresh:catalog # 同上，忽略本地缓存强制重新拉取
@@ -164,4 +168,7 @@ npm run build           # 输出 dist
 
 ## 许可
 
-MIT
+本包自身以 MIT 发布，见 [LICENSE](./LICENSE)。
+
+数据来自 [models.dev](https://models.dev)，同样以 MIT 分发（Copyright (c) 2025 models.dev）。
+快照在构建期抓取并编译进产物，发布出去的包运行时不联网、不依赖 models.dev 的在线服务。

@@ -1,6 +1,7 @@
 // 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
 // 数据来源：https://models.dev/api.json（摘要 a4d28d05）
-// 生成时间：2026-10-09T20:27:28.900Z
+// 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
+// 生成时间：2026-10-09T21:04:28.757Z
 import type { CatalogSnapshot } from '../schema.ts';
 
 /** 递归冻结，防止调用方改到全局快照 */
@@ -19,7 +20,7 @@ function freeze<T>(value: T): T {
 const raw: unknown = {
   "schemaVersion": 1,
   "snapshotVersion": "2026-10-09+a4d28d05",
-  "generatedAt": "2026-10-09T20:27:28.900Z",
+  "generatedAt": "2026-10-09T21:04:28.757Z",
   "upstream": {
     "source": "https://models.dev/api.json",
     "digest": "a4d28d05"

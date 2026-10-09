@@ -1,3 +1,6 @@
+# 内部维护文档
+/internal-docs/
+
 # 依赖
 node_modules/
 

@@ -415,6 +415,7 @@ function writeGenerated(snapshot: CatalogSnapshot): void {
 
   const file = `// 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
 // 数据来源：${snapshot.upstream.source}（摘要 ${snapshot.upstream.digest}）
+// 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
 // 生成时间：${snapshot.generatedAt}
 import type { CatalogSnapshot } from '../schema.ts';
 
