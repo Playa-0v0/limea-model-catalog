@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # 依赖版本更新（与数据快照刷新无关，数据刷新见 workflows/refresh-catalog.yml）
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

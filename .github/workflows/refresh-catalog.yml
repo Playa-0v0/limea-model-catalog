@@ -1,0 +1,70 @@
+name: 刷新模型目录
+
+# 定时拉取 models.dev 最新快照，重新生成 catalog；
+# 只有上游数据真的变了才提 PR（摘要没变就丢弃纯时间戳造成的 diff）。
+
+on:
+  schedule:
+    # 每天 02:00 UTC，即北京时间 10:00
+    - cron: '0 2 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: 记录当前快照摘要
+        id: before
+        run: echo "digest=$(grep -oP '摘要 \K[0-9a-f]+' src/generated/catalog.ts | head -1)" >> "$GITHUB_OUTPUT"
+
+      - name: 拉取最新快照并重建 catalog
+        run: npm run refresh:catalog
+
+      - name: 上游没变就丢弃时间戳改动
+        id: gate
+        run: |
+          digest=$(grep -oP '摘要 \K[0-9a-f]+' src/generated/catalog.ts | head -1)
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+          if [ "$digest" = "${{ steps.before.outputs.digest }}" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            git checkout -- src/generated/catalog.ts
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 校验 / 类型检查 / 测试
+        if: steps.gate.outputs.changed == 'true'
+        run: |
+          npm run validate
+          npm run typecheck
+          npm test
+
+      - name: 提 PR
+        if: steps.gate.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: chore: 同步 models.dev 快照
+          title: chore: 同步 models.dev 快照
+          body: |
+            自动抓取 models.dev 最新快照并重建 `src/generated/catalog.ts`。
+
+            上游摘要：`${{ steps.before.outputs.digest }}` → `${{ steps.gate.outputs.digest }}`
+
+            请检查 diff：模型增减、能力字段变化是否合理，必要时同步调整人工补充层。
+          branch: chore/refresh-catalog
+          delete-branch: true
+          add-paths: src/generated/catalog.ts
+          labels: 自动化
