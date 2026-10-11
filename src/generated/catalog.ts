@@ -1,7 +1,7 @@
 // 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
 // 数据来源：https://models.dev/api.json（摘要 a4d28d05）
 // 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
-// 生成时间：2026-10-11T06:21:38.310Z
+// 生成时间：2026-10-11T07:11:33.014Z
 import type { CatalogSnapshot } from '../schema.ts';
 
 /** 递归冻结，防止调用方改到全局快照 */
@@ -20,7 +20,7 @@ function freeze<T>(value: T): T {
 const raw: unknown = {
   "schemaVersion": 1,
   "snapshotVersion": "2026-10-11+a4d28d05",
-  "generatedAt": "2026-10-11T06:21:38.310Z",
+  "generatedAt": "2026-10-11T07:11:33.014Z",
   "upstream": {
     "source": "https://models.dev/api.json",
     "digest": "a4d28d05"
@@ -31,7 +31,10 @@ const raw: unknown = {
       "name": "OpenAI",
       "vendor": "openai",
       "sdkPackage": "@ai-sdk/openai",
-      "protocolBaseURLs": {},
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.openai.com/v1",
+        "responses": "https://api.openai.com/v1"
+      },
       "doc": "https://platform.openai.com/docs/models",
       "env": [
         "OPENAI_API_KEY"
@@ -42,7 +45,10 @@ const raw: unknown = {
       "name": "Anthropic",
       "vendor": "anthropic",
       "sdkPackage": "@ai-sdk/anthropic",
-      "protocolBaseURLs": {},
+      "protocolBaseURLs": {
+        "anthropic": "https://api.anthropic.com/v1",
+        "chat-completions": "https://api.anthropic.com/v1"
+      },
       "doc": "https://docs.anthropic.com/en/docs/about-claude/models",
       "env": [
         "ANTHROPIC_API_KEY"
@@ -55,7 +61,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.z.ai/api/paas/v4",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.z.ai/api/paas/v4"
+        "chat-completions": "https://api.z.ai/api/paas/v4",
+        "anthropic": "https://api.z.ai/api/anthropic/v1",
+        "responses": "https://api.z.ai/api/v1"
       },
       "doc": "https://docs.z.ai/guides/overview/pricing",
       "env": [
@@ -69,7 +77,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://open.bigmodel.cn/api/paas/v4",
       "protocolBaseURLs": {
-        "chat-completions": "https://open.bigmodel.cn/api/paas/v4"
+        "chat-completions": "https://open.bigmodel.cn/api/paas/v4",
+        "anthropic": "https://open.bigmodel.cn/api/anthropic/v1",
+        "responses": "https://open.bigmodel.cn/api/v1"
       },
       "doc": "https://docs.z.ai/guides/overview/pricing",
       "env": [
@@ -83,7 +93,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.moonshot.ai/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.moonshot.ai/v1"
+        "chat-completions": "https://api.moonshot.ai/v1",
+        "anthropic": "https://api.moonshot.ai/anthropic/v1",
+        "responses": "https://api.moonshot.ai/v1"
       },
       "doc": "https://platform.moonshot.ai/docs/api/chat",
       "env": [
@@ -97,7 +109,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.moonshot.cn/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.moonshot.cn/v1"
+        "chat-completions": "https://api.moonshot.cn/v1",
+        "anthropic": "https://api.moonshot.cn/anthropic/v1",
+        "responses": "https://api.moonshot.cn/v1"
       },
       "doc": "https://platform.moonshot.cn/docs/api/chat",
       "env": [
@@ -112,7 +126,7 @@ const raw: unknown = {
       "apiBase": "https://api.deepseek.com",
       "protocolBaseURLs": {
         "chat-completions": "https://api.deepseek.com",
-        "anthropic": "https://api.deepseek.com/anthropic",
+        "anthropic": "https://api.deepseek.com/anthropic/v1",
         "responses": "https://api.deepseek.com"
       },
       "doc": "https://api-docs.deepseek.com/quick_start/pricing",
@@ -127,7 +141,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://ark.cn-beijing.volces.com/api/v3",
       "protocolBaseURLs": {
-        "chat-completions": "https://ark.cn-beijing.volces.com/api/v3"
+        "chat-completions": "https://ark.cn-beijing.volces.com/api/v3",
+        "anthropic": "https://ark.cn-beijing.volces.com/api/compatible/v1",
+        "responses": "https://ark.cn-beijing.volces.com/api/v3"
       },
       "doc": "https://www.volcengine.com/docs/82379/1330310",
       "env": [
@@ -141,7 +157,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+        "chat-completions": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        "anthropic": "https://dashscope-intl.aliyuncs.com/apps/anthropic/v1",
+        "responses": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
       },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/models",
       "env": [
@@ -155,7 +173,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://dashscope.aliyuncs.com/compatible-mode/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        "chat-completions": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "anthropic": "https://dashscope.aliyuncs.com/apps/anthropic/v1",
+        "responses": "https://dashscope.aliyuncs.com/compatible-mode/v1"
       },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/models",
       "env": [
@@ -169,7 +189,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.xiaomimimo.com/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.xiaomimimo.com/v1"
+        "chat-completions": "https://api.xiaomimimo.com/v1",
+        "anthropic": "https://api.xiaomimimo.com/anthropic/v1",
+        "responses": "https://api.xiaomimimo.com/v1"
       },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
@@ -183,7 +205,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.io/anthropic/v1",
       "protocolBaseURLs": {
-        "anthropic": "https://api.minimax.io/anthropic/v1"
+        "anthropic": "https://api.minimax.io/anthropic/v1",
+        "chat-completions": "https://api.minimax.io/v1",
+        "responses": "https://api.minimax.io/v1"
       },
       "doc": "https://platform.minimax.io/docs/guides/quickstart",
       "env": [
@@ -197,7 +221,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.cn/anthropic/v1",
       "protocolBaseURLs": {
-        "anthropic": "https://api.minimax.cn/anthropic/v1"
+        "anthropic": "https://api.minimax.cn/anthropic/v1",
+        "chat-completions": "https://api.minimax.cn/v1",
+        "responses": "https://api.minimax.cn/v1"
       },
       "doc": "https://platform.minimaxi.com/docs/guides/quickstart",
       "env": [
@@ -209,7 +235,9 @@ const raw: unknown = {
       "name": "Google Gemini",
       "vendor": "google",
       "sdkPackage": "@ai-sdk/google",
-      "protocolBaseURLs": {},
+      "protocolBaseURLs": {
+        "chat-completions": "https://generativelanguage.googleapis.com/v1beta/openai"
+      },
       "doc": "https://ai.google.dev/gemini-api/docs/models",
       "env": [
         "GOOGLE_API_KEY",
@@ -222,7 +250,10 @@ const raw: unknown = {
       "name": "xAI",
       "vendor": "xai",
       "sdkPackage": "@ai-sdk/xai",
-      "protocolBaseURLs": {},
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.x.ai/v1",
+        "responses": "https://api.x.ai/v1"
+      },
       "doc": "https://docs.x.ai/docs/models",
       "env": [
         "XAI_API_KEY"
@@ -235,7 +266,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://ark.cn-beijing.volces.com/api/coding/v3",
       "protocolBaseURLs": {
-        "chat-completions": "https://ark.cn-beijing.volces.com/api/coding/v3"
+        "chat-completions": "https://ark.cn-beijing.volces.com/api/coding/v3",
+        "anthropic": "https://ark.cn-beijing.volces.com/api/coding/v1",
+        "responses": "https://ark.cn-beijing.volces.com/api/coding/v3"
       },
       "doc": "https://www.volcengine.com/docs/82379/1928261",
       "env": [
@@ -249,7 +282,8 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1"
+        "chat-completions": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+        "anthropic": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic/v1"
       },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/token-plan-overview",
       "env": [
@@ -263,7 +297,8 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+        "chat-completions": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+        "anthropic": "https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic/v1"
       },
       "doc": "https://www.alibabacloud.com/help/zh/model-studio/token-plan-overview",
       "env": [
@@ -277,7 +312,8 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://coding-intl.dashscope.aliyuncs.com/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://coding-intl.dashscope.aliyuncs.com/v1"
+        "chat-completions": "https://coding-intl.dashscope.aliyuncs.com/v1",
+        "anthropic": "https://coding-intl.dashscope.aliyuncs.com/apps/anthropic/v1"
       },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/coding-plan",
       "env": [
@@ -291,7 +327,8 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://coding.dashscope.aliyuncs.com/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://coding.dashscope.aliyuncs.com/v1"
+        "chat-completions": "https://coding.dashscope.aliyuncs.com/v1",
+        "anthropic": "https://coding.dashscope.aliyuncs.com/apps/anthropic/v1"
       },
       "doc": "https://help.aliyun.com/zh/model-studio/coding-plan",
       "env": [
@@ -305,7 +342,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan-cn.xiaomimimo.com/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://token-plan-cn.xiaomimimo.com/v1"
+        "chat-completions": "https://token-plan-cn.xiaomimimo.com/v1",
+        "anthropic": "https://token-plan-cn.xiaomimimo.com/anthropic/v1",
+        "responses": "https://token-plan-cn.xiaomimimo.com/v1"
       },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
@@ -319,7 +358,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan-sgp.xiaomimimo.com/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://token-plan-sgp.xiaomimimo.com/v1"
+        "chat-completions": "https://token-plan-sgp.xiaomimimo.com/v1",
+        "anthropic": "https://token-plan-sgp.xiaomimimo.com/anthropic/v1",
+        "responses": "https://token-plan-sgp.xiaomimimo.com/v1"
       },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
@@ -333,7 +374,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan-ams.xiaomimimo.com/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://token-plan-ams.xiaomimimo.com/v1"
+        "chat-completions": "https://token-plan-ams.xiaomimimo.com/v1",
+        "anthropic": "https://token-plan-ams.xiaomimimo.com/anthropic/v1",
+        "responses": "https://token-plan-ams.xiaomimimo.com/v1"
       },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
@@ -347,7 +390,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.io/anthropic/v1",
       "protocolBaseURLs": {
-        "anthropic": "https://api.minimax.io/anthropic/v1"
+        "anthropic": "https://api.minimax.io/anthropic/v1",
+        "chat-completions": "https://api.minimax.io/v1",
+        "responses": "https://api.minimax.io/v1"
       },
       "doc": "https://platform.minimax.io/docs/token-plan/intro",
       "env": [
@@ -361,7 +406,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.cn/anthropic/v1",
       "protocolBaseURLs": {
-        "anthropic": "https://api.minimax.cn/anthropic/v1"
+        "anthropic": "https://api.minimax.cn/anthropic/v1",
+        "chat-completions": "https://api.minimax.cn/v1",
+        "responses": "https://api.minimax.cn/v1"
       },
       "doc": "https://platform.minimaxi.com/docs/token-plan/intro",
       "env": [
@@ -375,7 +422,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.z.ai/api/coding/paas/v4",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.z.ai/api/coding/paas/v4"
+        "chat-completions": "https://api.z.ai/api/coding/paas/v4",
+        "anthropic": "https://api.z.ai/api/anthropic/v1",
+        "responses": "https://api.z.ai/api/v1"
       },
       "doc": "https://docs.z.ai/devpack/overview",
       "env": [
@@ -389,7 +438,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://open.bigmodel.cn/api/coding/paas/v4",
       "protocolBaseURLs": {
-        "chat-completions": "https://open.bigmodel.cn/api/coding/paas/v4"
+        "chat-completions": "https://open.bigmodel.cn/api/coding/paas/v4",
+        "anthropic": "https://open.bigmodel.cn/api/anthropic/v1",
+        "responses": "https://open.bigmodel.cn/api/v1"
       },
       "doc": "https://docs.bigmodel.cn/cn/coding-plan/overview",
       "env": [
@@ -403,7 +454,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.kimi.com/coding/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.kimi.com/coding/v1"
+        "chat-completions": "https://api.kimi.com/coding/v1",
+        "anthropic": "https://api.kimi.com/coding/v1",
+        "responses": "https://api.kimi.com/coding/v1"
       },
       "doc": "https://www.kimi.com/code/docs/en/kimi-code/models.html",
       "env": [
@@ -417,7 +470,9 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.kimi.ai/coding/v1",
       "protocolBaseURLs": {
-        "chat-completions": "https://api.kimi.ai/coding/v1"
+        "chat-completions": "https://api.kimi.ai/coding/v1",
+        "anthropic": "https://api.kimi.ai/coding/v1",
+        "responses": "https://api.kimi.ai/coding/v1"
       },
       "doc": "https://www.kimi.ai/code/docs/en/kimi-code/models.html",
       "env": [
@@ -431,7 +486,8 @@ const raw: unknown = {
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://ark.cn-beijing.volces.com/api/plan/v3",
       "protocolBaseURLs": {
-        "chat-completions": "https://ark.cn-beijing.volces.com/api/plan/v3"
+        "chat-completions": "https://ark.cn-beijing.volces.com/api/plan/v3",
+        "anthropic": "https://ark.cn-beijing.volces.com/api/plan/v1"
       },
       "doc": "https://www.volcengine.com/docs/82379/1330310",
       "env": [

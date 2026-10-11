@@ -6,11 +6,11 @@ export const ENDPOINT_RULES: ProviderEndpointRule[] = [
     providerId: 'deepseek',
     protocolBaseURLs: {
       'chat-completions': 'https://api.deepseek.com',
-      anthropic: 'https://api.deepseek.com/anthropic',
+      anthropic: 'https://api.deepseek.com/anthropic/v1',
       responses: 'https://api.deepseek.com',
     },
     confidence: 'verified',
-    source: 'DeepSeek 官方文档：https://api-docs.deepseek.com/guides/codex 明确 OpenAI 与 Anthropic base_url；https://api-docs.deepseek.com/guides/responses_api 明确 Responses API 根地址',
+    source: 'DeepSeek 官方文档：https://api-docs.deepseek.com/guides/codex 明确 OpenAI 与 Anthropic base_url；https://api-docs.deepseek.com/guides/responses_api 明确 Responses API 根地址；Anthropic Messages 完整端点为 https://api.deepseek.com/anthropic/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
   },
 ];
 

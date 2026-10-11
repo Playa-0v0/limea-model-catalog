@@ -1,4 +1,4 @@
-import { BASE, type ProviderRule } from './registry.ts';
+import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
 
 /**
  * 智谱（GLM）。国际站 zai 与开放平台 zhipuai 规则一致。
@@ -49,5 +49,49 @@ export const RULES: ProviderRule[] = [
     },
     confidence: 'verified',
     source: '同 Z.ai，依据智谱开放平台中文文档（docs.bigmodel.cn）的工具调用、工具流式输出、联网搜索与 Codex 接入页面；并行的凭据强度同上',
+  },
+];
+
+/**
+ * 智谱（GLM）四类渠道的协议根地址。国际站与开放平台的路径结构一致：
+ * Anthropic 兼容挂在 /api/anthropic，OpenAI Responses 挂在 /api/v1，
+ * 两者都与渠道的 Chat Completions 根（/api/paas/v4 或 /api/coding/paas/v4）并列。
+ */
+export const ENDPOINT_RULES: ProviderEndpointRule[] = [
+  {
+    providerId: 'zai',
+    protocolBaseURLs: {
+      anthropic: 'https://api.z.ai/api/anthropic/v1',
+      responses: 'https://api.z.ai/api/v1',
+    },
+    confidence: 'verified',
+    source: 'Z.ai 官方文档：Anthropic Messages 协议根 https://api.z.ai/api/anthropic（docs.z.ai）；OpenAI Response 协议根 https://api.z.ai/api/v1（docs.z.ai/guides/llm/glm-5.3 的协议表）；Anthropic Messages 完整端点为 https://api.z.ai/api/anthropic/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
+  },
+  {
+    providerId: 'zhipuai',
+    protocolBaseURLs: {
+      anthropic: 'https://open.bigmodel.cn/api/anthropic/v1',
+      responses: 'https://open.bigmodel.cn/api/v1',
+    },
+    confidence: 'verified',
+    source: '智谱开放平台官方文档：Claude API 兼容根 https://open.bigmodel.cn/api/anthropic（docs.bigmodel.cn/cn/guide/develop/claude/introduction）；OpenAI Response 协议根 https://open.bigmodel.cn/api/v1（.../cn/guide/models/text/glm-5.3 的协议表）；Anthropic Messages 完整端点为 https://open.bigmodel.cn/api/anthropic/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
+  },
+  {
+    providerId: 'zai-coding-plan',
+    protocolBaseURLs: {
+      anthropic: 'https://api.z.ai/api/anthropic/v1',
+      responses: 'https://api.z.ai/api/v1',
+    },
+    confidence: 'verified',
+    source: 'Z.ai Coding Plan 官方文档（docs.z.ai/devpack/quick-start）：列出 Anthropic Messages 与 OpenAI Responses 两种协议根，路径与通用站一致；Anthropic Messages 完整端点为 https://api.z.ai/api/anthropic/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
+  },
+  {
+    providerId: 'zhipuai-coding-plan',
+    protocolBaseURLs: {
+      anthropic: 'https://open.bigmodel.cn/api/anthropic/v1',
+      responses: 'https://open.bigmodel.cn/api/v1',
+    },
+    confidence: 'verified',
+    source: '智谱 Coding Plan 官方文档（docs.bigmodel.cn/cn/coding-plan/tool/others）：列出 Anthropic Message 与 OpenAI Response 两种协议根；Anthropic Messages 完整端点为 https://open.bigmodel.cn/api/anthropic/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
   },
 ];

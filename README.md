@@ -32,7 +32,11 @@
 因此不单独维护能力规则——构建时回落到该厂商主渠道的规则。也就是说这些渠道上的能力结论
 尚未逐条实测，是按厂商主体推定的；哪天真去用了并发现差异，再补例外规则。
 
-渠道的 `apiBase` 保存上游提供的默认 API 根地址；`protocolBaseURLs` 可以分别记录 Chat Completions、Anthropic Messages 与 Responses API 的根地址。SDK 默认协议映射基于渠道记录的 `sdkPackage` 与 `apiBase`，其他协议只有在对应厂商资料明确支持时，才写入 `data/vendors/<vendor>.ts` 的 `ENDPOINT_RULES`，并带 `confidence` 与 `source`。协议根地址只按具体渠道记录，不因同厂商、地区或套餐相同而自动复用。例如 DeepSeek 的 Chat Completions 和 Responses 共用 `https://api.deepseek.com`，Anthropic Messages 使用 `https://api.deepseek.com/anthropic`。
+渠道的 `apiBase` 保存上游提供的默认 API 基地址；`protocolBaseURLs` 按协议分别记录**传给对应 AI SDK 适配器的 `baseURL`**。适配器会在其后自行拼接协议路径：Anthropic 适配器接 `/messages`，Responses 适配器接 `/responses`，OpenAI 兼容适配器接 `/chat/completions`。也就是说，值本身是「适配器再拼一层路径之前」的前缀，路径里带不带版本段（如 `/v1`）由厂商接口与适配器的拼接规则共同决定，不能机械地统一加 `/v1`。
+
+SDK 默认协议映射基于渠道记录的 `sdkPackage` 与 `apiBase`，其他协议只有在对应厂商资料明确支持时，才写入 `data/vendors/<vendor>.ts` 的 `ENDPOINT_RULES`，并带 `confidence` 与 `source`。协议地址只按具体渠道记录，不因同厂商、地区或套餐相同而自动复用。例如 DeepSeek 的 Chat Completions 与 Responses 都是 `https://api.deepseek.com`（分别接 `/chat/completions`、`/responses`），Anthropic Messages 的 baseURL 是 `https://api.deepseek.com/anthropic/v1`（接 `/messages`，完整端点为 `https://api.deepseek.com/anthropic/v1/messages`）。
+
+30 个渠道的协议地址已逐条对照官方文档补全（来源见各厂商文件的 `source`）。厂商没有公开对应协议入口的组合一律留空，不猜测：OpenAI 与 xAI 未提供 Anthropic Messages 兼容端点，Anthropic 与 Google 未提供 Responses 端点，阿里云百炼的 Token Plan / Coding Plan 与火山 Agent Plan 未提供 Responses 端点。字段缺失即表示「官方未提供」，与「未知」区分开。
 
 **火山方舟 Agent Plan 是例外**：上游快照里没有这个渠道，由 `data/manual-channels.ts` 手工维护，
 能力结论全部来自实测。它的入口是 `/api/plan`，按量付费的火山渠道是 `/api/v3`，路径不同，

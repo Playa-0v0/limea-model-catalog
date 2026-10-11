@@ -1,4 +1,4 @@
-import { BASE, type OfferingRule, type ProviderRule } from './registry.ts';
+import { BASE, type OfferingRule, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
 
 /**
  * 火山方舟。它是个聚合平台，自家豆包与托管的 DeepSeek / 智谱模型共用同一套网关 API，
@@ -31,5 +31,39 @@ export const OFFERING_RULES: OfferingRule[] = [
     confidence: 'verified',
     source:
       '同篇 Function Calling 文档「流式输出」一节：原文「从 Doubao 1.5 系列模型开始支持流式输出，逐步获取函数调用信息，提升响应效率」；示例代码从 chunk.choices[0].delta.tool_calls 逐个取，并用 function.arguments += 累加，即参数分片增量返回。该结论以豆包系列为界，故只覆盖 doubao- 开头的模型，火山上托管的 DeepSeek / 智谱模型保持 unknown',
+  },
+];
+
+/**
+ * 火山方舟各渠道的协议根地址，按「按量付费 / Coding Plan / Agent Plan」三条独立入口分别记录。
+ * 三条入口路径不同：Coding Plan 与 Agent Plan 的 Anthropic 兼容根挂在 /api/coding 与 /api/plan
+ * 之下的 /v1；按量付费渠道的 Anthropic 兼容根为官方《接入三方工具》给出的 /api/compatible。
+ */
+export const ENDPOINT_RULES: ProviderEndpointRule[] = [
+  {
+    providerId: 'volcengine',
+    protocolBaseURLs: {
+      anthropic: 'https://ark.cn-beijing.volces.com/api/compatible/v1',
+      responses: 'https://ark.cn-beijing.volces.com/api/v3',
+    },
+    confidence: 'verified',
+    source: '火山方舟官方文档：Responses API 与 Chat API 同根（docs.volcengine.com/docs/82379/1585128，示例 POST /api/v3/responses）。Anthropic 兼容根依据火山方舟《接入三方工具》文档：兼容 Anthropic 接口协议的 Base URL 为 https://ark.cn-beijing.volces.com/api/compatible（OpenAI 兼容才用 /api/v3）；Anthropic Messages 完整端点为 https://ark.cn-beijing.volces.com/api/compatible/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
+  },
+  {
+    providerId: 'volcengine-coding-plan',
+    protocolBaseURLs: {
+      anthropic: 'https://ark.cn-beijing.volces.com/api/coding/v1',
+      responses: 'https://ark.cn-beijing.volces.com/api/coding/v3',
+    },
+    confidence: 'verified',
+    source: '火山方舟 Coding Plan 官方文档：Anthropic 协议根为 https://ark.cn-beijing.volces.com/api/coding、OpenAI 协议根为 /api/coding/v3（docs.volcengine.com/docs/ark/coding-plan-personal-ai-claude-code）；OpenClaw 接入页说明该协议根同时支持 Responses API；Anthropic Messages 完整端点为 https://ark.cn-beijing.volces.com/api/coding/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
+  },
+  {
+    providerId: 'volcengine-agent-plan',
+    protocolBaseURLs: {
+      anthropic: 'https://ark.cn-beijing.volces.com/api/plan/v1',
+    },
+    confidence: 'verified',
+    source: '火山方舟 Agent Plan 官方文档（docs.volcengine.com/docs/ark/agent-plan-personal-other-tools）：Anthropic 协议根为 /api/plan、OpenAI 协议根为 /api/plan/v3；该页只列这两种协议，未提供 Responses 根；Anthropic Messages 完整端点为 https://ark.cn-beijing.volces.com/api/plan/v1/messages，按 Vercel AI SDK 约定，记录的 baseURL 取该端点去掉 /messages 的前缀。',
   },
 ];
