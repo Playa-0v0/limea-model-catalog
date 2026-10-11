@@ -1,4 +1,4 @@
-import type { CapabilityPatch } from '../../src/schema.ts';
+import type { ApiProtocol, CapabilityPatch } from '../../src/schema.ts';
 
 /**
  * 各厂商共享的注册表与类型。
@@ -22,6 +22,14 @@ export interface OfferingRule {
   providerId: string;
   match: RegExp;
   patch: CapabilityPatch;
+  confidence: Confidence;
+  source: string;
+}
+
+/** 只有官方资料或实测明确覆盖的协议端点才写入目录。 */
+export interface ProviderEndpointRule {
+  providerId: string;
+  protocolBaseURLs: Partial<Record<ApiProtocol, string>>;
   confidence: Confidence;
   source: string;
 }

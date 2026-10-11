@@ -44,6 +44,10 @@ export type Lifecycle = (typeof LIFECYCLES)[number];
 export const RESOLUTION_LAYERS = ['model', 'offering', 'adapter', 'user'] as const;
 export type ResolutionLayerName = (typeof RESOLUTION_LAYERS)[number];
 
+/** 目录可记录的供应商 API 根地址协议。 */
+export const API_PROTOCOLS = ['chat-completions', 'anthropic', 'responses'] as const;
+export type ApiProtocol = (typeof API_PROTOCOLS)[number];
+
 /**
  * 可以被单独查询、覆盖与校验的能力路径。
  * 写成扁平的字符串路径而不是嵌套对象，是为了让「要求某能力」这种查询
@@ -177,6 +181,8 @@ export interface ProviderDefinition {
   sdkPackage: string;
   /** 官方 API 基地址，上游未提供时为空 */
   apiBase?: string;
+  /** 按协议记录的接口根地址；仅在有明确资料时填写。 */
+  protocolBaseURLs?: Partial<Record<ApiProtocol, string>>;
   doc?: string;
   /** 上游声明的环境变量名。本包只记录，不读取 */
   env: string[];

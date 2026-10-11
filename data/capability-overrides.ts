@@ -1,6 +1,6 @@
 import { RULES as alibaba } from './vendors/alibaba.ts';
 import { RULES as anthropic } from './vendors/anthropic.ts';
-import { RULES as deepseek } from './vendors/deepseek.ts';
+import { ENDPOINT_RULES as deepseekEndpoints, RULES as deepseek } from './vendors/deepseek.ts';
 import { RULES as glm } from './vendors/glm.ts';
 import { RULES as google } from './vendors/google.ts';
 import { RULES as kimi } from './vendors/kimi.ts';
@@ -9,7 +9,7 @@ import { RULES as openai } from './vendors/openai.ts';
 import { OFFERING_RULES as volcengineOfferings, RULES as volcengine } from './vendors/volcengine.ts';
 import { RULES as xai } from './vendors/xai.ts';
 import { OFFERING_RULES as xiaomiOfferings, RULES as xiaomi } from './vendors/xiaomi.ts';
-import type { OfferingRule, ProviderRule } from './vendors/registry.ts';
+import type { OfferingRule, ProviderEndpointRule, ProviderRule } from './vendors/registry.ts';
 
 /**
  * 人工补充层的汇总入口。
@@ -33,7 +33,7 @@ export {
   VENDOR_BY_PROVIDER,
 } from './vendors/registry.ts';
 
-export type { Confidence, OfferingRule, ProviderRule } from './vendors/registry.ts';
+export type { Confidence, OfferingRule, ProviderEndpointRule, ProviderRule } from './vendors/registry.ts';
 
 /** 所有厂商的渠道规则。顺序与 provider 白名单一致，让构建输出稳定。 */
 export const PROVIDER_RULES: ProviderRule[] = [
@@ -49,6 +49,9 @@ export const PROVIDER_RULES: ProviderRule[] = [
   ...google,
   ...xai,
 ];
+
+/** 按渠道独立记录有官方依据的协议根地址，不随同厂商套餐自动回落。 */
+export const PROVIDER_ENDPOINT_RULES: ProviderEndpointRule[] = [...deepseekEndpoints];
 
 /** 单条 offering 级别的例外：同一渠道内按模型区分的能力（如小米只有 v2.5+ 支持联网搜索）。 */
 export const OFFERING_RULES: OfferingRule[] = [

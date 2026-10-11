@@ -32,6 +32,8 @@
 因此不单独维护能力规则——构建时回落到该厂商主渠道的规则。也就是说这些渠道上的能力结论
 尚未逐条实测，是按厂商主体推定的；哪天真去用了并发现差异，再补例外规则。
 
+渠道的 `apiBase` 保存上游提供的默认 API 根地址；`protocolBaseURLs` 可以分别记录 Chat Completions、Anthropic Messages 与 Responses API 的根地址。SDK 默认协议映射基于渠道记录的 `sdkPackage` 与 `apiBase`，其他协议只有在对应厂商资料明确支持时，才写入 `data/vendors/<vendor>.ts` 的 `ENDPOINT_RULES`，并带 `confidence` 与 `source`。协议根地址只按具体渠道记录，不因同厂商、地区或套餐相同而自动复用。例如 DeepSeek 的 Chat Completions 和 Responses 共用 `https://api.deepseek.com`，Anthropic Messages 使用 `https://api.deepseek.com/anthropic`。
+
 **火山方舟 Agent Plan 是例外**：上游快照里没有这个渠道，由 `data/manual-channels.ts` 手工维护，
 能力结论全部来自实测。它的入口是 `/api/plan`，按量付费的火山渠道是 `/api/v3`，路径不同，
 两边的实测结论不能互相外推，因此它不参与「按厂商回落」那条链路。

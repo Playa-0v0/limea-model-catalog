@@ -7,6 +7,7 @@
 
 export {
   CAPABILITY_PATHS,
+  API_PROTOCOLS,
   LIFECYCLES,
   MODALITIES,
   MODEL_KINDS,
@@ -17,6 +18,7 @@ export {
 
 export type {
   Capabilities,
+  ApiProtocol,
   CapabilityPatch,
   CapabilityPath,
   CapabilityResolution,

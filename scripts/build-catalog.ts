@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 import {
   OFFERING_RULES,
+  PROVIDER_ENDPOINT_RULES,
   PROVIDER_IDS,
   PROVIDER_NAMES,
   PROVIDER_RULES,
@@ -19,6 +20,7 @@ import {
 } from '../data/manual-channels.ts';
 import type {
   Capabilities,
+  ApiProtocol,
   CapabilityPatch,
   CatalogSnapshot,
   Lifecycle,
@@ -269,6 +271,7 @@ async function main(): Promise<void> {
       vendor: VENDOR_BY_PROVIDER[providerId]!,
       sdkPackage: upstreamProvider.npm ?? '',
       apiBase: upstreamProvider.api,
+      protocolBaseURLs: protocolBaseURLsFor(providerId, upstreamProvider.npm ?? '', upstreamProvider.api),
       doc: upstreamProvider.doc,
       env: Array.isArray(upstreamProvider.env)
         ? upstreamProvider.env.filter((v): v is string => typeof v === 'string')
@@ -344,12 +347,14 @@ async function main(): Promise<void> {
 
   // 手工渠道：上游没有 provider / model，需要连实体一起补
   for (const spec of MANUAL_PROVIDERS) {
+    const protocolBaseURLs = protocolBaseURLsFor(spec.id, spec.sdkPackage, spec.apiBase);
     providers.push({
       id: spec.id,
       name: spec.name,
       vendor: spec.vendor,
       sdkPackage: spec.sdkPackage,
       apiBase: spec.apiBase,
+      protocolBaseURLs,
       doc: spec.doc,
       env: spec.env,
     });
@@ -407,6 +412,15 @@ async function main(): Promise<void> {
 
   writeGenerated(snapshot);
   report(snapshot, fromCache, digest);
+}
+
+function protocolBaseURLsFor(providerId: string, sdkPackage: string, apiBase: string | undefined): Partial<Record<ApiProtocol, string>> {
+  const protocolBaseURLs: Partial<Record<ApiProtocol, string>> = {};
+  if (apiBase && sdkPackage === '@ai-sdk/openai-compatible') protocolBaseURLs['chat-completions'] = apiBase;
+  if (apiBase && sdkPackage === '@ai-sdk/anthropic') protocolBaseURLs.anthropic = apiBase;
+  const endpointRule = PROVIDER_ENDPOINT_RULES.find((rule) => rule.providerId === providerId);
+  Object.assign(protocolBaseURLs, endpointRule?.protocolBaseURLs);
+  return protocolBaseURLs;
 }
 
 function writeGenerated(snapshot: CatalogSnapshot): void {

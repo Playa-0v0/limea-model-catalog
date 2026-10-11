@@ -1,4 +1,18 @@
-import { BASE, type ProviderRule } from './registry.ts';
+import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+
+/** DeepSeek 的三个接口格式均有官方接入文档；Anthropic 格式单独使用 /anthropic 根路径。 */
+export const ENDPOINT_RULES: ProviderEndpointRule[] = [
+  {
+    providerId: 'deepseek',
+    protocolBaseURLs: {
+      'chat-completions': 'https://api.deepseek.com',
+      anthropic: 'https://api.deepseek.com/anthropic',
+      responses: 'https://api.deepseek.com',
+    },
+    confidence: 'verified',
+    source: 'DeepSeek 官方文档：https://api-docs.deepseek.com/guides/codex 明确 OpenAI 与 Anthropic base_url；https://api-docs.deepseek.com/guides/responses_api 明确 Responses API 根地址',
+  },
+];
 
 /** DeepSeek。并行工具始终开启，官方未提到 none，因此该项留 unknown。 */
 export const RULES: ProviderRule[] = [

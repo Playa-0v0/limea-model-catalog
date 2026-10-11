@@ -1,8 +1,9 @@
-import { PROVIDER_IDS } from '../data/capability-overrides.ts';
+import { PROVIDER_ENDPOINT_RULES, PROVIDER_IDS } from '../data/capability-overrides.ts';
 import { MANUAL_PROVIDERS } from '../data/manual-channels.ts';
 import { CATALOG } from '../src/generated/catalog.ts';
 import {
   CAPABILITY_PATHS,
+  API_PROTOCOLS,
   LIFECYCLES,
   MODEL_KINDS,
   SCHEMA_VERSION,
@@ -92,11 +93,38 @@ checkSorted('offerings', offeringIds);
 
 const providerSet = new Set(providerIds);
 const modelSet = new Set(modelIds);
+const endpointRuleIds = new Set<string>();
+
+for (const rule of PROVIDER_ENDPOINT_RULES) {
+  if (endpointRuleIds.has(rule.providerId)) fail(`渠道 ${rule.providerId} 存在重复的协议接口规则`);
+  endpointRuleIds.add(rule.providerId);
+  if (!providerSet.has(rule.providerId)) fail(`协议接口规则指向未收录渠道：${rule.providerId}`);
+  if (!rule.source.trim()) fail(`渠道 ${rule.providerId} 的协议接口规则缺少来源`);
+  const provider = CATALOG.providers.find((candidate) => candidate.id === rule.providerId);
+  for (const [protocol, baseURL] of Object.entries(rule.protocolBaseURLs)) {
+    if (!provider || provider.protocolBaseURLs?.[protocol as (typeof API_PROTOCOLS)[number]] !== baseURL) {
+      fail(`渠道 ${rule.providerId} 的 ${protocol} 接口规则未生成或生成值不一致`);
+    }
+  }
+}
 
 // 渠道自身字段
 for (const provider of CATALOG.providers) {
   if (!provider.vendor) fail(`渠道 ${provider.id} 缺少 vendor`);
   if (!provider.name) fail(`渠道 ${provider.id} 缺少 name`);
+  for (const [protocol, baseURL] of Object.entries(provider.protocolBaseURLs ?? {})) {
+    if (!API_PROTOCOLS.includes(protocol as (typeof API_PROTOCOLS)[number])) {
+      fail(`渠道 ${provider.id} 的接口协议非法：${protocol}`);
+    }
+    try {
+      const url = new URL(baseURL);
+      if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password || url.search || url.hash) {
+        fail(`渠道 ${provider.id} 的 ${protocol} 接口根地址不合法`);
+      }
+    } catch {
+      fail(`渠道 ${provider.id} 的 ${protocol} 接口根地址不是有效 URL`);
+    }
+  }
 }
 
 // 模型

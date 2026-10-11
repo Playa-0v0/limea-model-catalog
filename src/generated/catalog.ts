@@ -1,7 +1,7 @@
 // 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
 // 数据来源：https://models.dev/api.json（摘要 a4d28d05）
 // 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
-// 生成时间：2026-10-09T21:04:28.757Z
+// 生成时间：2026-10-11T06:21:38.310Z
 import type { CatalogSnapshot } from '../schema.ts';
 
 /** 递归冻结，防止调用方改到全局快照 */
@@ -19,8 +19,8 @@ function freeze<T>(value: T): T {
 // 数据是否合规由 scripts/validate.ts 用 Schema 实际校验。
 const raw: unknown = {
   "schemaVersion": 1,
-  "snapshotVersion": "2026-10-09+a4d28d05",
-  "generatedAt": "2026-10-09T21:04:28.757Z",
+  "snapshotVersion": "2026-10-11+a4d28d05",
+  "generatedAt": "2026-10-11T06:21:38.310Z",
   "upstream": {
     "source": "https://models.dev/api.json",
     "digest": "a4d28d05"
@@ -31,6 +31,7 @@ const raw: unknown = {
       "name": "OpenAI",
       "vendor": "openai",
       "sdkPackage": "@ai-sdk/openai",
+      "protocolBaseURLs": {},
       "doc": "https://platform.openai.com/docs/models",
       "env": [
         "OPENAI_API_KEY"
@@ -41,6 +42,7 @@ const raw: unknown = {
       "name": "Anthropic",
       "vendor": "anthropic",
       "sdkPackage": "@ai-sdk/anthropic",
+      "protocolBaseURLs": {},
       "doc": "https://docs.anthropic.com/en/docs/about-claude/models",
       "env": [
         "ANTHROPIC_API_KEY"
@@ -52,6 +54,9 @@ const raw: unknown = {
       "vendor": "glm",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.z.ai/api/paas/v4",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.z.ai/api/paas/v4"
+      },
       "doc": "https://docs.z.ai/guides/overview/pricing",
       "env": [
         "ZHIPU_API_KEY"
@@ -63,6 +68,9 @@ const raw: unknown = {
       "vendor": "glm",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://open.bigmodel.cn/api/paas/v4",
+      "protocolBaseURLs": {
+        "chat-completions": "https://open.bigmodel.cn/api/paas/v4"
+      },
       "doc": "https://docs.z.ai/guides/overview/pricing",
       "env": [
         "ZHIPU_API_KEY"
@@ -74,6 +82,9 @@ const raw: unknown = {
       "vendor": "kimi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.moonshot.ai/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.moonshot.ai/v1"
+      },
       "doc": "https://platform.moonshot.ai/docs/api/chat",
       "env": [
         "MOONSHOT_API_KEY"
@@ -85,6 +96,9 @@ const raw: unknown = {
       "vendor": "kimi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.moonshot.cn/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.moonshot.cn/v1"
+      },
       "doc": "https://platform.moonshot.cn/docs/api/chat",
       "env": [
         "MOONSHOT_API_KEY"
@@ -96,6 +110,11 @@ const raw: unknown = {
       "vendor": "deepseek",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.deepseek.com",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.deepseek.com",
+        "anthropic": "https://api.deepseek.com/anthropic",
+        "responses": "https://api.deepseek.com"
+      },
       "doc": "https://api-docs.deepseek.com/quick_start/pricing",
       "env": [
         "DEEPSEEK_API_KEY"
@@ -107,6 +126,9 @@ const raw: unknown = {
       "vendor": "bytedance",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://ark.cn-beijing.volces.com/api/v3",
+      "protocolBaseURLs": {
+        "chat-completions": "https://ark.cn-beijing.volces.com/api/v3"
+      },
       "doc": "https://www.volcengine.com/docs/82379/1330310",
       "env": [
         "ARK_API_KEY"
@@ -118,6 +140,9 @@ const raw: unknown = {
       "vendor": "alibaba",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
+      },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/models",
       "env": [
         "DASHSCOPE_API_KEY"
@@ -129,6 +154,9 @@ const raw: unknown = {
       "vendor": "alibaba",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+      },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/models",
       "env": [
         "DASHSCOPE_API_KEY"
@@ -140,6 +168,9 @@ const raw: unknown = {
       "vendor": "xiaomi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.xiaomimimo.com/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.xiaomimimo.com/v1"
+      },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
         "XIAOMI_API_KEY"
@@ -151,6 +182,9 @@ const raw: unknown = {
       "vendor": "minimax",
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.io/anthropic/v1",
+      "protocolBaseURLs": {
+        "anthropic": "https://api.minimax.io/anthropic/v1"
+      },
       "doc": "https://platform.minimax.io/docs/guides/quickstart",
       "env": [
         "MINIMAX_API_KEY"
@@ -162,6 +196,9 @@ const raw: unknown = {
       "vendor": "minimax",
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.cn/anthropic/v1",
+      "protocolBaseURLs": {
+        "anthropic": "https://api.minimax.cn/anthropic/v1"
+      },
       "doc": "https://platform.minimaxi.com/docs/guides/quickstart",
       "env": [
         "MINIMAX_API_KEY"
@@ -172,6 +209,7 @@ const raw: unknown = {
       "name": "Google Gemini",
       "vendor": "google",
       "sdkPackage": "@ai-sdk/google",
+      "protocolBaseURLs": {},
       "doc": "https://ai.google.dev/gemini-api/docs/models",
       "env": [
         "GOOGLE_API_KEY",
@@ -184,6 +222,7 @@ const raw: unknown = {
       "name": "xAI",
       "vendor": "xai",
       "sdkPackage": "@ai-sdk/xai",
+      "protocolBaseURLs": {},
       "doc": "https://docs.x.ai/docs/models",
       "env": [
         "XAI_API_KEY"
@@ -195,6 +234,9 @@ const raw: unknown = {
       "vendor": "bytedance",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "protocolBaseURLs": {
+        "chat-completions": "https://ark.cn-beijing.volces.com/api/coding/v3"
+      },
       "doc": "https://www.volcengine.com/docs/82379/1928261",
       "env": [
         "ARK_CODING_PLAN_API_KEY"
@@ -206,6 +248,9 @@ const raw: unknown = {
       "vendor": "alibaba",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1"
+      },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/token-plan-overview",
       "env": [
         "ALIBABA_TOKEN_PLAN_API_KEY"
@@ -217,6 +262,9 @@ const raw: unknown = {
       "vendor": "alibaba",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+      },
       "doc": "https://www.alibabacloud.com/help/zh/model-studio/token-plan-overview",
       "env": [
         "ALIBABA_TOKEN_PLAN_API_KEY"
@@ -228,6 +276,9 @@ const raw: unknown = {
       "vendor": "alibaba",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://coding-intl.dashscope.aliyuncs.com/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://coding-intl.dashscope.aliyuncs.com/v1"
+      },
       "doc": "https://www.alibabacloud.com/help/en/model-studio/coding-plan",
       "env": [
         "ALIBABA_CODING_PLAN_API_KEY"
@@ -239,6 +290,9 @@ const raw: unknown = {
       "vendor": "alibaba",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://coding.dashscope.aliyuncs.com/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://coding.dashscope.aliyuncs.com/v1"
+      },
       "doc": "https://help.aliyun.com/zh/model-studio/coding-plan",
       "env": [
         "ALIBABA_CODING_PLAN_API_KEY"
@@ -250,6 +304,9 @@ const raw: unknown = {
       "vendor": "xiaomi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan-cn.xiaomimimo.com/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://token-plan-cn.xiaomimimo.com/v1"
+      },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
         "XIAOMI_API_KEY"
@@ -261,6 +318,9 @@ const raw: unknown = {
       "vendor": "xiaomi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan-sgp.xiaomimimo.com/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://token-plan-sgp.xiaomimimo.com/v1"
+      },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
         "XIAOMI_API_KEY"
@@ -272,6 +332,9 @@ const raw: unknown = {
       "vendor": "xiaomi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://token-plan-ams.xiaomimimo.com/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://token-plan-ams.xiaomimimo.com/v1"
+      },
       "doc": "https://platform.xiaomimimo.com/#/docs",
       "env": [
         "XIAOMI_API_KEY"
@@ -283,6 +346,9 @@ const raw: unknown = {
       "vendor": "minimax",
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.io/anthropic/v1",
+      "protocolBaseURLs": {
+        "anthropic": "https://api.minimax.io/anthropic/v1"
+      },
       "doc": "https://platform.minimax.io/docs/token-plan/intro",
       "env": [
         "MINIMAX_API_KEY"
@@ -294,6 +360,9 @@ const raw: unknown = {
       "vendor": "minimax",
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.cn/anthropic/v1",
+      "protocolBaseURLs": {
+        "anthropic": "https://api.minimax.cn/anthropic/v1"
+      },
       "doc": "https://platform.minimaxi.com/docs/token-plan/intro",
       "env": [
         "MINIMAX_API_KEY"
@@ -305,6 +374,9 @@ const raw: unknown = {
       "vendor": "glm",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.z.ai/api/coding/paas/v4",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.z.ai/api/coding/paas/v4"
+      },
       "doc": "https://docs.z.ai/devpack/overview",
       "env": [
         "ZHIPU_API_KEY"
@@ -316,6 +388,9 @@ const raw: unknown = {
       "vendor": "glm",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://open.bigmodel.cn/api/coding/paas/v4",
+      "protocolBaseURLs": {
+        "chat-completions": "https://open.bigmodel.cn/api/coding/paas/v4"
+      },
       "doc": "https://docs.bigmodel.cn/cn/coding-plan/overview",
       "env": [
         "ZHIPU_API_KEY"
@@ -327,6 +402,9 @@ const raw: unknown = {
       "vendor": "kimi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.kimi.com/coding/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.kimi.com/coding/v1"
+      },
       "doc": "https://www.kimi.com/code/docs/en/kimi-code/models.html",
       "env": [
         "KIMI_API_KEY"
@@ -338,6 +416,9 @@ const raw: unknown = {
       "vendor": "kimi",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://api.kimi.ai/coding/v1",
+      "protocolBaseURLs": {
+        "chat-completions": "https://api.kimi.ai/coding/v1"
+      },
       "doc": "https://www.kimi.ai/code/docs/en/kimi-code/models.html",
       "env": [
         "KIMI_API_KEY"
@@ -349,6 +430,9 @@ const raw: unknown = {
       "vendor": "bytedance",
       "sdkPackage": "@ai-sdk/openai-compatible",
       "apiBase": "https://ark.cn-beijing.volces.com/api/plan/v3",
+      "protocolBaseURLs": {
+        "chat-completions": "https://ark.cn-beijing.volces.com/api/plan/v3"
+      },
       "doc": "https://www.volcengine.com/docs/82379/1330310",
       "env": [
         "ARK_API_KEY"
