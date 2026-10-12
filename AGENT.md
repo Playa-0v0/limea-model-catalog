@@ -25,7 +25,7 @@ data/
     registry.ts             # 共享类型 + 渠道↔厂商映射 + 基础补丁 BASE
     <vendor>.ts             # 该厂商的渠道规则与 offering 例外
 scripts/
-  build-catalog.ts          # 拉上游 → 过滤 → 套补丁 → 生成 src/generated/catalog.ts
+  build-catalog.ts          # 拉上游 → 白名单/排除表过滤 → 套补丁 → 规范化推理 → 生成 src/generated/catalog.ts
   validate.ts               # 构建期兜底校验
 src/
   schema.ts                 # 唯一类型来源，枚举写成 as const 常量数组再推导类型
@@ -43,6 +43,10 @@ tests/
 1. **三态语义**：能力只有 `supported` / `unsupported` / `unknown`。
    **没有依据就写 `unknown`，绝不推测**。`unknown` 与 `unsupported` 不是一回事，
    字段缺失必须落到 `unknown`，不得默认成 `unsupported`——这是本包相对上游的核心增益。
+
+   例外是两个非三态字段：`reasoning.forms`（推理控制形态，`effort` / `toggle` / `budget_tokens`
+   的列表，空数组表示只能强制思考）与 `reasoning.canDisable`（`yes` / `no` / `unknown`）。
+   它们按官方资料人工维护、**不进 `CAPABILITY_PATHS`**，因此不参与四层仲裁，只随 offering 展示。
 
 2. **生成物不可手改**：`src/generated/catalog.ts` 由 `scripts/build-catalog.ts` 生成。
    要改内容就改 `data/` 或构建脚本，然后重新构建。
@@ -68,7 +72,10 @@ tests/
 - **给已有厂商加/改规则**：只动 `data/vendors/<vendor>.ts`，`source` 写清依据。
 - **接入新厂商**：加厂商文件 → 在 `capability-overrides.ts` 汇总 → 必要时补 registry 映射。
 - **上游没有的渠道/模型**：写进 `data/manual-channels.ts`，provider / model / offering 一起补，
-  能力从「全 unknown 骨架」起步，只填实测覆盖到的字段。
+  模态、采样与推理形态从模型定义继承，其余能力从「全 unknown 骨架」起步，只填实测覆盖到的字段。
+- **补推理形态**：渠道默认在 `data/vendors/registry.ts` 的 `REASONING` 组合常量里挑一个，
+  写法固定为 `patch.reasoning`；按模型区分的例外写该厂商文件的 `OFFERING_RULES`，用 `apiModelId` 正则匹配。
+- **不收录的模型**：在 `scripts/build-catalog.ts` 的 `EXCLUDED_OFFERINGS` 里按 `providerId/apiModelId` 排除。
 - **改完必做**：重建快照，然后跑校验、类型检查、测试。
 
 ---
