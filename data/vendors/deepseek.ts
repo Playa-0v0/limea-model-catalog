@@ -1,4 +1,4 @@
-import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import { BASE, REASONING, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
 
 /** DeepSeek 的三个接口格式均有官方接入文档；Anthropic 格式单独使用 /anthropic 根路径。 */
 export const ENDPOINT_RULES: ProviderEndpointRule[] = [
@@ -26,6 +26,8 @@ export const RULES: ProviderRule[] = [
         choice: { auto: 'supported', required: 'supported', specific: 'supported' },
       },
       promptCaching: 'supported',
+      // 推理模型用 reasoning_effort 档位，官方未公布关闭方式
+      reasoning: REASONING.effortUnknown,
     },
     confidence: 'verified',
     source: 'DeepSeek 官方文档：parallel_tool_calls「忽略（并行工具调用始终开启）」；tool_choice 支持 auto/required/指定函数；Responses API 提供 response.function_call_arguments.delta；结构化输出 text.format 完整支持',

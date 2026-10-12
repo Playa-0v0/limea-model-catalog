@@ -44,6 +44,18 @@ export type Lifecycle = (typeof LIFECYCLES)[number];
 export const RESOLUTION_LAYERS = ['model', 'offering', 'adapter', 'user'] as const;
 export type ResolutionLayerName = (typeof RESOLUTION_LAYERS)[number];
 
+/**
+ * 推理控制形态。一个模型可能同时提供多种形态（如「开关」叠「预算」）。
+ * effort —— 档位（low / high / …）；toggle —— 开关；budget_tokens —— 思考预算。
+ * 空数组表示只能强制思考、没有可调档位。
+ */
+export const REASONING_FORMS = ['effort', 'toggle', 'budget_tokens'] as const;
+export type ReasoningForm = (typeof REASONING_FORMS)[number];
+
+/** 能否关闭思考。yes / no / unknown，与三态语义相同但不走 CAPABILITY_PATHS。 */
+export const CAN_DISABLE = ['yes', 'no', 'unknown'] as const;
+export type CanDisable = (typeof CAN_DISABLE)[number];
+
 /** 目录可记录的供应商 API 根地址协议。 */
 export const API_PROTOCOLS = ['chat-completions', 'anthropic', 'responses'] as const;
 export type ApiProtocol = (typeof API_PROTOCOLS)[number];
@@ -66,6 +78,7 @@ export const CAPABILITY_PATHS = [
   'structuredOutput.jsonSchema',
   'reasoning.supported',
   'promptCaching',
+  'sampling.temperature',
   'hostedTools.webSearch',
   'hostedTools.codeExecution',
 ] as const;
@@ -112,8 +125,16 @@ export interface Capabilities {
     supported: Support;
     /** 保留厂商原始档位枚举，不做跨厂商统一化 */
     efforts?: string[];
+    /** 推理控制形态，空数组表示只能强制思考 */
+    forms: ReasoningForm[];
+    /** 能否关闭思考 */
+    canDisable: CanDisable;
   };
   promptCaching: Support;
+  /** 采样参数支持情况。上游只有 temperature 一项，其余采样参数暂无依据可填 */
+  sampling: {
+    temperature: Support;
+  };
   /** 厂商自带的托管工具（跑在厂商侧，不是本地工具执行） */
   hostedTools: {
     /** 原生联网搜索 / grounding */
@@ -149,8 +170,13 @@ export interface CapabilityPatch {
   reasoning?: {
     supported?: Support;
     efforts?: string[];
+    forms?: ReasoningForm[];
+    canDisable?: CanDisable;
   };
   promptCaching?: Support;
+  sampling?: {
+    temperature?: Support;
+  };
   hostedTools?: {
     webSearch?: Support;
     codeExecution?: Support;

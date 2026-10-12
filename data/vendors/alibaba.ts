@@ -1,4 +1,10 @@
-import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import {
+  BASE,
+  REASONING,
+  type OfferingRule,
+  type ProviderEndpointRule,
+  type ProviderRule,
+} from './registry.ts';
 
 /** 阿里云百炼。国际站与中国站规则一致。 */
 export const RULES: ProviderRule[] = [
@@ -13,6 +19,8 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported', codeExecution: 'supported' },
+      // 主流的 qwen3 系列用 enable_thinking 开关叠加 thinking_budget 预算；其余形态见 OFFERING_RULES
+      reasoning: REASONING.toggleBudgetYes,
     },
     confidence: 'verified',
     source: '阿里云百炼文档：tool_choice 支持 auto/none/required/指定函数；parameters.parallel_tool_calls 存在；Responses API 内置联网搜索、网页抓取、代码解释器；x-dashscope-session-cache 上下文缓存',
@@ -28,9 +36,129 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported', codeExecution: 'supported' },
+      reasoning: REASONING.toggleBudgetYes,
     },
     confidence: 'verified',
     source: '同阿里云百炼（中国站）文档',
+  },
+];
+
+/**
+ * 阿里云百炼的推理形态例外。百炼上聚合了各家模型，形态随模型本身而定：
+ * GLM / DeepSeek / Kimi 沿用原厂形态，qwen 内部又按代际与用途分化。
+ */
+export const OFFERING_RULES: OfferingRule[] = [
+  {
+    providerId: 'alibaba',
+    match: /^glm-5\.3/,
+    patch: { reasoning: REASONING.effortNo },
+    confidence: 'verified',
+    source: '百炼托管的 glm-5.3：reasoning_effort 档位，只能开启、不能关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^glm-5\.2$/,
+    patch: { reasoning: REASONING.effortYes },
+    confidence: 'verified',
+    source: '百炼托管的 glm-5.2：reasoning_effort 档位，传 none / minimal 即关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^glm-5(\.1)?$/,
+    patch: { reasoning: REASONING.toggleYes },
+    confidence: 'verified',
+    source: '百炼托管的 glm-5 / glm-5.1：thinking.type 开关式，可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^glm-4\.7/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '百炼托管的 glm-4.7 系列：强制思考，不可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^deepseek-v4/,
+    patch: { reasoning: REASONING.effortUnknown },
+    confidence: 'verified',
+    source: '百炼托管的 deepseek-v4 系列：reasoning_effort 档位，官方未公布关闭方式',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^deepseek-v3|^siliconflow\/deepseek-v3/,
+    patch: { reasoning: REASONING.toggleYes },
+    confidence: 'verified',
+    source: '百炼托管的 deepseek-v3 系列（含 siliconflow 前缀）：thinking 开关式，可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^deepseek-r1|^siliconflow\/deepseek-r1/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '百炼托管的 deepseek-r1 系列（含蒸馏版与 siliconflow 前缀）：强制思考，不可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^(kimi\/)?kimi-k2\.[56]$/,
+    patch: { reasoning: REASONING.toggleYes },
+    confidence: 'verified',
+    source: '百炼托管的 kimi-k2.5 / k2.6：thinking.type 开关式，可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^kimi-k2-thinking$|k2\.7-code/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '百炼托管的 kimi-k2-thinking 与 kimi-k2.7-code：强制思考，不可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^kimi-k3$/,
+    patch: { reasoning: REASONING.effortUnknown },
+    confidence: 'verified',
+    source: '百炼托管的 kimi-k3：reasoning_effort 档位，官方未公布关闭方式',
+  },
+  {
+    providerId: 'alibaba',
+    match: /MiniMax-M2\./,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '百炼托管的 MiniMax-M2 系列：强制思考，不可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^qwen3\.8-/,
+    patch: { reasoning: REASONING.effortUnknown },
+    confidence: 'verified',
+    source: '百炼 qwen3.8 系列：reasoning_effort 档位，官方未公布关闭方式',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^qwen3-max$/,
+    patch: { reasoning: REASONING.toggleYes },
+    confidence: 'verified',
+    source: '百炼 qwen3-max：thinking 开关式（兼容 API 用 enable_thinking），可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^qwen3-next-80b-a3b-thinking$/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '百炼 qwen3-next-80b-a3b-thinking：强制思考，无用户可选档位（thinking_budget 仅可调上限），不可关闭',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^qvq-max$|^qwq-plus$/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '百炼 qvq-max / qwq-plus：仅思考，官方未提供公开关闭参数',
+  },
+  {
+    providerId: 'alibaba',
+    match: /^qwq-32b$/,
+    patch: { reasoning: REASONING.forcedUnknown },
+    confidence: 'verified',
+    source: '百炼 qwq-32b：无思考档位，官方未公布关闭方式',
   },
 ];
 

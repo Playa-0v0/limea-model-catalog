@@ -1,7 +1,7 @@
 // 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
 // 数据来源：https://models.dev/api.json（摘要 a4d28d05）
 // 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
-// 生成时间：2026-10-11T07:11:33.014Z
+// 生成时间：2026-10-12T16:55:49.643Z
 import type { CatalogSnapshot } from '../schema.ts';
 
 /** 递归冻结，防止调用方改到全局快照 */
@@ -19,8 +19,8 @@ function freeze<T>(value: T): T {
 // 数据是否合规由 scripts/validate.ts 用 Schema 实际校验。
 const raw: unknown = {
   "schemaVersion": 1,
-  "snapshotVersion": "2026-10-11+a4d28d05",
-  "generatedAt": "2026-10-11T07:11:33.014Z",
+  "snapshotVersion": "2026-10-12+a4d28d05",
+  "generatedAt": "2026-10-12T16:55:49.643Z",
   "upstream": {
     "source": "https://models.dev/api.json",
     "digest": "a4d28d05"
@@ -385,7 +385,7 @@ const raw: unknown = {
     },
     {
       "id": "minimax-coding-plan",
-      "name": "MiniMax Coding Plan（国际站）",
+      "name": "MiniMax M Plan（国际站）",
       "vendor": "minimax",
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.io/anthropic/v1",
@@ -401,7 +401,7 @@ const raw: unknown = {
     },
     {
       "id": "minimax-cn-coding-plan",
-      "name": "MiniMax Coding Plan（中国站）",
+      "name": "MiniMax M Plan（中国站）",
       "vendor": "minimax",
       "sdkPackage": "@ai-sdk/anthropic",
       "apiBase": "https://api.minimax.cn/anthropic/v1",
@@ -527,9 +527,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -576,9 +581,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -625,9 +635,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -674,9 +689,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -723,9 +743,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -772,9 +797,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -821,9 +851,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -870,9 +905,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -919,9 +959,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -968,9 +1013,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1017,9 +1067,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1066,9 +1121,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1115,9 +1175,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1164,9 +1229,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1213,9 +1285,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1262,9 +1341,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1313,9 +1397,16 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1364,9 +1455,16 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1415,9 +1513,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1464,9 +1569,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1514,9 +1624,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1563,9 +1678,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1612,9 +1732,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1661,9 +1786,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1710,9 +1843,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1759,9 +1897,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1808,9 +1951,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1857,9 +2005,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1906,9 +2059,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -1955,9 +2113,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2008,9 +2171,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2060,9 +2228,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2109,9 +2282,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2158,9 +2339,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2207,9 +2393,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2257,9 +2451,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2307,9 +2506,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2357,9 +2561,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2406,9 +2615,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2455,9 +2669,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2504,9 +2723,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2553,9 +2777,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2602,9 +2831,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2651,9 +2885,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2700,9 +2939,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2749,9 +2993,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2802,9 +3051,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2852,9 +3106,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2902,9 +3161,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -2951,9 +3215,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3000,9 +3272,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3049,9 +3329,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3098,9 +3386,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3147,9 +3443,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3196,9 +3497,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3245,9 +3551,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3294,9 +3605,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3343,9 +3659,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3392,9 +3713,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3441,9 +3769,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3490,9 +3823,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3543,9 +3881,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3595,9 +3941,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3612,106 +3963,6 @@ const raw: unknown = {
       "knowledge": "2024-04",
       "releasedAt": "2025-09-15",
       "updatedAt": "2025-09-15"
-    },
-    {
-      "id": "alibaba-cn/qwen3-vl-235b-a22b",
-      "name": "Qwen3-VL 235B-A22B",
-      "lab": "alibaba-cn",
-      "family": "qwen",
-      "kind": "language",
-      "description": "Qwen vision-language model for visual reasoning, documents, and agent tasks",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
-      },
-      "openWeights": true,
-      "knowledge": "2025-04",
-      "releasedAt": "2025-04",
-      "updatedAt": "2025-04"
-    },
-    {
-      "id": "alibaba-cn/qwen3-vl-30b-a3b",
-      "name": "Qwen3-VL 30B-A3B",
-      "lab": "alibaba-cn",
-      "family": "qwen",
-      "kind": "language",
-      "description": "Qwen vision-language model for visual reasoning, documents, and agent tasks",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
-      },
-      "openWeights": true,
-      "knowledge": "2025-04",
-      "releasedAt": "2025-04",
-      "updatedAt": "2025-04"
     },
     {
       "id": "alibaba-cn/qwen3-vl-plus",
@@ -3745,9 +3996,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3796,9 +4055,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3847,9 +4114,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3898,9 +4173,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3947,9 +4230,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -3998,9 +4289,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4047,9 +4346,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4096,9 +4400,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4145,9 +4454,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4194,9 +4508,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4243,9 +4562,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4292,9 +4618,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4341,9 +4674,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4390,9 +4728,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4439,9 +4782,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4488,9 +4836,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4538,9 +4893,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4587,9 +4949,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4636,9 +5003,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4685,9 +5057,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4735,9 +5112,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4786,9 +5171,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4835,9 +5228,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4884,9 +5282,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4933,9 +5336,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -4984,9 +5394,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5033,9 +5450,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5082,9 +5504,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5131,9 +5558,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5182,9 +5614,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5233,9 +5673,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5282,9 +5730,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5332,9 +5787,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5382,9 +5842,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5431,9 +5896,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5480,9 +5950,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5529,9 +6004,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5578,9 +6058,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5627,9 +6112,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5676,9 +6166,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5726,9 +6223,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5776,9 +6278,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5825,9 +6332,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5874,9 +6386,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5923,9 +6440,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -5972,9 +6494,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6021,9 +6548,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6071,9 +6603,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6120,9 +6657,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6169,9 +6714,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6218,9 +6768,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6267,9 +6822,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6320,9 +6880,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6372,9 +6937,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6421,9 +6991,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6470,9 +7048,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6519,9 +7102,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6569,9 +7160,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6619,9 +7215,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6669,9 +7270,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6718,9 +7324,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6767,9 +7378,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6816,9 +7432,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6865,9 +7486,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6918,9 +7544,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -6968,9 +7599,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7018,9 +7654,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7067,9 +7708,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7116,9 +7765,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7165,9 +7822,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7214,9 +7879,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7263,9 +7936,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7312,9 +7990,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7361,9 +8044,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7410,9 +8098,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7459,9 +8152,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7512,9 +8210,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7561,9 +8264,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7610,9 +8318,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7659,9 +8372,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7712,9 +8430,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7765,9 +8491,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7782,106 +8513,6 @@ const raw: unknown = {
       "knowledge": "2024-04",
       "releasedAt": "2025-09-15",
       "updatedAt": "2025-09-15"
-    },
-    {
-      "id": "alibaba/qwen3-vl-235b-a22b",
-      "name": "Qwen3-VL 235B-A22B",
-      "lab": "alibaba",
-      "family": "qwen",
-      "kind": "language",
-      "description": "Qwen vision-language model for visual reasoning, documents, and agent tasks",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
-      },
-      "openWeights": true,
-      "knowledge": "2025-04",
-      "releasedAt": "2025-04",
-      "updatedAt": "2025-04"
-    },
-    {
-      "id": "alibaba/qwen3-vl-30b-a3b",
-      "name": "Qwen3-VL 30B-A3B",
-      "lab": "alibaba",
-      "family": "qwen",
-      "kind": "language",
-      "description": "Qwen vision-language model for visual reasoning, documents, and agent tasks",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
-      },
-      "openWeights": true,
-      "knowledge": "2025-04",
-      "releasedAt": "2025-04",
-      "updatedAt": "2025-04"
     },
     {
       "id": "alibaba/qwen3-vl-plus",
@@ -7915,9 +8546,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -7967,9 +8606,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8019,9 +8666,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8071,9 +8726,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8123,9 +8786,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8174,9 +8845,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8225,9 +8904,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8277,9 +8964,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8329,9 +9024,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8380,9 +9083,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8429,9 +9140,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8480,9 +9199,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8531,9 +9258,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8580,9 +9315,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8631,9 +9374,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8687,9 +9438,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8744,9 +9502,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8800,9 +9565,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8858,9 +9630,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8907,9 +9686,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -8965,9 +9749,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9023,9 +9814,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9074,9 +9872,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9125,9 +9930,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9183,9 +9995,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9239,9 +10058,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9295,9 +10121,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9352,9 +10185,16 @@ const raw: unknown = {
             "medium",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9410,9 +10250,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9468,9 +10315,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9526,9 +10380,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9584,9 +10445,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9635,9 +10503,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9686,9 +10561,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9743,9 +10625,16 @@ const raw: unknown = {
             "medium",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9801,9 +10690,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9859,9 +10755,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -9914,9 +10817,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -9964,9 +10874,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10014,9 +10931,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10073,9 +10997,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10133,9 +11064,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10193,9 +11131,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10253,9 +11198,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10313,9 +11265,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10364,9 +11323,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -10424,9 +11390,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10484,9 +11457,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10540,9 +11520,16 @@ const raw: unknown = {
             "minimal",
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10600,9 +11587,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10653,9 +11647,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -10708,9 +11709,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -10761,9 +11769,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -10815,9 +11830,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -10870,9 +11892,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -10924,9 +11953,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -10978,9 +12012,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11028,9 +12067,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11081,9 +12127,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11132,9 +12185,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11185,9 +12245,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11234,9 +12301,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11287,9 +12359,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11336,9 +12415,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11395,9 +12479,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11450,9 +12541,16 @@ const raw: unknown = {
           "efforts": [
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11501,9 +12599,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11558,9 +12663,16 @@ const raw: unknown = {
           "efforts": [
             "minimal",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11614,9 +12726,16 @@ const raw: unknown = {
           "efforts": [
             "minimal",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11673,9 +12792,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11728,9 +12854,16 @@ const raw: unknown = {
           "efforts": [
             "minimal",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11787,9 +12920,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11846,9 +12986,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11895,9 +13042,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -11953,9 +13107,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12011,9 +13172,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12070,9 +13238,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12129,9 +13304,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12179,9 +13361,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12238,9 +13425,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12296,9 +13490,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12354,9 +13555,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12403,9 +13611,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12456,9 +13669,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12514,9 +13732,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12573,9 +13798,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12624,9 +13856,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12674,9 +13913,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12724,9 +13970,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12775,9 +14028,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12826,9 +14084,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12877,9 +14140,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12927,9 +14195,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -12977,9 +14250,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -13026,9 +14304,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13075,9 +14360,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13124,9 +14416,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13173,9 +14472,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13222,9 +14528,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13271,9 +14584,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13322,9 +14642,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13371,9 +14698,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13420,9 +14754,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13469,9 +14810,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13518,9 +14866,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13567,9 +14922,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13616,9 +14978,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13667,9 +15036,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13716,9 +15092,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13765,9 +15148,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13814,9 +15204,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13863,9 +15260,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13912,9 +15316,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -13961,9 +15372,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14012,9 +15430,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14061,9 +15486,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14110,9 +15542,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14159,9 +15598,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14208,9 +15654,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14257,9 +15710,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14306,9 +15766,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14357,9 +15824,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14415,9 +15889,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -14466,9 +15947,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14517,9 +16005,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14568,9 +16063,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14619,9 +16121,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14670,9 +16177,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14726,9 +16240,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14782,9 +16303,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14833,9 +16361,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14882,9 +16415,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14931,9 +16469,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -14981,9 +16524,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15032,9 +16580,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15083,9 +16636,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15133,9 +16691,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15184,9 +16747,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15234,9 +16802,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15284,9 +16857,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15334,9 +16912,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15385,9 +16968,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15441,9 +17029,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15497,9 +17092,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15553,9 +17155,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15606,9 +17215,16 @@ const raw: unknown = {
           "supported": "supported",
           "efforts": [
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15662,9 +17278,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15719,9 +17342,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15772,9 +17402,16 @@ const raw: unknown = {
           "supported": "supported",
           "efforts": [
             "medium"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15827,9 +17464,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15877,9 +17521,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15935,9 +17584,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -15993,9 +17649,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16051,9 +17714,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16108,9 +17778,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16165,9 +17842,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16220,9 +17904,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16278,9 +17969,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16334,9 +18032,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16392,9 +18097,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16451,9 +18163,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16510,9 +18229,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16569,9 +18295,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16627,9 +18360,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16686,9 +18426,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16745,9 +18492,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16803,9 +18557,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16853,9 +18614,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16904,9 +18670,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -16955,9 +18726,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17005,9 +18781,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17064,9 +18845,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17120,9 +18908,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17175,9 +18970,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17231,9 +19033,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17285,9 +19094,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17340,9 +19156,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17395,9 +19218,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17444,9 +19274,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17493,9 +19328,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17542,9 +19382,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -17593,9 +19438,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17644,9 +19494,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17701,9 +19558,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17758,9 +19622,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17814,9 +19685,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17871,9 +19749,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17928,9 +19813,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -17979,9 +19871,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18031,9 +19930,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18083,9 +19987,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18135,9 +20044,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18187,9 +20101,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18238,9 +20157,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18287,9 +20211,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -18336,9 +20265,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18385,9 +20319,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18434,9 +20373,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18483,9 +20427,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -18532,9 +20481,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18581,9 +20535,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18630,9 +20589,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18679,9 +20643,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -18728,9 +20697,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18777,9 +20751,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18826,9 +20805,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -18875,9 +20859,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -18928,9 +20919,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -18977,9 +20975,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -19029,9 +21034,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19078,9 +21090,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19127,9 +21146,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19179,9 +21205,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19231,9 +21264,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19283,9 +21323,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19332,9 +21379,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19381,9 +21433,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19430,9 +21489,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19479,9 +21545,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19528,9 +21601,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19579,9 +21659,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19628,9 +21713,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19679,9 +21771,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19728,9 +21827,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19777,9 +21881,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19826,9 +21935,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19875,9 +21989,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19927,9 +22048,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -19978,9 +22106,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20027,9 +22162,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20076,9 +22218,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20125,9 +22274,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20176,9 +22332,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20225,9 +22386,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20276,9 +22444,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20327,9 +22502,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20376,9 +22558,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20425,9 +22612,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20474,9 +22666,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20523,9 +22720,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20572,9 +22776,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20625,9 +22836,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20679,9 +22897,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20736,9 +22961,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20788,9 +23020,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -20837,9 +23076,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -20881,9 +23125,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -20925,9 +23174,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -20969,9 +23223,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21013,9 +23272,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21057,9 +23321,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21101,9 +23370,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21145,9 +23419,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21189,9 +23468,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21233,9 +23517,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21277,9 +23566,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21321,9 +23615,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21365,9 +23664,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21413,9 +23717,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21461,9 +23772,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21511,9 +23829,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21555,9 +23880,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21599,9 +23931,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21643,9 +23982,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21692,9 +24038,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21736,9 +24089,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21782,9 +24140,16 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21828,9 +24193,16 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21878,9 +24250,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21924,9 +24303,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -21968,9 +24354,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22013,9 +24404,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22057,9 +24453,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22101,9 +24502,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22145,9 +24551,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22189,9 +24603,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22233,9 +24652,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22277,9 +24701,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22321,9 +24750,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22365,9 +24799,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22409,9 +24848,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22457,9 +24901,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22504,9 +24953,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22548,9 +25002,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22592,9 +25054,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22636,9 +25103,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22681,9 +25156,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22726,9 +25206,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22771,9 +25256,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22815,9 +25305,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22859,9 +25354,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22903,9 +25403,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22947,9 +25452,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -22991,9 +25501,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23035,9 +25550,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23079,9 +25599,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23123,9 +25648,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23171,9 +25701,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23216,9 +25751,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23261,9 +25801,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23305,9 +25850,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23349,9 +25902,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23393,9 +25954,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23437,9 +26006,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23481,9 +26058,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23525,9 +26107,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23569,9 +26156,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23613,9 +26205,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23657,9 +26254,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23701,9 +26303,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23745,9 +26354,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23789,9 +26403,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23837,9 +26456,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23884,9 +26511,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -23896,96 +26528,6 @@ const raw: unknown = {
         "contextWindow": 65536,
         "maxInputTokens": null,
         "maxOutputTokens": 16384
-      },
-      "lifecycle": "active"
-    },
-    {
-      "id": "alibaba-cn/qwen3-vl-235b-a22b",
-      "providerId": "alibaba-cn",
-      "modelId": "alibaba-cn/qwen3-vl-235b-a22b",
-      "apiModelId": "qwen3-vl-235b-a22b",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
-      },
-      "lifecycle": "active"
-    },
-    {
-      "id": "alibaba-cn/qwen3-vl-30b-a3b",
-      "providerId": "alibaba-cn",
-      "modelId": "alibaba-cn/qwen3-vl-30b-a3b",
-      "apiModelId": "qwen3-vl-30b-a3b",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
       },
       "lifecycle": "active"
     },
@@ -24019,9 +26561,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24065,9 +26615,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24111,9 +26669,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24157,9 +26723,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24203,9 +26777,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24247,9 +26829,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24293,9 +26883,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24339,9 +26937,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24383,9 +26989,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24429,9 +27043,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24480,9 +27102,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24532,9 +27161,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24585,9 +27221,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24629,9 +27272,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24673,9 +27321,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24717,9 +27370,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24761,9 +27419,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24805,9 +27468,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24849,9 +27519,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24893,9 +27570,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24937,9 +27619,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -24981,9 +27668,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25025,9 +27717,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25070,9 +27769,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25114,9 +27820,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25158,9 +27869,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25202,9 +27918,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25247,9 +27968,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25293,9 +28022,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25339,9 +28076,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25383,9 +28128,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25427,9 +28177,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25471,9 +28226,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25517,9 +28279,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25561,9 +28330,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25605,9 +28379,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25649,9 +28428,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25695,9 +28479,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25741,9 +28533,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25787,9 +28587,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25831,9 +28639,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25875,9 +28688,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25923,9 +28743,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -25971,9 +28798,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26019,9 +28853,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26067,9 +28908,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26117,9 +28965,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26161,9 +29016,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26205,9 +29067,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26253,9 +29122,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26302,9 +29178,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26347,9 +29230,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26392,9 +29280,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26436,9 +29329,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26482,9 +29380,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26528,9 +29433,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26574,9 +29486,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26618,9 +29535,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26662,9 +29584,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26708,9 +29635,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26754,9 +29689,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26798,9 +29741,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26844,9 +29795,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26895,9 +29854,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26947,9 +29913,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -26998,9 +29971,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27042,9 +30022,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27086,9 +30071,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27130,9 +30120,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27174,9 +30169,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27222,9 +30224,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27270,9 +30279,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27318,9 +30334,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27366,9 +30389,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27416,9 +30446,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27460,9 +30497,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27504,9 +30548,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27552,9 +30603,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27601,9 +30659,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27646,9 +30711,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27691,9 +30761,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27735,9 +30810,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27781,9 +30861,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27827,9 +30914,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27873,9 +30967,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27917,9 +31016,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -27961,9 +31065,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28007,9 +31116,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28053,9 +31170,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28097,9 +31222,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28143,9 +31276,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28194,9 +31335,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28246,9 +31394,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28297,9 +31452,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28341,9 +31503,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28385,9 +31552,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28433,9 +31605,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28486,9 +31665,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28536,9 +31722,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28581,9 +31774,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28625,9 +31823,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28669,9 +31875,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28713,9 +31924,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28757,9 +31973,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28805,9 +32026,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28852,9 +32078,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28896,9 +32127,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28940,9 +32179,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -28984,9 +32228,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29029,9 +32281,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29074,9 +32331,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29119,9 +32381,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29163,9 +32430,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29207,9 +32479,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29251,9 +32528,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29295,9 +32577,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29343,9 +32630,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29388,9 +32680,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29433,9 +32730,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29477,9 +32779,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29521,9 +32831,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29565,9 +32883,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29609,9 +32935,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29653,9 +32987,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29697,9 +33036,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29741,9 +33085,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29785,9 +33134,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29829,9 +33183,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29877,9 +33236,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29921,9 +33285,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -29965,9 +33334,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30009,9 +33383,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30057,9 +33436,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30105,9 +33492,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30117,96 +33509,6 @@ const raw: unknown = {
         "contextWindow": 65536,
         "maxInputTokens": null,
         "maxOutputTokens": 16384
-      },
-      "lifecycle": "active"
-    },
-    {
-      "id": "alibaba/qwen3-vl-235b-a22b",
-      "providerId": "alibaba",
-      "modelId": "alibaba/qwen3-vl-235b-a22b",
-      "apiModelId": "qwen3-vl-235b-a22b",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
-      },
-      "lifecycle": "active"
-    },
-    {
-      "id": "alibaba/qwen3-vl-30b-a3b",
-      "providerId": "alibaba",
-      "modelId": "alibaba/qwen3-vl-30b-a3b",
-      "apiModelId": "qwen3-vl-30b-a3b",
-      "capabilities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ],
-        "streaming": "supported",
-        "tools": {
-          "calling": "supported",
-          "parallel": "supported",
-          "streaming": "supported",
-          "choice": {
-            "auto": "supported",
-            "required": "supported",
-            "none": "supported",
-            "specific": "supported"
-          }
-        },
-        "structuredOutput": {
-          "jsonMode": "unknown",
-          "jsonSchema": "unknown"
-        },
-        "reasoning": {
-          "supported": "supported"
-        },
-        "promptCaching": "supported",
-        "hostedTools": {
-          "webSearch": "supported",
-          "codeExecution": "supported"
-        }
-      },
-      "limits": {
-        "contextWindow": 131072,
-        "maxInputTokens": null,
-        "maxOutputTokens": 32768
       },
       "lifecycle": "active"
     },
@@ -30240,9 +33542,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30287,9 +33597,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30334,9 +33652,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30381,9 +33707,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30428,9 +33762,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30474,9 +33816,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30520,9 +33870,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30567,9 +33925,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30614,9 +33980,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30660,9 +34034,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30704,9 +34086,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30750,9 +34140,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30796,9 +34194,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30840,9 +34246,17 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30886,9 +34300,17 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle",
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30937,9 +34359,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -30989,9 +34418,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31042,9 +34478,16 @@ const raw: unknown = {
             "low",
             "medium",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31086,9 +34529,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31139,9 +34587,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31192,9 +34647,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31238,9 +34700,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31284,9 +34753,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31337,9 +34813,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31388,9 +34871,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31439,9 +34929,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31491,9 +34988,16 @@ const raw: unknown = {
             "medium",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31544,9 +35048,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31597,9 +35108,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31650,9 +35168,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31703,9 +35228,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31749,9 +35281,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31795,9 +35334,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31847,9 +35393,16 @@ const raw: unknown = {
             "medium",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31900,9 +35453,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -31953,9 +35513,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32003,9 +35570,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -32053,9 +35627,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -32103,9 +35684,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -32152,9 +35740,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -32201,9 +35796,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32250,9 +35850,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32295,9 +35900,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32343,9 +35955,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32389,9 +36008,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32437,9 +36063,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32481,9 +36114,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32529,9 +36167,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "budget_tokens"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32573,9 +36218,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32627,9 +36277,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32677,9 +36334,16 @@ const raw: unknown = {
           "efforts": [
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32723,9 +36387,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32775,9 +36446,16 @@ const raw: unknown = {
           "efforts": [
             "minimal",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32826,9 +36504,16 @@ const raw: unknown = {
           "efforts": [
             "minimal",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32880,9 +36565,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32930,9 +36622,16 @@ const raw: unknown = {
           "efforts": [
             "minimal",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -32984,9 +36683,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33038,9 +36744,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33082,9 +36795,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33135,9 +36855,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33188,9 +36915,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33242,9 +36976,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33296,9 +37037,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33341,9 +37089,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33395,9 +37148,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33448,9 +37208,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33501,9 +37268,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33545,9 +37319,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33593,9 +37372,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33646,9 +37430,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33700,9 +37491,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33746,9 +37544,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33791,9 +37596,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33836,9 +37648,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33882,9 +37701,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33928,9 +37752,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -33974,9 +37803,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34019,9 +37853,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34064,9 +37903,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34115,9 +37959,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34165,9 +38016,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34216,9 +38074,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34262,9 +38127,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34313,9 +38185,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34363,9 +38242,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34414,9 +38300,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34460,9 +38353,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -34504,9 +38404,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34548,9 +38455,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34592,9 +38506,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34636,9 +38557,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34680,9 +38608,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34724,9 +38659,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34770,9 +38712,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34823,9 +38772,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34867,9 +38823,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34911,9 +38874,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34955,9 +38925,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -34999,9 +38976,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35043,9 +39027,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35087,9 +39078,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35133,9 +39131,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35177,9 +39182,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35221,9 +39233,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35265,9 +39284,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35309,9 +39335,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35353,9 +39386,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35397,9 +39437,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35443,9 +39490,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35496,9 +39550,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35540,9 +39601,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35584,9 +39652,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35628,9 +39703,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35672,9 +39754,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35716,9 +39805,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35760,9 +39856,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35806,9 +39909,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -35852,9 +39962,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -35898,9 +40015,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -35944,9 +40066,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -35995,9 +40122,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36041,9 +40175,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36087,9 +40228,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36133,9 +40279,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36184,9 +40335,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36230,9 +40388,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36274,9 +40437,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36318,9 +40486,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36363,9 +40536,14 @@ const raw: unknown = {
           "jsonSchema": "unsupported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36409,9 +40587,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36455,9 +40638,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36500,9 +40688,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36546,9 +40739,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36591,9 +40789,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36636,9 +40839,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36681,9 +40889,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36727,9 +40940,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36778,9 +40996,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36829,9 +41054,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36880,9 +41112,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36928,9 +41167,16 @@ const raw: unknown = {
           "supported": "supported",
           "efforts": [
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -36979,9 +41225,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37031,9 +41284,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37079,9 +41339,16 @@ const raw: unknown = {
           "supported": "supported",
           "efforts": [
             "medium"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37129,9 +41396,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37174,9 +41448,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37227,9 +41506,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37280,9 +41566,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37333,9 +41626,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37385,9 +41685,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37437,9 +41744,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37487,9 +41801,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37540,9 +41861,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37591,9 +41919,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37645,9 +41980,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37699,9 +42041,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37753,9 +42102,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37807,9 +42163,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37860,9 +42223,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37914,9 +42284,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -37968,9 +42345,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38021,9 +42405,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38075,9 +42466,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38128,9 +42526,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38173,9 +42578,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38219,9 +42629,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38265,9 +42680,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38310,9 +42730,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38364,9 +42789,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38415,9 +42847,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38465,9 +42904,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38516,9 +42962,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38565,9 +43018,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38615,9 +43075,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38665,9 +43132,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38709,9 +43183,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38753,9 +43232,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38797,9 +43281,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "supported"
@@ -38841,9 +43330,20 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -38885,9 +43385,20 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -38930,9 +43441,21 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "low",
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -38976,9 +43499,25 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "none",
+            "minimal",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39022,9 +43561,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39068,9 +43614,25 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "none",
+            "minimal",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39114,9 +43676,25 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "none",
+            "minimal",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39158,9 +43736,21 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no",
+          "efforts": [
+            "low",
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39205,9 +43795,21 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no",
+          "efforts": [
+            "low",
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39251,9 +43853,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39297,9 +43904,21 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "low",
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unknown"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39343,9 +43962,21 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown",
+          "efforts": [
+            "low",
+            "high",
+            "max"
+          ]
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39389,9 +44020,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unknown"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -39433,9 +44071,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39477,9 +44122,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39528,9 +44180,16 @@ const raw: unknown = {
             "none",
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39579,9 +44238,16 @@ const raw: unknown = {
             "none",
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39630,9 +44296,16 @@ const raw: unknown = {
             "none",
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39679,9 +44352,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39731,9 +44411,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39777,9 +44464,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39828,9 +44520,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39874,9 +44573,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39924,9 +44630,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -39974,9 +44687,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40024,9 +44744,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40069,9 +44796,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40114,9 +44848,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40168,9 +44909,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40223,9 +44971,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40278,9 +45033,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40333,9 +45095,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40388,9 +45157,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40443,9 +45219,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40498,9 +45281,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40549,9 +45339,16 @@ const raw: unknown = {
             "minimal",
             "low",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40604,9 +45401,16 @@ const raw: unknown = {
             "high",
             "xhigh",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40654,9 +45458,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40706,9 +45517,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40752,9 +45570,14 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40798,9 +45621,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40850,9 +45680,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40902,9 +45739,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -40953,9 +45797,16 @@ const raw: unknown = {
             "low",
             "medium",
             "high"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41005,9 +45856,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41057,9 +45915,16 @@ const raw: unknown = {
             "medium",
             "high",
             "xhigh"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41103,9 +45968,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41150,9 +46022,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41197,9 +46074,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41244,9 +46126,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41291,9 +46178,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41337,9 +46229,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "unsupported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41381,9 +46278,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -41425,9 +46329,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -41472,9 +46381,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41516,9 +46432,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41560,9 +46483,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41604,9 +46532,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41648,9 +46581,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41695,9 +46633,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41742,9 +46687,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41786,9 +46738,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -41830,9 +46789,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -41877,9 +46841,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41921,9 +46892,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -41965,9 +46943,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42009,9 +46992,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42053,9 +47041,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42100,9 +47093,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42147,9 +47147,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42191,9 +47198,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -42235,9 +47249,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -42282,9 +47301,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42326,9 +47352,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42370,9 +47403,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42414,9 +47452,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42458,9 +47501,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "unsupported"
+          "supported": "unsupported",
+          "forms": [],
+          "canDisable": "unknown"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42505,9 +47553,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42552,9 +47607,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42596,9 +47658,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -42644,9 +47713,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -42688,9 +47764,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "unknown",
           "codeExecution": "unknown"
@@ -42735,9 +47818,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42779,9 +47869,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42823,9 +47920,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42870,9 +47974,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42917,9 +48028,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -42964,9 +48082,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "unknown",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43008,9 +48133,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43052,9 +48182,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43100,9 +48237,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43148,9 +48292,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43197,9 +48348,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43249,9 +48407,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43298,9 +48463,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43342,9 +48514,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43386,9 +48565,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43430,9 +48616,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43476,9 +48669,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43520,9 +48718,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43566,9 +48771,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43612,9 +48824,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43656,9 +48875,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43700,9 +48924,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43744,9 +48973,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43788,9 +49022,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43832,9 +49073,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43876,9 +49124,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43924,9 +49179,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -43973,9 +49235,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44025,9 +49294,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44077,9 +49353,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44124,9 +49407,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44170,9 +49460,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44219,9 +49516,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44271,9 +49575,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44320,9 +49631,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44364,9 +49682,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44408,9 +49733,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44452,9 +49784,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44498,9 +49837,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44542,9 +49886,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44588,9 +49939,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44634,9 +49992,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44678,9 +50043,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44722,9 +50092,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44766,9 +50141,14 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44810,9 +50190,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44854,9 +50241,16 @@ const raw: unknown = {
           "jsonSchema": "supported"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44902,9 +50296,16 @@ const raw: unknown = {
           "efforts": [
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -44951,9 +50352,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -45003,9 +50411,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -45055,9 +50470,16 @@ const raw: unknown = {
             "low",
             "high",
             "max"
-          ]
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "no"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"
@@ -45102,9 +50524,16 @@ const raw: unknown = {
           "jsonSchema": "unknown"
         },
         "reasoning": {
-          "supported": "supported"
+          "supported": "supported",
+          "forms": [
+            "toggle"
+          ],
+          "canDisable": "yes"
         },
         "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
         "hostedTools": {
           "webSearch": "supported",
           "codeExecution": "unknown"

@@ -1,4 +1,4 @@
-import { BASE, type OfferingRule, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import { BASE, REASONING, type OfferingRule, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
 
 /**
  * 火山方舟。它是个聚合平台，自家豆包与托管的 DeepSeek / 智谱模型共用同一套网关 API，
@@ -12,6 +12,8 @@ export const RULES: ProviderRule[] = [
       tools: { parallel: 'supported' },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported' },
+      // 平台上托管的推理模型多为 reasoning_effort 档位式；个别模型见 OFFERING_RULES
+      reasoning: REASONING.effortUnknown,
     },
     confidence: 'verified',
     source:
@@ -31,6 +33,35 @@ export const OFFERING_RULES: OfferingRule[] = [
     confidence: 'verified',
     source:
       '同篇 Function Calling 文档「流式输出」一节：原文「从 Doubao 1.5 系列模型开始支持流式输出，逐步获取函数调用信息，提升响应效率」；示例代码从 chunk.choices[0].delta.tool_calls 逐个取，并用 function.arguments += 累加，即参数分片增量返回。该结论以豆包系列为界，故只覆盖 doubao- 开头的模型，火山上托管的 DeepSeek / 智谱模型保持 unknown',
+  },
+  // 推理形态：火山上托管的第三方模型沿用其原厂形态，按网关模型名区分
+  {
+    providerId: 'volcengine',
+    match: /^glm-5[.-]3/,
+    patch: { reasoning: REASONING.effortNo },
+    confidence: 'verified',
+    source: '火山方舟托管的 glm-5.3 系列沿用智谱形态：reasoning_effort 档位，只能开启、不能关闭',
+  },
+  {
+    providerId: 'volcengine',
+    match: /^glm-5[.-]2/,
+    patch: { reasoning: REASONING.effortYes },
+    confidence: 'verified',
+    source: '火山方舟托管的 glm-5.2 沿用智谱形态：reasoning_effort 档位，传 none / minimal 即关闭思考',
+  },
+  {
+    providerId: 'volcengine',
+    match: /^minimax-m3$/,
+    patch: { reasoning: REASONING.toggleYes },
+    confidence: 'verified',
+    source: '火山方舟托管的 minimax-m3 沿用 MiniMax 形态：thinking.type=adaptive/disabled 开关，可关闭',
+  },
+  {
+    providerId: 'volcengine',
+    match: /k2\.7-code/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '火山方舟托管的 kimi-k2.7-code 沿用 Kimi 托管形态：强制思考，不可关闭',
   },
 ];
 

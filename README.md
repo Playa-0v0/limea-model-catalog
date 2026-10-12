@@ -1,155 +1,598 @@
-# @playa0v0/model-catalog
+# @limea/model-catalog
 
 离线可用的模型元数据与能力解析层。给 Harness / Agent 客户端回答一个问题：
 
 > 某个模型，在某个渠道上，到底有哪些能力？
 
-包本身**不做任何网络请求、不保存密钥、不授予任何权限**。工具执行、文件修改、系统命令的审批仍然属于 Harness。
-
-数据底座是 [models.dev](https://models.dev/api.json) 的公开快照，构建期抓取并按白名单过滤，运行时只读一份纯数据模块。
-
----
-
-## 覆盖范围
+包本身**不做任何网络请求、不保存密钥、不授予任何权限**。数据底座是 [models.dev](https://models.dev/api.json) 的公开快照，构建期抓取并按白名单过滤，运行时只读一份纯数据模块。
 
 | 项 | 值 |
 |---|---|
 | 厂商 | openai、anthropic、glm、kimi、deepseek、豆包 Seed（字节跳动）、阿里、小米、minimax、Gemini、Xai（共 11 家） |
 | 渠道 | 30 个（15 个按量付费渠道 + 14 个套餐渠道 + 1 个手工维护的 Agent Plan 渠道） |
-| 模型 | 394 个 |
-| Offering | 519 条（同一模型在不同渠道上的可调用记录） |
+| 模型 | 390 个 |
+| Offering | 515 条（同一模型在不同渠道上的可调用记录） |
 
-厂商记的是**渠道的运营方**，模型的实际出品方看 `ModelDefinition.lab`。这一点在聚合平台上尤其重要：
-火山方舟既是豆包 Seed 自家模型的入口，也托管 DeepSeek、智谱的模型，一共来自 3 个实验室。
-
-「模型」与「Offering」是分开的两个概念：
-
-- **Model**（`ModelDefinition`）是模型本身的固有属性，ID 形如 `openai/gpt-4o`。
-- **Offering**（`ModelOffering`）是「某模型在某渠道上的一次可调用」，ID 形如 `openai/gpt-4o`。
-  同一模型被多个渠道提供时会有多条 offering，各自的能力可能不同。
-
-上游维护的套餐渠道（`*-coding-plan` / `*-token-plan`）与厂商主体是同一套 API 表面，只是计费方式不同，
-因此不单独维护能力规则——构建时回落到该厂商主渠道的规则。也就是说这些渠道上的能力结论
-尚未逐条实测，是按厂商主体推定的；哪天真去用了并发现差异，再补例外规则。
-
-渠道的 `apiBase` 保存上游提供的默认 API 基地址；`protocolBaseURLs` 按协议分别记录**传给对应 AI SDK 适配器的 `baseURL`**。适配器会在其后自行拼接协议路径：Anthropic 适配器接 `/messages`，Responses 适配器接 `/responses`，OpenAI 兼容适配器接 `/chat/completions`。也就是说，值本身是「适配器再拼一层路径之前」的前缀，路径里带不带版本段（如 `/v1`）由厂商接口与适配器的拼接规则共同决定，不能机械地统一加 `/v1`。
-
-SDK 默认协议映射基于渠道记录的 `sdkPackage` 与 `apiBase`，其他协议只有在对应厂商资料明确支持时，才写入 `data/vendors/<vendor>.ts` 的 `ENDPOINT_RULES`，并带 `confidence` 与 `source`。协议地址只按具体渠道记录，不因同厂商、地区或套餐相同而自动复用。例如 DeepSeek 的 Chat Completions 与 Responses 都是 `https://api.deepseek.com`（分别接 `/chat/completions`、`/responses`），Anthropic Messages 的 baseURL 是 `https://api.deepseek.com/anthropic/v1`（接 `/messages`，完整端点为 `https://api.deepseek.com/anthropic/v1/messages`）。
-
-30 个渠道的协议地址已逐条对照官方文档补全（来源见各厂商文件的 `source`）。厂商没有公开对应协议入口的组合一律留空，不猜测：OpenAI 与 xAI 未提供 Anthropic Messages 兼容端点，Anthropic 与 Google 未提供 Responses 端点，阿里云百炼的 Token Plan / Coding Plan 与火山 Agent Plan 未提供 Responses 端点。字段缺失即表示「官方未提供」，与「未知」区分开。
-
-**火山方舟 Agent Plan 是例外**：上游快照里没有这个渠道，由 `data/manual-channels.ts` 手工维护，
-能力结论全部来自实测。它的入口是 `/api/plan`，按量付费的火山渠道是 `/api/v3`，路径不同，
-两边的实测结论不能互相外推，因此它不参与「按厂商回落」那条链路。
+字段含义、四层解析、协议地址与审计清单等实现细节见 [AGENT.md](./AGENT.md)；下方是完整模型清单，维护源为 [`docs/模型清单.md`](./docs/模型清单.md)。
 
 ---
 
-## 能力三态
+> 说明：只保留语言模型；已弃用 / 已退役 / 已下线的模型已剔除。
+> 推理参数与关闭思考按官方资料结果填写，不再要求 API 实测。
+> 多模态能力 = 输入类型（文字 / 图片 / 视频 / 音频 / PDF 文档）；原生能力 = 结构化输出（JSON Schema）/ 原生联网搜索。
 
-上游 models.dev 用 boolean 表达能力，无法区分「确定不支持」和「没人确认过」。本包把它扩成三态：
+## OpenAI（openai）
 
-| 取值 | 含义 |
-|---|---|
-| `supported` | 有依据确认支持 |
-| `unsupported` | 有依据确认不支持 |
-| `unknown` | 缺少可核验依据 |
+### OpenAI（openai，34 个）
 
-**字段缺失必须映射为 `unknown`，不得默认成 `unsupported`**，这是本包相对上游的核心增益。
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| gpt-4.1 | GPT-4.1 | active | 否 | — | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-04-14 |
+| gpt-4.1-mini | GPT-4.1 mini | active | 否 | — | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-04-14 |
+| gpt-4o | GPT-4o | active | 否 | — | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2024-08-06 |
+| gpt-4o-2024-08-06 | GPT-4o (2024-08-06) | active | 否 | — | — | 文字、图片 | 结构化输出、原生联网搜索 | 2024-08-06 |
+| gpt-4o-2024-11-20 | GPT-4o (2024-11-20) | active | 否 | — | — | 文字、图片 | 结构化输出、原生联网搜索 | 2024-11-20 |
+| gpt-4o-mini | GPT-4o mini | active | 否 | — | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2024-07-18 |
+| gpt-5 | GPT-5 | active | 是 | minimal / low / medium / high | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-08-07 |
+| gpt-5-mini | GPT-5 Mini | active | 是 | minimal / low / medium / high | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-08-07 |
+| gpt-5-nano | GPT-5 Nano | active | 是 | minimal / low / medium / high | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-08-07 |
+| gpt-5-pro | GPT-5 Pro | active | 是 | high | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-10-06 |
+| gpt-5.1 | GPT-5.1 | active | 是 | none / low / medium / high | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-11-13 |
+| gpt-5.2 | GPT-5.2 | active | 是 | none / low / medium / high / xhigh | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-12-11 |
+| gpt-5.2-pro | GPT-5.2 Pro | active | 是 | medium / high / xhigh | — | 文字、图片 | 原生联网搜索 | 2025-12-11 |
+| gpt-5.3-codex | GPT-5.3 Codex | active | 是 | none / low / medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-02-05 |
+| gpt-5.3-codex-spark | GPT-5.3 Codex Spark | active | 是 | none / low / medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-02-05 |
+| gpt-5.4 | GPT-5.4 | active | 是 | none / low / medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-03-05 |
+| gpt-5.4-mini | GPT-5.4 mini | active | 是 | none / low / medium / high / xhigh | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-03-17 |
+| gpt-5.4-nano | GPT-5.4 nano | active | 是 | none / low / medium / high / xhigh | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-03-17 |
+| gpt-5.4-pro | GPT-5.4 Pro | active | 是 | medium / high / xhigh | — | 文字、图片 | 原生联网搜索 | 2026-03-05 |
+| gpt-5.5 | GPT-5.5 | active | 是 | none / low / medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-04-23 |
+| gpt-5.5-pro | GPT-5.5 Pro | active | 是 | medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-04-23 |
+| gpt-5.6 | GPT-5.6 Sol | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-09 |
+| gpt-5.6-luna | GPT-5.6 Luna | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-09 |
+| gpt-5.6-sol | GPT-5.6 Sol | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-09 |
+| gpt-5.6-terra | GPT-5.6 Terra | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-09 |
+| gpt-6-astra | GPT-6 Astra | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-04 |
+| gpt-6-luna | GPT-6 Luna | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-22 |
+| gpt-6-sol | GPT-6 Sol | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-22 |
+| gpt-6.1-sol | GPT-6.1 Sol | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-29 |
+| gpt-daybreak-blue-latest | GPT-5.6 Sol | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-09 |
+| gpt-daybreak-red-latest | Daybreak Red | active | 是 | none / low / medium / high / xhigh / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-08-07 |
+| gpt-realtime-2.1 | GPT-Realtime-2.1 | active | 是 | minimal / low / medium / high / xhigh | — | 文字、图片、音频 | 原生联网搜索 | 2026-07-06 |
+| o3 | o3 | active | 是 | low / medium / high | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-04-16 |
+| o3-pro | o3-pro | active | 是 | low / medium / high | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-06-10 |
 
-可查询的能力路径见 `CAPABILITY_PATHS`，包括流式、工具调用、并行工具、流式工具、`tool_choice` 四种取值、结构化输出、推理、提示缓存、厂商托管工具（联网搜索 / 代码执行）。
+## Anthropic（anthropic）
+
+### Anthropic（anthropic，17 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| claude-fable-5 | Claude Fable 5 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-06-09 |
+| claude-fable-5-1 | Claude Fable 5.1 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-01 |
+| claude-haiku-4-5 | Claude Haiku 4.5 (latest) | active | 是 | 预算：thinking.type=enabled + budget_tokens≥1024 | 可以：省略 thinking 或设 `thinking.type=disabled` | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-10-15 |
+| claude-haiku-4-5-20251001 | Claude Haiku 4.5 | active | 是 | 预算：thinking.type=enabled + budget_tokens≥1024 | 可以：省略 thinking 或设 `thinking.type=disabled` | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-10-15 |
+| claude-haiku-5-5 | Claude Haiku 5.5 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-10-07 |
+| claude-opus-4-5 | Claude Opus 4.5 (latest) | active | 是 | low / medium / high | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-11-24 |
+| claude-opus-4-5-20251101 | Claude Opus 4.5 | active | 是 | low / medium / high | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-11-01 |
+| claude-opus-4-6 | Claude Opus 4.6 | active | 是 | low / medium / high / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-03-13 |
+| claude-opus-4-7 | Claude Opus 4.7 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-04-16 |
+| claude-opus-4-8 | Claude Opus 4.8 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-05-28 |
+| claude-opus-5 | Claude Opus 5 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-24 |
+| claude-opus-5-5 | Claude Opus 5.5 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-22 |
+| claude-sonnet-4-5 | Claude Sonnet 4.5 (latest) | active | 是 | 预算：thinking.type=enabled + budget_tokens≥1024 | 可以：省略 thinking 或设 `thinking.type=disabled` | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-09-29 |
+| claude-sonnet-4-5-20250929 | Claude Sonnet 4.5 | active | 是 | 预算：thinking.type=enabled + budget_tokens≥1024 | 可以：省略 thinking 或设 `thinking.type=disabled` | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2025-09-29 |
+| claude-sonnet-4-6 | Claude Sonnet 4.6 | active | 是 | low / medium / high / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-03-13 |
+| claude-sonnet-5 | Claude Sonnet 5 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-06-30 |
+| claude-sonnet-5-5 | Claude Sonnet 5.5 | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-28 |
+
+## 智谱 GLM（glm）
+
+### Z.ai（智谱国际站）（zai，18 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| glm-4.5 | GLM-4.5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-07-28 |
+| glm-4.5-air | GLM-4.5-Air | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-07-28 |
+| glm-4.5-flash | GLM-4.5-Flash | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-07-28 |
+| glm-4.5v | GLM-4.5V | active | 是 | 强制思考（无档位） | 不可关 | 文字、图片、视频 | 原生联网搜索 | 2025-08-11 |
+| glm-4.6 | GLM-4.6 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-09-30 |
+| glm-4.6v | GLM-4.6V | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字、图片、视频 | 原生联网搜索 | 2025-12-08 |
+| glm-4.6v-flash | GLM-4.6V-Flash | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字、图片、视频 | 原生联网搜索 | 2025-12-08 |
+| glm-4.7 | GLM-4.7 | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2025-12-22 |
+| glm-4.7-flash | GLM-4.7-Flash | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2026-01-19 |
+| glm-4.7-flashx | GLM-4.7-FlashX | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2026-01-19 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2026-02-11 |
+| glm-5-turbo | GLM-5-Turbo | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-03-16 |
+| glm-5.1 | GLM-5.1 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-03-27 |
+| glm-5.2 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| glm-5.3-flash | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+| glm-5.3-flashx | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+| glm-5v-turbo | GLM-5V-Turbo | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字、图片、PDF文档、视频 | 原生联网搜索 | 2026-04-01 |
+
+### 智谱开放平台（zhipuai，17 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| glm-4.5 | GLM-4.5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-07-28 |
+| glm-4.5-air | GLM-4.5-Air | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-07-28 |
+| glm-4.5-flash | GLM-4.5-Flash | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-07-28 |
+| glm-4.5v | GLM-4.5V | active | 是 | 强制思考（无档位） | 不可关 | 文字、图片、视频 | 原生联网搜索 | 2025-08-11 |
+| glm-4.6 | GLM-4.6 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2025-09-30 |
+| glm-4.6v | GLM-4.6V | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字、图片、视频 | 原生联网搜索 | 2025-12-08 |
+| glm-4.6v-flash | GLM-4.6V-Flash | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字、图片、视频 | 原生联网搜索 | 2025-12-08 |
+| glm-4.7 | GLM-4.7 | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2025-12-22 |
+| glm-4.7-flash | GLM-4.7-Flash | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2026-01-19 |
+| glm-4.7-flashx | GLM-4.7-FlashX | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2026-01-19 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2026-02-11 |
+| glm-5.1 | GLM-5.1 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-03-27 |
+| glm-5.2 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| glm-5.3-flash | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+| glm-5.3-flashx | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+| glm-5v-turbo | GLM-5V-Turbo | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字、图片、PDF文档、视频 | 原生联网搜索 | 2026-04-01 |
+
+### Z.ai Coding Plan（zai-coding-plan，2 个）
+
+> 官方说明：所有套餐均支持 GLM-5.3、GLM-5.3-Flash；调用历史模型 GLM-5.2 / GLM-5.1 将自动切换至 GLM-5.3，GLM-5-Turbo / GLM-4.7 将自动切换至 GLM-5.3-Flash。此处仅保留实际可用的 GLM-5.3 / GLM-5.3-Flash。
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| glm-5.3-flash | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+
+### 智谱 Coding Plan（zhipuai-coding-plan，3 个）
+
+> 官方说明：所有套餐均支持 GLM-5.3、GLM-5.3-Flash；调用历史模型 GLM-5.2 / GLM-5.1 将自动切换至 GLM-5.3，GLM-5-Turbo / GLM-4.7 将自动切换至 GLM-5.3-Flash（表内历史模型为上游快照，实际已归并到 5.3 系列）。
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| glm-5.3-flash | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+| glm-5.3-highspeed | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+
+## Kimi（kimi）
+
+### Moonshot 国际站（moonshotai，4 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| kimi-k2.6 | Kimi K2.6 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：thinking.type=disabled | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-21 |
+| kimi-k2.7-code | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-12 |
+| kimi-k2.7-code-highspeed | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-12 |
+| kimi-k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-07-16 |
+
+### Moonshot 中国站（moonshotai-cn，4 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| kimi-k2.6 | Kimi K2.6 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：thinking.type=disabled | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-21 |
+| kimi-k2.7-code | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-12 |
+| kimi-k2.7-code-highspeed | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-12 |
+| kimi-k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-07-16 |
+
+### Kimi Code Plan（中国站）（kimi-code-plan-cn，3 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-07-16 |
+| k3-256k | Kimi K3 | active | 是 | low / high / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-07-16 |
+| kimi-for-coding | kimi-for-coding | active | 是 | low / high / max | — | 文字、图片、视频 | 原生联网搜索 | 2026-09-11 |
+
+### Kimi Code Plan（国际站）（kimi-code-plan-global，3 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-07-16 |
+| k3-256k | Kimi K3 | active | 是 | low / high / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-07-16 |
+| kimi-for-coding | kimi-for-coding | active | 是 | low / high / max | — | 文字、图片、视频 | 原生联网搜索 | 2026-09-11 |
+
+## DeepSeek（deepseek）
+
+### DeepSeek（deepseek，2 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| deepseek-flash | DeepSeek V4 Flash | active | 是 | low / high / max | — | 文字、图片 | 结构化输出 | 2026-09-10 |
+| deepseek-v4-pro | DeepSeek V4 Pro | active | 是 | low / high / max | — | 文字 | 结构化输出 | 2026-08-22 |
+
+## 字节 豆包（火山方舟）（bytedance）
+
+### 火山方舟（volcengine，13 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-flash-ga-260731 | DeepSeek V4 Flash 0731 | active | 是 | minimal / low / medium / high | — | 文字 | 结构化输出、原生联网搜索 | 2026-07-31 |
+| deepseek-v4-pro-ga-260813 | DeepSeek V4 Pro | active | 是 | low / high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-08-22 |
+| doubao-seed-1-8-251228 | Seed 1.8 | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2025-12-28 |
+| doubao-seed-2-0-code-preview-260215 | Seed 2.0 Code | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-02-14 |
+| doubao-seed-2-0-lite-260428 | Seed 2.0 Lite | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-02-14 |
+| doubao-seed-2-0-mini-260428 | Seed 2.0 Mini | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-02-14 |
+| doubao-seed-2-0-pro-260215 | Seed 2.0 Pro | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-02-14 |
+| doubao-seed-2-1-pro-260628 | Seed 2.1 Pro | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-23 |
+| doubao-seed-2-1-turbo-260628 | Seed 2.1 Turbo | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-23 |
+| doubao-seed-character-260628 | Seed Character | active | 是 | minimal / low / high | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-23 |
+| doubao-seed-evolving | Seed Evolving | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-23 |
+| glm-5-2-260617 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| glm-5-3-flash-260828 | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-09-18 |
+
+### 火山方舟 Coding Plan（volcengine-coding-plan，10 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-flash | DeepSeek V4 Flash | active | 是 | high / max | — | 文字 | 结构化输出 | 2026-04-24 |
+| deepseek-v4-pro | DeepSeek V4 Pro | active | 是 | high / max | — | 文字 | 结构化输出 | 2026-04-24 |
+| doubao-seed-2.0-lite | Seed 2.0 Lite | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出 | 2026-02-14 |
+| doubao-seed-2.1-turbo | Seed 2.1 Turbo | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出 | 2026-06-23 |
+| doubao-seed-evolving | Seed Evolving | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | 结构化输出 | 2026-06-23 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出 | 2026-08-14 |
+| glm-5.3-flash | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | 结构化输出 | 2026-09-18 |
+| kimi-k2.7-code | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出 | 2026-06-12 |
+| kimi-k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片、视频 | 结构化输出 | 2026-07-16 |
+| minimax-m3 | MiniMax-M3 | active | 是 | 开关：thinking.type=adaptive/disabled | 是 | 文字、图片、视频 | — | 2026-06-25 |
+
+### 火山方舟 Agent Plan（volcengine-agent-plan，13 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-flash | DeepSeek V4 Flash | active | 是 | high / max | — | 文字 | — | 2026-04-24 |
+| deepseek-v4-pro | DeepSeek V4 Pro | active | 是 | high / max | — | 文字 | — | 2026-04-24 |
+| deepseek-v4.1-flash | DeepSeek V4 Flash | active | 是 | low / high / max | — | 文字、图片 | — | 2026-09-10 |
+| doubao-seed-2.0-mini | Seed 2.0 Mini | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | — | 2026-02-14 |
+| doubao-seed-2.1-lite | Seed 2.1 Lite | active | 是 | 开关：thinking.type=enabled/disabled | 可以：thinking.type=disabled | 文字、图片、视频 | — | — |
+| doubao-seed-2.1-pro | Seed 2.1 Pro | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | — | 2026-06-23 |
+| doubao-seed-evolving | Seed Evolving | active | 是 | none / minimal / low / medium / high / xhigh / max | — | 文字、图片、视频 | — | 2026-06-23 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | — | 2026-08-14 |
+| glm-5.3-flash | GLM-5.3-FlashX | active | 是 | low / high / max | 不可关（仅能开启） | 文字、图片、PDF文档、视频 | — | 2026-09-18 |
+| kimi-k2.7-code | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | — | 2026-06-12 |
+| kimi-k2.8-preview | kimi-for-coding | preview | 是 | low / high / max | — | 文字、图片、视频 | — | 2026-09-11 |
+| kimi-k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片、视频 | — | 2026-07-16 |
+| minimax-m3 | MiniMax-M3 | active | 是 | 开关：thinking.type=adaptive/disabled | 是 | 文字、图片、视频 | — | 2026-06-25 |
+
+## 阿里 通义（alibaba）
+
+### 阿里云百炼（国际站）（alibaba，55 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| deepseek-v4-flash-0731 | DeepSeek V4 Flash 0731 | active | 是 | minimal / low / medium / high | — | 文字 | 结构化输出、原生联网搜索 | 2026-07-31 |
+| glm-5.2 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| kimi-k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-07-16 |
+| qvq-max | QVQ Max | active | 是 | 强制思考（无公开关闭参数） | 不支持公开关闭参数 | 文字、图片 | 原生联网搜索 | 2025-03-25 |
+| qwen-flash | Qwen Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-07-28 |
+| qwen-max | Qwen Max | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01-25 |
+| qwen-mt-plus | Qwen-MT Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01 |
+| qwen-mt-turbo | Qwen-MT Turbo | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01 |
+| qwen-omni-turbo | Qwen-Omni Turbo | active | 否 | — | — | 文字、图片、音频、视频 | 原生联网搜索 | 2025-03-26 |
+| qwen-omni-turbo-realtime | Qwen-Omni Turbo Realtime | active | 否 | — | — | 文字、图片、音频 | 原生联网搜索 | 2025-05-08 |
+| qwen-plus | Qwen Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-09-11 |
+| qwen-plus-character-ja | Qwen Plus Character (Japanese) | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-01 |
+| qwen-turbo | Qwen Turbo | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04-28 |
+| qwen-vl-max | Qwen-VL Max | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2025-08-13 |
+| qwen-vl-ocr | Qwen-VL OCR | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2025-04-13 |
+| qwen-vl-plus | Qwen-VL Plus | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2025-08-15 |
+| qwen2-5-14b-instruct | Qwen2.5 14B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-32b-instruct | Qwen2.5 32B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-72b-instruct | Qwen2.5 72B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-7b-instruct | Qwen2.5 7B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-omni-7b | Qwen2.5-Omni 7B | active | 否 | — | — | 文字、图片、音频、视频 | 原生联网搜索 | 2024-12 |
+| qwen2-5-vl-72b-instruct | Qwen2.5-VL 72B Instruct | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2024-09 |
+| qwen2-5-vl-7b-instruct | Qwen2.5-VL 7B Instruct | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2024-09 |
+| qwen3-14b | Qwen3 14B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-235b-a22b | Qwen3 235B-A22B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-32b | Qwen3 32B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-8b | Qwen3 8B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-coder-30b-a3b-instruct | Qwen3-Coder 30B-A3B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-coder-480b-a35b-instruct | Qwen3-Coder 480B-A35B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-coder-flash | Qwen3 Coder Flash | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-07-28 |
+| qwen3-coder-plus | Qwen3 Coder Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-07-23 |
+| qwen3-max | Qwen3 Max | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-09-23 |
+| qwen3-next-80b-a3b-instruct | Qwen3-Next 80B-A3B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-09 |
+| qwen3-next-80b-a3b-thinking | Qwen3-Next 80B-A3B (Thinking) | active | 是 | 强制思考（thinking_budget 可调上限） | 否 | 文字 | 原生联网搜索 | 2025-09 |
+| qwen3-omni-flash | Qwen3-Omni Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、音频、视频 | 原生联网搜索 | 2025-09-15 |
+| qwen3-omni-flash-realtime | Qwen3-Omni Flash Realtime | active | 否 | — | — | 文字、图片、音频、视频 | 原生联网搜索 | 2025-09-15 |
+| qwen3-vl-plus | Qwen3-VL Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片 | 原生联网搜索 | 2025-09-23 |
+| qwen3.5-122b-a10b | Qwen3.5 122B-A10B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-02-23 |
+| qwen3.5-27b | Qwen3.5 27B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-02-23 |
+| qwen3.5-35b-a3b | Qwen3.5 35B-A3B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-02-23 |
+| qwen3.5-397b-a17b | Qwen3.5 397B-A17B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-02-15 |
+| qwen3.5-flash | Qwen3.5 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-02-23 |
+| qwen3.5-plus | Qwen3.5 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-02-16 |
+| qwen3.6-27b | Qwen3.6 27B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 是 | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-04-22 |
+| qwen3.6-35b-a3b | Qwen3.6 35B-A3B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 是 | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-04-17 |
+| qwen3.6-flash | Qwen3.6 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-27 |
+| qwen3.6-max-preview | Qwen3.6 Max Preview | active | 是 | 开关+预算：enable_thinking；thinking_budget | 是 | 文字 | 原生联网搜索 | 2026-04-20 |
+| qwen3.6-plus | Qwen3.6 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-04-02 |
+| qwen3.7-flash | Qwen3.7 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-07-15 |
+| qwen3.7-max | Qwen3.7 Max | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2026-05-21 |
+| qwen3.7-plus | Qwen3.7 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-04 |
+| qwen3.8-flash | Qwen3.8 Flash | active | 是 | low / medium / xhigh | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-08-26 |
+| qwen3.8-max | Qwen3.8 Max | active | 是 | low / medium / xhigh | — | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-08-03 |
+| qwen3.8-omni-flash | Qwen3.8 Omni Flash | active | 是 | none / low / medium / xhigh | — | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-09-17 |
+| qwq-plus | QwQ Plus | active | 是 | 强制思考（无公开关闭参数） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2025-03-05 |
+
+### 阿里云百炼（中国站）（alibaba-cn，88 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M2.5 | MiniMax-M2.5 | active | 是 | 强制思考（无公开档位） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2026-02-12 |
+| MiniMax/MiniMax-M2.7 | MiniMax-M2.7 | active | 是 | 强制思考（无公开档位） | 否 | 文字 | 原生联网搜索 | 2026-03-18 |
+| deepseek-r1 | DeepSeek R1 | active | 是 | 强制思考（不支持关闭） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-r1-0528 | DeepSeek R1 0528 | active | 是 | 强制思考（不支持关闭） | 否 | 文字 | 原生联网搜索 | 2025-05-28 |
+| deepseek-r1-distill-llama-70b | DeepSeek R1 Distill Llama 70B | active | 是 | 强制思考（蒸馏系列） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-r1-distill-llama-8b | DeepSeek R1 Distill Llama 8B | active | 是 | 强制思考（蒸馏系列） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-r1-distill-qwen-1-5b | DeepSeek R1 Distill Qwen 1.5B | active | 是 | 强制思考（蒸馏系列） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-r1-distill-qwen-14b | DeepSeek R1 Distill Qwen 14B | active | 是 | 强制思考（蒸馏系列） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-r1-distill-qwen-32b | DeepSeek R1 Distill Qwen 32B | active | 是 | 强制思考（蒸馏系列） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-r1-distill-qwen-7b | DeepSeek R1 Distill Qwen 7B | active | 是 | 强制思考（蒸馏系列） | 否 | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-v3 | DeepSeek V3 | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-12-01 |
+| deepseek-v3-1 | DeepSeek V3.1 | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-v3-2-exp | DeepSeek V3.2 Exp | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01-01 |
+| deepseek-v4-flash | DeepSeek V4 Flash | active | 是 | high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-04-24 |
+| deepseek-v4-pro | DeepSeek V4 Pro | active | 是 | high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-04-24 |
+| deepseek-v4.1-flash | DeepSeek V4 Flash | active | 是 | low / high / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-09-10 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2026-02-11 |
+| glm-5.1 | GLM-5.1 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-04-14 |
+| glm-5.2 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| kimi-k2-thinking | Moonshot Kimi K2 Thinking | active | 是 | 强制思考（无关闭档位） | 否 | 文字 | 结构化输出、原生联网搜索 | 2025-11-06 |
+| kimi-k2.5 | Moonshot Kimi K2.5 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字、图片、视频 | 原生联网搜索 | 2026-01-27 |
+| kimi-k2.6 | Moonshot Kimi K2.6 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：thinking.type=disabled | 文字、图片、视频 | 原生联网搜索 | 2026-04-21 |
+| kimi-k3 | Kimi K3 | active | 是 | low / high / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-07-16 |
+| kimi/kimi-k2.5 | kimi/kimi-k2.5 | active | 是 | 开关：enable_thinking（兼容 API） | 是 | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-01-27 |
+| moonshot-kimi-k2-instruct | Moonshot Kimi K2 Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01-01 |
+| qvq-max | QVQ Max | active | 是 | 强制思考（无公开关闭参数） | 不支持公开关闭参数 | 文字、图片 | 原生联网搜索 | 2025-03-25 |
+| qwen-deep-research | Qwen Deep Research | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-01 |
+| qwen-doc-turbo | Qwen Doc Turbo | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-01 |
+| qwen-flash | Qwen Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-07-28 |
+| qwen-long | Qwen Long | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01-25 |
+| qwen-math-plus | Qwen Math Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09-19 |
+| qwen-math-turbo | Qwen Math Turbo | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09-19 |
+| qwen-max | Qwen Max | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01-25 |
+| qwen-mt-plus | Qwen-MT Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01 |
+| qwen-mt-turbo | Qwen-MT Turbo | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-01 |
+| qwen-omni-turbo | Qwen-Omni Turbo | active | 否 | — | — | 文字、图片、音频、视频 | 原生联网搜索 | 2025-03-26 |
+| qwen-omni-turbo-realtime | Qwen-Omni Turbo Realtime | active | 否 | — | — | 文字、图片、音频 | 原生联网搜索 | 2025-05-08 |
+| qwen-plus | Qwen Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-09-11 |
+| qwen-plus-character | Qwen Plus Character | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-01 |
+| qwen-turbo | Qwen Turbo | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-07-15 |
+| qwen-vl-max | Qwen-VL Max | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2025-08-13 |
+| qwen-vl-ocr | Qwen-VL OCR | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2026-09-11 |
+| qwen-vl-plus | Qwen-VL Plus | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2025-08-15 |
+| qwen2-5-14b-instruct | Qwen2.5 14B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-32b-instruct | Qwen2.5 32B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-72b-instruct | Qwen2.5 72B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-7b-instruct | Qwen2.5 7B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-coder-32b-instruct | Qwen2.5-Coder 32B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-11 |
+| qwen2-5-coder-7b-instruct | Qwen2.5-Coder 7B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-11 |
+| qwen2-5-math-72b-instruct | Qwen2.5-Math 72B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-math-7b-instruct | Qwen2.5-Math 7B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-09 |
+| qwen2-5-omni-7b | Qwen2.5-Omni 7B | active | 否 | — | — | 文字、图片、音频、视频 | 原生联网搜索 | 2024-12 |
+| qwen2-5-vl-72b-instruct | Qwen2.5-VL 72B Instruct | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2024-09 |
+| qwen2-5-vl-7b-instruct | Qwen2.5-VL 7B Instruct | active | 否 | — | — | 文字、图片 | 原生联网搜索 | 2024-09 |
+| qwen3-14b | Qwen3 14B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-235b-a22b | Qwen3 235B-A22B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-32b | Qwen3 32B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-8b | Qwen3 8B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-coder-30b-a3b-instruct | Qwen3-Coder 30B-A3B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-coder-480b-a35b-instruct | Qwen3-Coder 480B-A35B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-04 |
+| qwen3-coder-flash | Qwen3 Coder Flash | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-07-28 |
+| qwen3-coder-plus | Qwen3 Coder Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2026-09-11 |
+| qwen3-max | Qwen3 Max | active | 是 | 开关：enable_thinking=true/false | 是 | 文字 | 结构化输出、原生联网搜索 | 2026-09-22 |
+| qwen3-next-80b-a3b-instruct | Qwen3-Next 80B-A3B Instruct | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-09 |
+| qwen3-next-80b-a3b-thinking | Qwen3-Next 80B-A3B (Thinking) | active | 是 | 强制思考（thinking_budget 可调上限） | 否 | 文字 | 原生联网搜索 | 2025-09 |
+| qwen3-omni-flash | Qwen3-Omni Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、音频、视频 | 原生联网搜索 | 2025-09-15 |
+| qwen3-omni-flash-realtime | Qwen3-Omni Flash Realtime | active | 否 | — | — | 文字、图片、音频 | 原生联网搜索 | 2025-09-15 |
+| qwen3-vl-plus | Qwen3-VL Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片 | 原生联网搜索 | 2025-09-23 |
+| qwen3.5-397b-a17b | Qwen3.5 397B-A17B | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-02-16 |
+| qwen3.5-flash | Qwen3.5 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-09-22 |
+| qwen3.5-plus | Qwen3.5 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-09-22 |
+| qwen3.6-flash | Qwen3.6 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-27 |
+| qwen3.6-max-preview | Qwen3.6 Max Preview | active | 是 | 开关+预算：enable_thinking；thinking_budget | 是 | 文字 | 结构化输出、原生联网搜索 | 2026-04-21 |
+| qwen3.6-plus | Qwen3.6 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-04-02 |
+| qwen3.7-flash | Qwen3.7 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-07-15 |
+| qwen3.7-max | Qwen3.7 Max | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 原生联网搜索 | 2026-05-21 |
+| qwen3.7-plus | Qwen3.7 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-06-04 |
+| qwen3.8-flash | Qwen3.8 Flash | active | 是 | low / medium / xhigh | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-08-26 |
+| qwen3.8-max | Qwen3.8 Max | active | 是 | low / medium / xhigh | — | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-08-03 |
+| qwen3.8-omni-flash | Qwen3.8 Omni Flash | active | 是 | none / low / medium / xhigh | — | 文字、图片、音频、视频 | 结构化输出、原生联网搜索 | 2026-09-17 |
+| qwq-32b | QwQ 32B | active | 是 | 强制思考（无关闭档位） | 未公布关闭方式 | 文字 | 原生联网搜索 | 2024-12 |
+| qwq-plus | QwQ Plus | active | 是 | 强制思考（无公开关闭参数） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2025-03-05 |
+| siliconflow/deepseek-r1-0528 | siliconflow/deepseek-r1-0528 | active | 是 | 强制思考（无公开档位） | 否 | 文字 | 结构化输出、原生联网搜索 | 2025-11-25 |
+| siliconflow/deepseek-v3-0324 | siliconflow/deepseek-v3-0324 | active | 否 | — | — | 文字 | 结构化输出、原生联网搜索 | 2025-11-25 |
+| siliconflow/deepseek-v3.1-terminus | siliconflow/deepseek-v3.1-terminus | active | 是 | 开关：enable_thinking=true/false | 是 | 文字 | 结构化输出、原生联网搜索 | 2025-11-25 |
+| siliconflow/deepseek-v3.2 | siliconflow/deepseek-v3.2 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字 | 结构化输出、原生联网搜索 | 2025-12-03 |
+| tongyi-intent-detect-v3 | Tongyi Intent Detect V3 | active | 否 | — | — | 文字 | 原生联网搜索 | 2024-01 |
+
+### 阿里云百炼 Token Plan（国际站）（alibaba-token-plan，20 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M2.5 | MiniMax-M2.5 | active | 是 | 强制思考（无公开档位） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2026-02-12 |
+| deepseek-v3.2 | DeepSeek V3.2 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字 | 结构化输出、原生联网搜索 | 2025-12-05 |
+| deepseek-v4-flash | DeepSeek V4 Flash | active | 是 | high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-04-24 |
+| deepseek-v4-flash-0731 | DeepSeek V4 Flash 0731 | active | 是 | minimal / low / medium / high | — | 文字 | 结构化输出、原生联网搜索 | 2026-07-31 |
+| deepseek-v4-pro | DeepSeek V4 Pro | active | 是 | high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-04-24 |
+| deepseek-v4-pro-0813 | DeepSeek V4 Pro | active | 是 | low / high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-08-22 |
+| deepseek-v4.1-flash | DeepSeek V4 Flash | active | 是 | low / high / max | — | 文字、图片 | 原生联网搜索 | 2026-09-10 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-02-11 |
+| glm-5.1 | GLM-5.1 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-03-27 |
+| glm-5.2 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| kimi-k2.5 | Kimi K2.5 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-01 |
+| kimi-k2.6 | Kimi K2.6 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：thinking.type=disabled | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-21 |
+| kimi-k2.7-code | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-12 |
+| qwen3.6-flash | Qwen3.6 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-27 |
+| qwen3.6-plus | Qwen3.6 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-02 |
+| qwen3.7-max | Qwen3.7 Max | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 结构化输出、原生联网搜索 | 2026-05-21 |
+| qwen3.7-plus | Qwen3.7 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-04 |
+| qwen3.8-flash | Qwen3.8 Flash | active | 是 | low / medium / xhigh | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-08-26 |
+| qwen3.8-max | Qwen3.8 Max | active | 是 | low / medium / xhigh | — | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-08-03 |
+
+### 阿里云百炼 Token Plan（中国站）（alibaba-token-plan-cn，20 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M2.5 | MiniMax-M2.5 | active | 是 | 强制思考（无公开档位） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2026-02-12 |
+| deepseek-v3.2 | DeepSeek V3.2 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字 | 结构化输出、原生联网搜索 | 2025-12-05 |
+| deepseek-v4-flash | DeepSeek V4 Flash | active | 是 | high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-04-24 |
+| deepseek-v4-flash-0731 | DeepSeek V4 Flash 0731 | active | 是 | minimal / low / medium / high | — | 文字 | 结构化输出、原生联网搜索 | 2026-07-31 |
+| deepseek-v4-pro | DeepSeek V4 Pro | active | 是 | high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-04-24 |
+| deepseek-v4-pro-0813 | DeepSeek V4 Pro | active | 是 | low / high / max | — | 文字 | 结构化输出、原生联网搜索 | 2026-08-22 |
+| deepseek-v4.1-flash | DeepSeek V4 Flash | active | 是 | low / high / max | — | 文字、图片 | 结构化输出、原生联网搜索 | 2026-09-10 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-02-11 |
+| glm-5.1 | GLM-5.1 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 结构化输出、原生联网搜索 | 2026-03-27 |
+| glm-5.2 | GLM-5.2 | active | 是 | high / max | 可以（传 none/minimal 即关） | 文字 | 结构化输出、原生联网搜索 | 2026-06-13 |
+| glm-5.3 | GLM-5.3 | active | 是 | low / high / max | 不可关（仅能开启） | 文字 | 结构化输出、原生联网搜索 | 2026-08-14 |
+| kimi-k2.5 | Kimi K2.5 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-01 |
+| kimi-k2.6 | Kimi K2.6 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：thinking.type=disabled | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-21 |
+| kimi-k2.7-code | Kimi K2.7 Code | active | 是 | 强制思考（无公开档位） | 不可以（按托管文档） | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-12 |
+| qwen3.6-flash | Qwen3.6 Flash | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-27 |
+| qwen3.6-plus | Qwen3.6 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-04-02 |
+| qwen3.7-max | Qwen3.7 Max | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字 | 结构化输出、原生联网搜索 | 2026-05-21 |
+| qwen3.7-plus | Qwen3.7 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-06-04 |
+| qwen3.8-flash | Qwen3.8 Flash | active | 是 | low / medium / xhigh | — | 文字、图片、视频 | 结构化输出、原生联网搜索 | 2026-08-26 |
+| qwen3.8-max | Qwen3.8 Max | active | 是 | low / medium / xhigh | — | 文字、图片、PDF文档、视频 | 结构化输出、原生联网搜索 | 2026-08-03 |
+
+### 阿里云百炼 Coding Plan（国际站）（alibaba-coding-plan，10 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M2.5 | MiniMax-M2.5 | active | 是 | 强制思考（无公开档位） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2026-02-12 |
+| glm-4.7 | GLM-4.7 | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2025-12-22 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2026-02-11 |
+| kimi-k2.5 | Kimi K2.5 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字、图片、视频 | 原生联网搜索 | 2026-01-27 |
+| qwen3-coder-next | Qwen3 Coder Next | active | 否 | — | — | 文字 | 结构化输出、原生联网搜索 | 2026-02-03 |
+| qwen3-coder-plus | Qwen3 Coder Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-07-23 |
+| qwen3-max-2026-01-23 | Qwen3 Max | active | 否 | — | — | 文字 | 原生联网搜索 | 2026-01-23 |
+| qwen3.5-plus | Qwen3.5 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-02-16 |
+| qwen3.6-plus | Qwen3.6 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-04-02 |
+| qwen3.7-plus | Qwen3.7 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-06-04 |
+
+### 阿里云百炼 Coding Plan（中国站）（alibaba-coding-plan-cn，10 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M2.5 | MiniMax-M2.5 | active | 是 | 强制思考（无公开档位） | 不可以（仅思考） | 文字 | 原生联网搜索 | 2026-02-12 |
+| glm-4.7 | GLM-4.7 | active | 是 | 强制思考（无档位） | 不可关 | 文字 | 原生联网搜索 | 2025-12-22 |
+| glm-5 | GLM-5 | active | 是 | 开关：thinking.type=enabled/disabled（开启后模型自动判断） | 可以：thinking.type=disabled | 文字 | 原生联网搜索 | 2026-02-11 |
+| kimi-k2.5 | Kimi K2.5 | active | 是 | 开关：enable_thinking=true/false | 是 | 文字、图片 | 原生联网搜索 | 2026-01-27 |
+| qwen3-coder-next | Qwen3 Coder Next | active | 否 | — | — | 文字 | 结构化输出、原生联网搜索 | 2026-02-03 |
+| qwen3-coder-plus | Qwen3 Coder Plus | active | 否 | — | — | 文字 | 原生联网搜索 | 2025-07-23 |
+| qwen3-max-2026-01-23 | Qwen3 Max | active | 否 | — | — | 文字 | 原生联网搜索 | 2026-01-23 |
+| qwen3.5-plus | Qwen3.5 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片 | 原生联网搜索 | 2026-02-16 |
+| qwen3.6-plus | Qwen3.6 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-04-02 |
+| qwen3.7-plus | Qwen3.7 Plus | active | 是 | 开关+预算：enable_thinking；thinking_budget | 可以：`enable_thinking=false` | 文字、图片、视频 | 原生联网搜索 | 2026-06-04 |
+
+## 小米 MiMo（xiaomi）
+
+### 小米 MiMo（xiaomi，5 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| mimo-v2.5 | MiMo-V2.5 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.5-pro | MiMo-V2.5-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.6-flash | MiMo-V2.6-Flash | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+| mimo-v2.6-pro | MiMo-V2.6-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+| mimo-v2.6-pro-ultraspeed | MiMo-V2.6-Pro-UltraSpeed | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-21 |
+
+### 小米 MiMo Token Plan（中国集群）（xiaomi-token-plan-cn，4 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| mimo-v2.5 | MiMo-V2.5 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.5-pro | MiMo-V2.5-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.6-flash | MiMo-V2.6-Flash | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+| mimo-v2.6-pro | MiMo-V2.6-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+
+### 小米 MiMo Token Plan（新加坡集群）（xiaomi-token-plan-sgp，4 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| mimo-v2.5 | MiMo-V2.5 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.5-pro | MiMo-V2.5-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.6-flash | MiMo-V2.6-Flash | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+| mimo-v2.6-pro | MiMo-V2.6-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+
+### 小米 MiMo Token Plan（欧洲集群）（xiaomi-token-plan-ams，4 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| mimo-v2.5 | MiMo-V2.5 | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.5-pro | MiMo-V2.5-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字 | 原生联网搜索 | 2026-06-24 |
+| mimo-v2.6-flash | MiMo-V2.6-Flash | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+| mimo-v2.6-pro | MiMo-V2.6-Pro | active | 是 | 开关：thinking.type=enabled/disabled | 可以：`thinking.type=disabled` | 文字、图片、音频、视频 | 原生联网搜索 | 2026-09-22 |
+
+## MiniMax（minimax）
+
+### MiniMax 国际站（minimax，1 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M3 | MiniMax-M3 | active | 是 | 开关：thinking.type=adaptive/disabled | 是 | 文字、图片、视频 | 原生联网搜索 | 2026-06-25 |
+
+### MiniMax 中国站（minimax-cn，1 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M3 | MiniMax-M3 | active | 是 | 开关：thinking.type=adaptive/disabled | 是 | 文字、图片、视频 | 原生联网搜索 | 2026-06-25 |
+
+### MiniMax M Plan（国际站）（minimax-coding-plan，2 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M3 | MiniMax-M3 | active | 是 | 开关：thinking.type=adaptive/disabled | 是 | 文字、图片、视频 | 原生联网搜索 | 2026-06-25 |
+| MiniMax-M3.1-Flash-Preview | MiniMax-M3.1-Flash-Preview | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、视频 | 原生联网搜索 | 2026-09-27 |
+
+### MiniMax M Plan（中国站）（minimax-cn-coding-plan，2 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| MiniMax-M3 | MiniMax-M3 | active | 是 | 开关：thinking.type=adaptive/disabled | 是 | 文字、图片、视频 | 原生联网搜索 | 2026-06-25 |
+| MiniMax-M3.1-Flash-Preview | MiniMax-M3.1-Flash-Preview | active | 是 | low / medium / high / xhigh / max | — | 文字、图片、视频 | 原生联网搜索 | 2026-09-27 |
+
+## Google Gemini（google）
+
+### Google Gemini（google，20 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| deep-research-max-preview-04-2026 | Deep Research Max Preview (Apr-21-2026) | active | 是 | 专用 Agent：不提供常规思考档位 | 不适用 | 文字、图片、PDF文档、音频、视频 | 原生联网搜索 | 2026-04-21 |
+| deep-research-preview-04-2026 | Deep Research Preview (Apr-21-2026) | active | 是 | 专用 Agent：不提供常规思考档位 | 不适用 | 文字、图片、PDF文档、音频、视频 | 原生联网搜索 | 2026-04-21 |
+| gemini-2.5-flash | Gemini 2.5 Flash | active | 是 | 预算：thinkingBudget=0..24576；-1 动态 | 是，设 0 | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2025-06-17 |
+| gemini-2.5-flash-lite | Gemini 2.5 Flash-Lite | active | 是 | 预算：thinkingBudget=0 或 512..24576；-1 动态 | 是，设 0 | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2025-06-17 |
+| gemini-2.5-pro | Gemini 2.5 Pro | active | 是 | 预算：thinkingBudget=128..32768；-1 动态 | 否 | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2025-06-17 |
+| gemini-3-flash-preview | Gemini 3 Flash Preview | active | 是 | minimal / low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2025-12-17 |
+| gemini-3.1-flash-lite | Gemini 3.1 Flash Lite | active | 是 | minimal / low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-05-07 |
+| gemini-3.1-flash-lite-image | Nano Banana 2 Lite | active | 是 | minimal / high | — | 文字、图片 | 原生联网搜索 | 2026-06-30 |
+| gemini-3.1-flash-live-preview | Gemini 3.1 Flash Live Preview | active | 是 | minimal / low / medium / high | — | 文字、图片、音频、视频 | 原生联网搜索 | 2026-03-26 |
+| gemini-3.1-pro-preview | Gemini 3.1 Pro Preview | active | 是 | low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-02-19 |
+| gemini-3.1-pro-preview-customtools | Gemini 3.1 Pro Preview Custom Tools | active | 是 | low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-02-19 |
+| gemini-3.5-flash | Gemini 3.5 Flash | active | 是 | minimal / low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-05-19 |
+| gemini-3.5-flash-lite | Gemini 3.5 Flash Lite | active | 是 | minimal / low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-07-21 |
+| gemini-3.6-flash | Gemini 3.6 Flash | active | 是 | minimal / low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-07-21 |
+| gemini-3.7-flash | Gemini 3.7 Flash | active | 是 | low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-08-13 |
+| gemini-3.8-flash | Gemini 3.8 Flash | active | 是 | low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-09-02 |
+| gemini-flash-latest | Gemini Flash Latest | active | 是 | low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-08-13 |
+| gemini-flash-lite-latest | Gemini Flash-Lite Latest | active | 是 | minimal / low / medium / high | — | 文字、图片、PDF文档、音频、视频 | 结构化输出、原生联网搜索 | 2026-07-21 |
+| gemma-4-26b-a4b-it | Gemma 4 26B A4B IT | active | 是 | 开关：enable_thinking（Gemma 模板） | 是（关闭模板思考） | 文字、图片 | 结构化输出、原生联网搜索 | 2026-04-02 |
+| gemma-4-31b-it | Gemma 4 31B IT | active | 是 | 开关：enable_thinking（Gemma 模板） | 是（关闭模板思考） | 文字、图片 | 结构化输出、原生联网搜索 | 2026-04-02 |
+
+## xAI Grok（xai）
+
+### xAI（xai，4 个）
+
+| 模型编号 | 名称 | 生命周期 | 推理 | 推理参数 | 关闭思考 | 多模态能力 | 原生能力 | 更新时间 |
+|---|---|---|---|---|---|---|---|---|
+| grok-4.3 | Grok 4.3 | active | 是 | none / low / medium / high | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-04-17 |
+| grok-4.5 | Grok 4.5 | active | 是 | low / medium / high | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-07-08 |
+| grok-4.6 | Grok 4.6 | active | 是 | low / medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-08-12 |
+| grok-4.7 | Grok 4.7 | active | 是 | low / medium / high / xhigh | — | 文字、图片、PDF文档 | 结构化输出、原生联网搜索 | 2026-09-21 |
 
 ---
 
-## 四层解析
-
-能力结论按优先级从低到高逐层合并，`resolveModel` 会保留每一层的原始结论与面向用户的理由：
-
-1. **model** —— 模型固有属性
-2. **offering** —— 渠道对默认值的覆盖
-3. **adapter** —— AI SDK Adapter 实际实现的能力
-4. **user** —— 用户在设置里关掉的能力
-
-仲裁规则：
-
-- Adapter 报 `unsupported` **一票否决**，无论渠道怎么说。
-- Adapter 报 `supported` 但渠道明确 `unsupported` 时，取更保守的 `unsupported`。
-- Adapter 报 `unknown` 而渠道 `supported` 时，降级为 `unknown`（Adapter 未声明即不能当可用）。
-- 用户层**只能收紧**，不能绕过硬限制。
-
----
-
-## 数据缺口（本包人工补的部分）
-
-models.dev 完全没有以下几类字段，全部由 `data/vendors/` 下各厂商自己的文件补齐（`data/capability-overrides.ts` 只做汇总）：
-
-| 缺口 | 说明 |
-|---|---|
-| 工具选择 `tool_choice` | 上游无此字段 |
-| 并行工具 | 上游无此字段 |
-| 流式工具 | 上游无此字段；注意它 ≠ 流式输出 |
-| 厂商托管工具 | 原生联网搜索 / 厂商侧代码执行 |
-| 提示缓存 | prompt caching 的可用性 |
-
-**暂不覆盖**（第一版刻意不做）：价格、`top_p` 等非核心采样参数、模型生命周期之外的运营信息。生图 / 生视频参数同样不在范围内，只记录输入输出模态。
-
-每条人工规则都带 `confidence` 与 `source`：
-
-- `verified` —— 有官方文档可引用，来源写在 `source` 里
-- `inferred` —— 依据协议形态或公开资料推断，尚未逐条核验
-
-构建脚本会把所有规则打印成审计清单，凡是 `inferred` 或 `unknown` 都值得人工再看一遍。不确定就写 `unknown`，不要为了「好看」填 `supported`。
-
----
-
-## 审计清单（当前版本）
-
-15 条上游渠道规则全部为 `verified`，逐条来源见构建输出与各厂商文件里的 `source` 字段；
-表末的 Agent Plan 渠道不走上游，结论来自实测。摘要：
-
-| 渠道 | 工具选择 | 并行 | 流式工具 | 托管工具 | 提示缓存 | 依据 |
-|---|---|---|---|---|---|---|
-| openai | auto/required/none/指定 | 支持 | 支持 | web_search、code_execution | 支持 | platform.openai.com |
-| anthropic | auto/none/any/tool | 支持 | 支持 | web_search、code_execution | 支持 | docs.anthropic.com |
-| zai / zhipuai | 仅 auto | 支持※ | 支持 | web_search | 支持 | docs.bigmodel.cn |
-| moonshotai / -cn | 四种 | 支持 | 支持 | web_search、code_execution | 支持 | platform.moonshot.cn |
-| deepseek | auto/required/指定 | 支持 | 支持 | 无 | 支持 | DeepSeek 文档 |
-| volcengine | 未知 | 支持 | 豆包支持 | web_search | 支持 | 火山方舟文档 |
-| alibaba / -cn | 四种 | 支持 | 支持 | web_search、code_execution | 支持 | 阿里云百炼文档 |
-| xiaomi | 仅 auto | 支持 | 支持 | web_search（仅 v2.5+） | 未知 | mimo.mi.com |
-| minimax / -cn | auto/none | 支持 | 支持 | web_search | 支持 | platform.minimax.io |
-| google | 四种 | 支持 | 支持 | web_search、code_execution | 支持 | ai.google.dev |
-| xai | 四种 | 支持 | **不支持** | web_search | 未知 | docs.x.ai |
-| volcengine-agent-plan | 四种（按模型有别） | 支持（m3 除外） | 支持（m3 除外） | 未知 | 未知 | 实测 |
-
-「工具选择」列写的是厂商原生取值：Anthropic 的 `any` 对应本包的 `required`，`tool` 对应 `specific`。
-
-※ 智谱的并行工具调用凭据弱于表内其它项：函数调用正文页只写了 `tool_choice` 仅支持 `auto`，
-并未正面描述并行；`supported` 来自官方 Codex 接入页模型元数据里的 `supports_parallel_tool_calls: true`，
-以及文档助手与开发者反馈的「始终开启、无法关闭」。
-
-其中 xAI 明确写明流式场景下函数调用整段返回、不做跨 chunk 增量，因此 `tools.streaming` 记为 `unsupported`。
-
-小米与 MiniMax 的流式工具在文档里都查不到，改用实测确认：发一次带长参数的流式工具调用，
-看 `arguments` 是否分散在多个事件里。结果两家都是分片返回（小米 19 片、MiniMax 3 片与 2 片），
-因此记为 `supported`——凭据是实测而非文档。
-
-实测还暴露了一个建模边界：小米的三套协议行为不一致。`chat/completions` 与 `/v1/responses`
-都是分片增量，但 Anthropic 兼容端点 `/anthropic/v1/messages` 一次性返回整段 JSON。
-目录按渠道主体——也就是 AI SDK 默认走的 `chat/completions` 路径——记为 `supported`；
-用 Anthropic 协议接入 MiMo 时属已知例外，不要依赖增量。
-
-小米的联网搜索只有 v2.5 / v2.6 两代模型可用，因此写在 `OFFERING_RULES` 里按模型名匹配，
-而不是渠道级规则；v2 系列老模型保持 `unknown`。
-
-火山方舟 Agent Plan 的 13 个模型用两套兼容协议各测了一轮，结论如下：
-SSE 流式、工具调用与 `tool_choice=auto` 全部支持；并行工具与流式工具除 `minimax-m3`（只发 1 个调用、整段返回）外都支持；
-`tool_choice=required` 除 `kimi-k2.7-code` 外都支持；
-`tool_choice=none` 在 `doubao-seed-evolving`、`doubao-seed-2.1-pro`、`glm-5.3-flash` 上实测仍会调用工具，记为 `unsupported`；
-指定具体工具在三个 Kimi 模型上都返回 HTTP 400，`glm-5.3` 两套协议结论打架，保持 `unknown`。
-结构化输出、推理、提示缓存、托管工具这几类没测，一律留 `unknown`。
-
-其中 `doubao-seed-2.1-lite` 上游快照里没有，已在 `data/manual-channels.ts` 里手工补成模型
-`bytedance-seed/seed-2.1-lite`；它的模态沿用同代 Seed 2.1，上下文与输出上限无依据，留空。
+合计 393 条语言模型（按渠道计）。
 
 ---
 
@@ -169,8 +612,6 @@ npm run build           # 输出 dist
 ```
 
 运行时零依赖，`devDependencies` 只有 TypeScript。脚本与测试都用 Node 原生跑 TypeScript，不需要 tsx / vitest。
-
----
 
 ## 许可
 

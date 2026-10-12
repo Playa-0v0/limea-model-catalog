@@ -1,4 +1,10 @@
-import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import {
+  BASE,
+  REASONING,
+  type OfferingRule,
+  type ProviderEndpointRule,
+  type ProviderRule,
+} from './registry.ts';
 
 /** Kimi（Moonshot）。国际站与国内站规则一致，工具能力齐全。 */
 export const RULES: ProviderRule[] = [
@@ -13,6 +19,8 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported', codeExecution: 'supported' },
+      // k3 一代用 reasoning_effort 档位，官方未公布关闭方式；k2.6 与 k2.7-code 见 OFFERING_RULES
+      reasoning: REASONING.effortUnknown,
     },
     confidence: 'verified',
     source: 'Kimi 官方「Tool Choice」文档明确支持 required/none/auto/指定函数；官方工具列表含 web-search、code_runner；工具调用文档说明支持并行与流式工具调用',
@@ -28,9 +36,30 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported', codeExecution: 'supported' },
+      reasoning: REASONING.effortUnknown,
     },
     confidence: 'verified',
     source: '同 platform.moonshot.cn 的官方工具与 Tool Choice 文档',
+  },
+];
+
+/**
+ * Kimi 推理形态的例外。k2.6 是开关式且可关；k2.7-code 系列为强制思考、官方托管文档写明不可关。
+ */
+export const OFFERING_RULES: OfferingRule[] = [
+  {
+    providerId: 'moonshotai',
+    match: /k2\.7-code/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: 'Kimi 官方托管文档：k2.7-code 系列强制思考，不提供关闭档位，也不可关闭',
+  },
+  {
+    providerId: 'moonshotai',
+    match: /^kimi-k2\.6$/,
+    patch: { reasoning: REASONING.toggleYes },
+    confidence: 'verified',
+    source: 'Kimi 官方文档：kimi-k2.6 以 thinking.type=enabled/disabled 开关思考，可关闭',
   },
 ];
 

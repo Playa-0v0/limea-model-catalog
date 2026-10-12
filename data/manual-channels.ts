@@ -9,7 +9,8 @@ import type { Confidence } from './vendors/registry.ts';
  *
  * 由此带来一条硬约束：这里的结论只来自实测，不与按量付费渠道的规则互相回落。
  * 原因是 Agent Plan 的入口是 /api/plan，按量付费是 /api/v3，路径不同，
- * 实测结论不能互相外推。
+ * 实测结论不能互相外推。例外是模型固有的事实（输入输出模态、采样支持、推理形态），
+ * 这些与入口无关，构建时直接从模型定义继承。
  */
 
 export interface ManualProvider {
@@ -69,7 +70,7 @@ const PLAN_BASE: CapabilityPatch = {
 };
 
 const PLAN_BASE_NOTE =
-  '火山方舟 Agent Plan 实测（两套协议：OpenAI 兼容 /api/plan/v3 与 Anthropic 兼容 /api/plan）：SSE 流式、工具调用与 tool_choice=auto 全部正常；其余字段（结构化输出、推理、提示缓存、托管工具）既无文档也未实测，保持 unknown。';
+  '火山方舟 Agent Plan 实测（两套协议：OpenAI 兼容 /api/plan/v3 与 Anthropic 兼容 /api/plan）：SSE 流式、工具调用与 tool_choice=auto 全部正常；推理形态按各模型官方文档随模型继承，其余字段（结构化输出、提示缓存、托管工具）既无文档也未实测，保持 unknown。';
 
 /** 在实测基线之上只写要改的字段 */
 function planPatch(overrides?: CapabilityPatch): CapabilityPatch {
@@ -106,7 +107,12 @@ export const MANUAL_MODELS: ManualModel[] = [
     description: null,
     // 上游没有这个模型。它能稳定承接会话、且同代的 Seed 2.1 都是文本/图片/视频进、文本出，
     // 这里沿用同一套模态与工具结论；上下文与输出上限因尺寸不同会变化，无依据，留空。
-    patch: planPatch({ input: ['text', 'image', 'video'], output: ['text'] }),
+    // 推理形态沿用官方文档：以 thinking.type 开关控制思考，可关闭。
+    patch: planPatch({
+      input: ['text', 'image', 'video'],
+      output: ['text'],
+      reasoning: { supported: 'supported', forms: ['toggle'], canDisable: 'yes' },
+    }),
     limits: { contextWindow: null, maxInputTokens: null, maxOutputTokens: null },
     openWeights: false,
     knowledge: null,

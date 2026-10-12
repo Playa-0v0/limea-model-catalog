@@ -9,6 +9,32 @@ import type { ApiProtocol, CapabilityPatch } from '../../src/schema.ts';
 
 export type Confidence = 'verified' | 'inferred';
 
+/** 推理控制形态的常见组合，避免各厂商文件反复写同一串字面量 */
+type ReasoningPatch = NonNullable<CapabilityPatch['reasoning']>;
+
+export const REASONING = {
+  /** 档位可调，但官方未公布关闭方式 */
+  effortUnknown: { forms: ['effort'], canDisable: 'unknown' },
+  /** 档位可调，且可以关闭 */
+  effortYes: { forms: ['effort'], canDisable: 'yes' },
+  /** 档位可调，但只能开启、不能关 */
+  effortNo: { forms: ['effort'], canDisable: 'no' },
+  /** 开关式，可关 */
+  toggleYes: { forms: ['toggle'], canDisable: 'yes' },
+  /** 开关叠预算，可关 */
+  toggleBudgetYes: { forms: ['toggle', 'budget_tokens'], canDisable: 'yes' },
+  /** 只有预算可调，可关 */
+  budgetYes: { forms: ['budget_tokens'], canDisable: 'yes' },
+  /** 只有预算可调，不可关 */
+  budgetNo: { forms: ['budget_tokens'], canDisable: 'no' },
+  /** 只有预算可调，关闭方式未确认 */
+  budgetUnknown: { forms: ['budget_tokens'], canDisable: 'unknown' },
+  /** 强制思考：无可调档位且不可关 */
+  forcedNo: { forms: [], canDisable: 'no' },
+  /** 强制思考，但关闭方式未确认 */
+  forcedUnknown: { forms: [], canDisable: 'unknown' },
+} satisfies Record<string, ReasoningPatch>;
+
 /** 在某渠道上生效的默认能力 */
 export interface ProviderRule {
   providerId: string;
@@ -112,10 +138,22 @@ export const PROVIDER_NAMES: Record<string, string> = {
   'xiaomi-token-plan-cn': '小米 MiMo Token Plan（中国集群）',
   'xiaomi-token-plan-sgp': '小米 MiMo Token Plan（新加坡集群）',
   'xiaomi-token-plan-ams': '小米 MiMo Token Plan（欧洲集群）',
-  'minimax-coding-plan': 'MiniMax Coding Plan（国际站）',
-  'minimax-cn-coding-plan': 'MiniMax Coding Plan（中国站）',
+  'minimax-coding-plan': 'MiniMax M Plan（国际站）',
+  'minimax-cn-coding-plan': 'MiniMax M Plan（中国站）',
   'zai-coding-plan': 'Z.ai Coding Plan',
   'zhipuai-coding-plan': '智谱 Coding Plan',
   'kimi-code-plan-cn': 'Kimi Code Plan（中国站）',
   'kimi-code-plan-global': 'Kimi Code Plan（国际站）',
+};
+
+/**
+ * 已知的展示名偏差：我们有意不照抄上游 name 的渠道。
+ * 值记的是做这个决定时的上游 name —— 上游若再改名，构建会提示复核。
+ *
+ * MiniMax 这两个套餐渠道上游 id 叫 coding-plan、name 却叫 Token Plan，官网现称 M Plan，
+ * 这里跟随官网；一旦上游也改成 M Plan 或其他叫法，构建会提醒我们重新确认。
+ */
+export const PROVIDER_NAME_BASELINE: Record<string, string> = {
+  'minimax-coding-plan': 'MiniMax Token Plan (minimax.io)',
+  'minimax-cn-coding-plan': 'MiniMax Token Plan (minimax.cn)',
 };

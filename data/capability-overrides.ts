@@ -1,10 +1,30 @@
-import { ENDPOINT_RULES as alibabaEndpoints, RULES as alibaba } from './vendors/alibaba.ts';
-import { ENDPOINT_RULES as anthropicEndpoints, RULES as anthropic } from './vendors/anthropic.ts';
+import { ENDPOINT_RULES as alibabaEndpoints, OFFERING_RULES as alibabaOfferings, RULES as alibaba } from './vendors/alibaba.ts';
+import {
+  ENDPOINT_RULES as anthropicEndpoints,
+  OFFERING_RULES as anthropicOfferings,
+  RULES as anthropic,
+} from './vendors/anthropic.ts';
 import { ENDPOINT_RULES as deepseekEndpoints, RULES as deepseek } from './vendors/deepseek.ts';
-import { ENDPOINT_RULES as glmEndpoints, RULES as glm } from './vendors/glm.ts';
-import { ENDPOINT_RULES as googleEndpoints, RULES as google } from './vendors/google.ts';
-import { ENDPOINT_RULES as kimiEndpoints, RULES as kimi } from './vendors/kimi.ts';
-import { ENDPOINT_RULES as minimaxEndpoints, RULES as minimax } from './vendors/minimax.ts';
+import {
+  ENDPOINT_RULES as glmEndpoints,
+  OFFERING_RULES as glmOfferings,
+  RULES as glm,
+} from './vendors/glm.ts';
+import {
+  ENDPOINT_RULES as googleEndpoints,
+  OFFERING_RULES as googleOfferings,
+  RULES as google,
+} from './vendors/google.ts';
+import {
+  ENDPOINT_RULES as kimiEndpoints,
+  OFFERING_RULES as kimiOfferings,
+  RULES as kimi,
+} from './vendors/kimi.ts';
+import {
+  ENDPOINT_RULES as minimaxEndpoints,
+  OFFERING_RULES as minimaxOfferings,
+  RULES as minimax,
+} from './vendors/minimax.ts';
 import { ENDPOINT_RULES as openaiEndpoints, RULES as openai } from './vendors/openai.ts';
 import {
   ENDPOINT_RULES as volcengineEndpoints,
@@ -37,6 +57,7 @@ import type { OfferingRule, ProviderEndpointRule, ProviderRule } from './vendors
 export {
   BASE,
   PROVIDER_IDS,
+  PROVIDER_NAME_BASELINE,
   PROVIDER_NAMES,
   VENDOR_BY_PROVIDER,
 } from './vendors/registry.ts';
@@ -75,6 +96,12 @@ export const PROVIDER_ENDPOINT_RULES: ProviderEndpointRule[] = [
 
 /** 单条 offering 级别的例外：同一渠道内按模型区分的能力（如小米只有 v2.5+ 支持联网搜索）。 */
 export const OFFERING_RULES: OfferingRule[] = [
-  ...xiaomiOfferings,
+  ...anthropicOfferings,
+  ...glmOfferings,
+  ...kimiOfferings,
   ...volcengineOfferings,
+  ...alibabaOfferings,
+  ...xiaomiOfferings,
+  ...minimaxOfferings,
+  ...googleOfferings,
 ];

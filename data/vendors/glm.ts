@@ -1,4 +1,10 @@
-import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import {
+  BASE,
+  REASONING,
+  type OfferingRule,
+  type ProviderEndpointRule,
+  type ProviderRule,
+} from './registry.ts';
 
 /**
  * 智谱（GLM）。国际站 zai 与开放平台 zhipuai 规则一致。
@@ -26,6 +32,8 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported' },
+      // 主流 GLM 用 thinking.type 开关控制思考；个别模型的档位/强制形态见 OFFERING_RULES
+      reasoning: REASONING.toggleYes,
     },
     confidence: 'verified',
     source: '智谱官方文档（docs.bigmodel.cn）：工具调用页写明 tool_choice「默认且仅支持 auto」；工具流式输出页要求 stream=true 加 tool_stream=true；对话接口的 tools 支持 Web Search 类型；能力目录含「上下文缓存」页。并行的依据是官方 Codex 接入页为 glm-5.3 / glm-5-turbo 声明 supports_parallel_tool_calls: true，配合文档助手与开发者反馈「始终开启、关不掉」——正文页未正面写并行，故凭据弱于其它字段。代码执行未提及，保持 unknown',
@@ -46,9 +54,39 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported' },
+      // 同上，主流 GLM 用 thinking.type 开关
+      reasoning: REASONING.toggleYes,
     },
     confidence: 'verified',
     source: '同 Z.ai，依据智谱开放平台中文文档（docs.bigmodel.cn）的工具调用、工具流式输出、联网搜索与 Codex 接入页面；并行的凭据强度同上',
+  },
+];
+
+/**
+ * GLM 推理形态的例外。智谱的强制思考与档位式模型集中在少数几支，
+ * 按模型名区分，套餐渠道与主渠道共享。
+ */
+export const OFFERING_RULES: OfferingRule[] = [
+  {
+    providerId: 'zai',
+    match: /^(glm-4\.5v|glm-4\.7)/,
+    patch: { reasoning: REASONING.forcedNo },
+    confidence: 'verified',
+    source: '智谱官方模型页：glm-4.5v / glm-4.7 系列为强制思考，不提供 thinking 开关档位，且不可关闭',
+  },
+  {
+    providerId: 'zai',
+    match: /^glm-5\.3/,
+    patch: { reasoning: REASONING.effortNo },
+    confidence: 'verified',
+    source: '智谱官方模型页：glm-5.3 系列用 reasoning_effort（low / high / max）档位，只能开启、不能关闭',
+  },
+  {
+    providerId: 'zai',
+    match: /^glm-5\.2$/,
+    patch: { reasoning: REASONING.effortYes },
+    confidence: 'verified',
+    source: '智谱官方模型页：glm-5.2 用 reasoning_effort（high / max）档位，传 none / minimal 即关闭思考',
   },
 ];
 

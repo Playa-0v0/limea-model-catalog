@@ -1,5 +1,5 @@
 {
-  "name": "@playa0v0/model-catalog",
+  "name": "@limea/model-catalog",
   "version": "0.1.0",
   "description": "离线可用的模型元数据与能力解析层（openai / anthropic / glm / kimi / deepseek / 豆包 Seed / 阿里 / 小米 / minimax / gemini / xai）",
   "type": "module",
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Playa-0v0/model-catalog.git"
+    "url": "git+https://github.com/Playa-0v0/limea-model-catalog.git"
   },
   "keywords": [
     "ai",

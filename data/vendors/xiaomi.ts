@@ -1,4 +1,4 @@
-import { BASE, type OfferingRule, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import { BASE, REASONING, type OfferingRule, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
 
 /**
  * 小米 MiMo。OpenAI 与 Anthropic 两套兼容接口都只接受 tool_choice = auto，
@@ -19,6 +19,11 @@ export const RULES: ProviderRule[] = [
           specific: 'unsupported',
         },
       },
+      // 采样随模型本身：Token Plan 三集群与主站共享同一批 MiMo 模型，
+      // 上游对少数条目（如 tts）缺 temperature 字段，这里按模型口径统一记为支持，不留 unknown
+      sampling: { temperature: 'supported' },
+      // MiMo 用 thinking.type=enabled/disabled 开关思考，可关闭
+      reasoning: REASONING.toggleYes,
     },
     confidence: 'verified',
     source:

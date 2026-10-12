@@ -1,4 +1,4 @@
-import { BASE, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
+import { BASE, REASONING, type ProviderEndpointRule, type ProviderRule } from './registry.ts';
 
 /** OpenAI。工具调用四种 tool_choice 齐全，内置联网搜索与代码执行。 */
 export const RULES: ProviderRule[] = [
@@ -13,6 +13,8 @@ export const RULES: ProviderRule[] = [
       },
       promptCaching: 'supported',
       hostedTools: { webSearch: 'supported', codeExecution: 'supported' },
+      // GPT-5 起的推理模型都用 reasoning_effort 档位，官方未公布关闭方式
+      reasoning: REASONING.effortUnknown,
     },
     confidence: 'verified',
     source: 'OpenAI 官方 function calling 文档（platform.openai.com）：函数定义支持 strict；内置工具含 web_search / code_interpreter / remote MCP；tool_search 仅 gpt-5.4 及以上支持。Chat Completions 请求结构里 tool_choice 取值为 none / auto / required / 指定函数（NamedToolChoice），流式下函数参数以 delta 增量返回',

@@ -4,10 +4,14 @@ import { CATALOG } from '../src/generated/catalog.ts';
 import {
   CAPABILITY_PATHS,
   API_PROTOCOLS,
+  CAN_DISABLE,
   LIFECYCLES,
   MODEL_KINDS,
+  REASONING_FORMS,
   SCHEMA_VERSION,
   SUPPORTS,
+  type CanDisable,
+  type ReasoningForm,
   type Support,
 } from '../src/schema.ts';
 
@@ -41,6 +45,18 @@ function checkSupport(where: string, caps: unknown): void {
     if (!SUPPORTS.includes(value as Support)) {
       fail(`${where} 的能力 ${path} 不是合法三态：${JSON.stringify(value)}`);
     }
+  }
+}
+
+/** 推理形态与关闭结论不是三态，单独校验取值 */
+function checkReasoning(where: string, caps: unknown): void {
+  const reasoning = rawRead(caps, 'reasoning') as { forms?: unknown; canDisable?: unknown } | undefined;
+  const forms = reasoning?.forms;
+  if (!Array.isArray(forms) || !forms.every((form) => REASONING_FORMS.includes(form as ReasoningForm))) {
+    fail(`${where} 的推理形态非法：${JSON.stringify(forms)}`);
+  }
+  if (!CAN_DISABLE.includes(reasoning?.canDisable as CanDisable)) {
+    fail(`${where} 的关闭思考取值非法：${JSON.stringify(reasoning?.canDisable)}`);
   }
 }
 
@@ -137,6 +153,7 @@ for (const model of CATALOG.models) {
     fail(`模型 ${model.id} 没有任何合法渠道提供`);
   }
   checkSupport(`模型 ${model.id}`, model.capabilities);
+  checkReasoning(`模型 ${model.id}`, model.capabilities);
   for (const [key, value] of Object.entries(model.limits)) {
     if (value !== null && (!Number.isInteger(value) || (value as number) <= 0)) {
       fail(`模型 ${model.id} 的上限 ${key} 非法：${JSON.stringify(value)}`);
@@ -160,6 +177,7 @@ for (const offering of CATALOG.offerings) {
     fail(`offering ${offering.id} 的 lifecycle 非法：${offering.lifecycle}`);
   }
   checkSupport(`offering ${offering.id}`, offering.capabilities);
+  checkReasoning(`offering ${offering.id}`, offering.capabilities);
   for (const [key, value] of Object.entries(offering.limits)) {
     if (value !== null && (!Number.isInteger(value) || (value as number) <= 0)) {
       fail(`offering ${offering.id} 的上限 ${key} 非法：${JSON.stringify(value)}`);

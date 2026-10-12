@@ -79,6 +79,56 @@ test('官方文档核到的硬事实：MiniMax 提供托管联网搜索', () => 
   }
 });
 
+test('采样支持：小米各渠道随模型记为 supported，kimi 与阿里缺字段保持 unknown', () => {
+  // 小米主站与 Token Plan 三集群共享同一批 MiMo 模型，采样随模型；
+  // 上游对 tts 等条目缺 temperature 字段，按模型口径记为支持，不留 unknown
+  for (const providerId of [
+    'xiaomi',
+    'xiaomi-token-plan-cn',
+    'xiaomi-token-plan-sgp',
+    'xiaomi-token-plan-ams',
+  ]) {
+    const offerings = findOfferings({ providerId });
+    assert.ok(offerings.length > 0, `${providerId} 应有 offering`);
+    for (const offering of offerings) {
+      assert.equal(
+        readCapability(offering.capabilities, 'sampling.temperature'),
+        'supported',
+        `${offering.id} 的采样应随模型记为 supported`,
+      );
+    }
+  }
+
+  // 火山 Agent Plan（手工渠道）：采样同样随模型，取目录里对应模型的值
+  for (const offering of findOfferings({ providerId: 'volcengine-agent-plan' })) {
+    const model = listModels().find((m) => m.id === offering.modelId);
+    assert.ok(model, `${offering.id} 应能对应到目录模型`);
+    assert.equal(
+      readCapability(offering.capabilities, 'sampling.temperature'),
+      readCapability(model.capabilities, 'sampling.temperature'),
+      `${offering.id} 的采样应随模型`,
+    );
+  }
+
+  // kimi Code Plan 与阿里各渠道：上游缺 temperature 的条目直接记为 unknown
+  const missing: Array<[string, string]> = [
+    ['kimi-code-plan-cn', 'kimi-for-coding'],
+    ['kimi-code-plan-global', 'kimi-for-coding'],
+    ['alibaba', 'qwen3.8-flash'],
+    ['alibaba-cn', 'qwen3.8-omni-flash'],
+    ['alibaba-token-plan', 'qwen3.8-flash'],
+  ];
+  for (const [providerId, apiModelId] of missing) {
+    const offering = findOfferings({ providerId }).find((o) => o.apiModelId === apiModelId);
+    assert.ok(offering, `${providerId} 应提供 ${apiModelId}`);
+    assert.equal(
+      readCapability(offering.capabilities, 'sampling.temperature'),
+      'unknown',
+      `${providerId}/${apiModelId} 的采样应为 unknown`,
+    );
+  }
+});
+
 test('官方文档核到的硬事实：小米联网搜索按模型区分', () => {
   const offerings = findOfferings({ providerId: 'xiaomi' });
   for (const offering of offerings) {
@@ -270,13 +320,95 @@ test('Agent Plan 只对实测覆盖的字段下结论，其余保持 unknown', (
     for (const path of [
       'structuredOutput.jsonMode',
       'structuredOutput.jsonSchema',
-      'reasoning.supported',
       'promptCaching',
       'hostedTools.webSearch',
       'hostedTools.codeExecution',
     ] as const) {
       assert.equal(readCapability(offering.capabilities, path), 'unknown', `${offering.id} 的 ${path}`);
     }
+  }
+});
+
+test('Agent Plan 的推理形态随模型继承', () => {
+  for (const offering of findOfferings({ providerId: 'volcengine-agent-plan' })) {
+    const model = listModels().find((m) => m.id === offering.modelId);
+    assert.ok(model, `${offering.id} 应能对应到目录模型`);
+    assert.equal(
+      offering.capabilities.reasoning.supported,
+      model.capabilities.reasoning.supported,
+      `${offering.id} 的推理支持应随模型`,
+    );
+    assert.deepEqual(offering.capabilities.reasoning.forms, model.capabilities.reasoning.forms, offering.id);
+    assert.equal(
+      offering.capabilities.reasoning.canDisable,
+      model.capabilities.reasoning.canDisable,
+      offering.id,
+    );
+  }
+});
+
+// ---------------------------------------------------------------------------
+// 推理控制形态（forms）与关闭思考（canDisable）：按 docs/模型清单.md 人工维护
+// ---------------------------------------------------------------------------
+
+test('推理形态：小米全渠道为开关式且可关闭', () => {
+  for (const providerId of [
+    'xiaomi',
+    'xiaomi-token-plan-cn',
+    'xiaomi-token-plan-sgp',
+    'xiaomi-token-plan-ams',
+  ]) {
+    for (const offering of findOfferings({ providerId })) {
+      if (readCapability(offering.capabilities, 'reasoning.supported') !== 'supported') continue;
+      assert.deepEqual(offering.capabilities.reasoning.forms, ['toggle'], offering.id);
+      assert.equal(offering.capabilities.reasoning.canDisable, 'yes', offering.id);
+    }
+  }
+});
+
+test('推理形态：glm-5.3 各渠道为档位式且不可关闭', () => {
+  let seen = 0;
+  for (const providerId of [
+    'zai',
+    'zhipuai',
+    'alibaba',
+    'alibaba-cn',
+    'volcengine',
+    'volcengine-coding-plan',
+  ]) {
+    for (const offering of findOfferings({ providerId })) {
+      if (!/^glm-5[.-]3/.test(offering.apiModelId)) continue;
+      assert.deepEqual(offering.capabilities.reasoning.forms, ['effort'], offering.id);
+      assert.equal(offering.capabilities.reasoning.canDisable, 'no', offering.id);
+      seen++;
+    }
+  }
+  assert.ok(seen >= 5, `glm-5.3 系列应覆盖多个渠道，实际命中 ${seen} 条`);
+});
+
+test('推理形态：kimi-k2.7-code 强制思考、无档位且不可关闭', () => {
+  let seen = 0;
+  for (const providerId of [
+    'moonshotai',
+    'moonshotai-cn',
+    'volcengine-coding-plan',
+    'volcengine-agent-plan',
+  ]) {
+    for (const offering of findOfferings({ providerId })) {
+      if (!/k2\.7-code/.test(offering.apiModelId)) continue;
+      assert.deepEqual(offering.capabilities.reasoning.forms, [], offering.id);
+      assert.equal(offering.capabilities.reasoning.canDisable, 'no', offering.id);
+      seen++;
+    }
+  }
+  assert.ok(seen >= 4, `kimi-k2.7-code 应覆盖多个渠道，实际命中 ${seen} 条`);
+});
+
+test('推理形态：非推理模型的 forms 为空数组、canDisable 为 unknown', () => {
+  for (const offering of findOfferings({ providerId: 'openai' })) {
+    if (readCapability(offering.capabilities, 'reasoning.supported') === 'supported') continue;
+    assert.deepEqual(offering.capabilities.reasoning.forms, [], offering.id);
+    assert.equal(offering.capabilities.reasoning.canDisable, 'unknown', offering.id);
   }
 });
 

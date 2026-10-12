@@ -8,6 +8,7 @@ import {
   OFFERING_RULES,
   PROVIDER_ENDPOINT_RULES,
   PROVIDER_IDS,
+  PROVIDER_NAME_BASELINE,
   PROVIDER_NAMES,
   PROVIDER_RULES,
   VENDOR_BY_PROVIDER,
@@ -48,6 +49,17 @@ const CACHE_FILE = join(tmpdir(), 'md-api.json');
 const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 const MODALITIES: readonly Modality[] = ['text', 'image', 'pdf', 'audio', 'video'];
+
+/**
+ * 不收录的上游模型。官方未公布推理形态、不纳入维护，直接从目录剔除。
+ * 键为 offering id（`providerId/apiModelId`）。
+ */
+const EXCLUDED_OFFERINGS = new Set([
+  'alibaba/qwen3-vl-235b-a22b',
+  'alibaba/qwen3-vl-30b-a3b',
+  'alibaba-cn/qwen3-vl-235b-a22b',
+  'alibaba-cn/qwen3-vl-30b-a3b',
+]);
 
 // ---------------------------------------------------------------------------
 // 取数
@@ -132,8 +144,9 @@ function deriveCapabilities(model: Record<string, unknown>): Capabilities {
     },
     // 上游只有一个 structured_output 开关，无法区分 json mode 与 json schema 约束
     structuredOutput: { jsonMode: structured, jsonSchema: structured },
-    reasoning: { supported: tri(model.reasoning), efforts: toEfforts(model.reasoning_options) },
+    reasoning: { supported: tri(model.reasoning), efforts: toEfforts(model.reasoning_options), forms: [], canDisable: 'unknown' },
     promptCaching: 'unknown',
+    sampling: { temperature: tri(model.temperature) },
     hostedTools: { webSearch: 'unknown', codeExecution: 'unknown' },
   };
 }
@@ -193,13 +206,28 @@ function applyPatch(caps: Capabilities, patch: CapabilityPatch): Capabilities {
     reasoning: {
       supported: patch.reasoning?.supported ?? caps.reasoning.supported,
       efforts: patch.reasoning?.efforts ?? caps.reasoning.efforts,
+      // 复制一份，避免多个 offering 共用同一个规则对象里的数组
+      forms: [...(patch.reasoning?.forms ?? caps.reasoning.forms)],
+      canDisable: patch.reasoning?.canDisable ?? caps.reasoning.canDisable,
     },
     promptCaching: patch.promptCaching ?? caps.promptCaching,
+    sampling: { temperature: patch.sampling?.temperature ?? caps.sampling.temperature },
     hostedTools: {
       webSearch: patch.hostedTools?.webSearch ?? caps.hostedTools.webSearch,
       codeExecution: patch.hostedTools?.codeExecution ?? caps.hostedTools.codeExecution,
     },
   };
+}
+
+/**
+ * 没有推理能力的模型不该带控制形态与关闭结论。
+ * 渠道默认规则（如「全渠道 toggle」）会误套到无推理模型上，这里统一收口。
+ */
+function normalizeReasoning(caps: Capabilities): void {
+  if (caps.reasoning.supported !== 'supported') {
+    caps.reasoning.forms = [];
+    caps.reasoning.canDisable = 'unknown';
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -219,8 +247,9 @@ function emptyCapabilities(): Capabilities {
       choice: { auto: 'unknown', required: 'unknown', none: 'unknown', specific: 'unknown' },
     },
     structuredOutput: { jsonMode: 'unknown', jsonSchema: 'unknown' },
-    reasoning: { supported: 'unknown' },
+    reasoning: { supported: 'unknown', forms: [], canDisable: 'unknown' },
     promptCaching: 'unknown',
+    sampling: { temperature: 'unknown' },
     hostedTools: { webSearch: 'unknown', codeExecution: 'unknown' },
   };
 }
@@ -247,6 +276,8 @@ async function main(): Promise<void> {
 
   const providers: ProviderDefinition[] = [];
   const offerings: ModelOffering[] = [];
+  /** 展示名与上游 name 的产品线对不上的渠道，构建结束时提示复核 */
+  const nameWarnings: string[] = [];
   /** canonical id -> 该模型在各渠道上的能力，用于挑一个作为模型定义 */
   const byCanonical = new Map<string, Array<{ offering: ModelOffering; providerId: string }>>();
   /** canonical id -> 模型级原始字段（取实验室自己渠道的那份） */
@@ -265,9 +296,13 @@ async function main(): Promise<void> {
       PROVIDER_RULES.find((r) => VENDOR_BY_PROVIDER[r.providerId] === VENDOR_BY_PROVIDER[providerId]);
     if (!providerRule) throw new Error(`provider ${providerId} 缺少人工补充规则`);
 
+    const displayName = PROVIDER_NAMES[providerId] ?? upstreamProvider.name ?? providerId;
+    const drift = checkNameDrift(providerId, displayName, upstreamProvider.name);
+    if (drift) nameWarnings.push(drift);
+
     providers.push({
       id: providerId,
-      name: PROVIDER_NAMES[providerId] ?? upstreamProvider.name ?? providerId,
+      name: displayName,
       vendor: VENDOR_BY_PROVIDER[providerId]!,
       sdkPackage: upstreamProvider.npm ?? '',
       apiBase: upstreamProvider.api,
@@ -280,6 +315,8 @@ async function main(): Promise<void> {
 
     const modelEntries = Object.entries(upstreamProvider.models ?? {});
     for (const [apiModelId, raw] of modelEntries) {
+      if (EXCLUDED_OFFERINGS.has(`${providerId}/${apiModelId}`)) continue;
+
       const canonical =
         typeof raw.canonical_model_id === 'string' && raw.canonical_model_id.length > 0
           ? raw.canonical_model_id
@@ -296,6 +333,8 @@ async function main(): Promise<void> {
           caps = applyPatch(caps, rule.patch);
         }
       }
+
+      normalizeReasoning(caps);
 
       const offering: ModelOffering = {
         id: `${providerId}/${apiModelId}`,
@@ -361,6 +400,8 @@ async function main(): Promise<void> {
   }
 
   for (const spec of MANUAL_MODELS) {
+    const caps = applyPatch(emptyCapabilities(), spec.patch);
+    normalizeReasoning(caps);
     models.push({
       id: spec.id,
       name: spec.name,
@@ -368,7 +409,7 @@ async function main(): Promise<void> {
       family: spec.family,
       kind: spec.kind,
       description: spec.description,
-      capabilities: applyPatch(emptyCapabilities(), spec.patch),
+      capabilities: caps,
       limits: spec.limits,
       openWeights: spec.openWeights,
       knowledge: spec.knowledge,
@@ -381,9 +422,18 @@ async function main(): Promise<void> {
     const model = models.find((m) => m.id === spec.modelId);
     if (!model) throw new Error(`手工 offering ${spec.apiModelId} 指向未收录的模型 ${spec.modelId}`);
     const caps = applyPatch(emptyCapabilities(), spec.patch);
-    // 输入输出模态与上限属于模型的固有事实，从模型定义继承；其余字段只认实测
+    // 输入输出模态、上限、采样与推理属于模型的固有事实，从模型定义继承；其余字段只认实测
     caps.input = model.capabilities.input;
     caps.output = model.capabilities.output;
+    caps.sampling.temperature = model.capabilities.sampling.temperature;
+    caps.reasoning = {
+      supported: model.capabilities.reasoning.supported,
+      forms: [...model.capabilities.reasoning.forms],
+      canDisable: model.capabilities.reasoning.canDisable,
+      ...(model.capabilities.reasoning.efforts
+        ? { efforts: [...model.capabilities.reasoning.efforts] }
+        : {}),
+    };
     offerings.push({
       id: `${spec.providerId}/${spec.apiModelId}`,
       providerId: spec.providerId,
@@ -411,7 +461,7 @@ async function main(): Promise<void> {
   };
 
   writeGenerated(snapshot);
-  report(snapshot, fromCache, digest);
+  report(snapshot, fromCache, digest, nameWarnings);
 }
 
 function protocolBaseURLsFor(providerId: string, sdkPackage: string, apiBase: string | undefined): Partial<Record<ApiProtocol, string>> {
@@ -456,7 +506,30 @@ export default CATALOG;
   writeFileSync(OUT_FILE, file);
 }
 
-function report(snapshot: CatalogSnapshot, fromCache: boolean, digest: string): void {
+/**
+ * 抽「X Plan」产品线描述。
+ * 套餐渠道的产品线命名在上游会被改来改去（Token Plan / Coding Plan / M Plan），
+ * 而我们的中文展示名是写死的，不会自动跟随，所以只比对这一段。
+ */
+function planDescriptor(name: string): string | null {
+  const match = /([A-Za-z][A-Za-z.]*)\s+Plan\b/.exec(name);
+  return match ? `${match[1]} Plan` : null;
+}
+
+/**
+ * 展示名漂移检查：两边都写了「X Plan」但写法不同，且不是登记过的已知偏差时，提示复核。
+ * 已知偏差记在 PROVIDER_NAME_BASELINE 里，上游没再改名就不提示。
+ */
+function checkNameDrift(providerId: string, displayName: string, upstreamName?: string): string | null {
+  if (!upstreamName || upstreamName === displayName) return null;
+  const ours = planDescriptor(displayName);
+  const theirs = planDescriptor(upstreamName);
+  if (!ours || !theirs || ours === theirs) return null;
+  if (PROVIDER_NAME_BASELINE[providerId] === upstreamName) return null;
+  return `${providerId}：上游 name「${upstreamName}」用「${theirs}」，我们的展示名用「${ours}」，请复核`;
+}
+
+function report(snapshot: CatalogSnapshot, fromCache: boolean, digest: string, nameWarnings: string[]): void {
   const vendors = new Set(snapshot.providers.map((p) => p.vendor));
   console.log('');
   console.log(`快照 ${snapshot.snapshotVersion}（上游摘要 ${digest}${fromCache ? '，来自缓存' : ''}）`);
@@ -491,6 +564,12 @@ function report(snapshot: CatalogSnapshot, fromCache: boolean, digest: string): 
   console.log(`  人工补充规则：${PROVIDER_RULES.length} 条（verified ${counts.verified} / inferred ${counts.inferred}）`);
   for (const r of PROVIDER_RULES) {
     console.log(`    [${r.confidence}] ${r.providerId}：${r.source}`);
+  }
+
+  if (nameWarnings.length > 0) {
+    console.log('');
+    console.log('  渠道展示名与上游不一致，请复核：');
+    for (const w of nameWarnings) console.log(`    ! ${w}`);
   }
 }
 
