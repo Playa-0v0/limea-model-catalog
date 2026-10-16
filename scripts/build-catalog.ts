@@ -268,6 +268,36 @@ interface UpstreamProvider {
   models?: Record<string, Record<string, unknown>>;
 }
 
+/** 某一个 canonical 模型的候选原始字段，以及它在该 canonical 下的优先度 */
+interface ModelFact {
+  raw: Record<string, unknown>;
+  fromLab: boolean;
+  exact: boolean;
+  rank: number;
+}
+
+/** 生命周期优先级：当前可用 > 预览 > 已下线 > 已退役 > 未知 */
+const LIFECYCLE_RANK: Record<Lifecycle, number> = {
+  active: 3,
+  preview: 2,
+  deprecated: 1,
+  retired: 0,
+  unknown: -1,
+};
+
+/**
+ * 挑一份最贴近模型本身的原始字段，用于 name、family、description 等模型级字段。
+ *
+ * 同一个 canonical 常被上游挂成多条（版本快照、实验版、加速版），
+ * 直接按数组顺序取会拿到旧条目，把 name 覆盖成上一代的名字。
+ * 因此依次比较：实验室自己渠道 > 与 canonical 同名 > 当前可用的版本。
+ */
+function betterFact(candidate: ModelFact, current: ModelFact): boolean {
+  if (candidate.fromLab !== current.fromLab) return candidate.fromLab;
+  if (candidate.exact !== current.exact) return candidate.exact;
+  return candidate.rank > current.rank;
+}
+
 async function main(): Promise<void> {
   const forceRefresh = process.argv.includes('--refresh');
   const { text, fromCache } = await loadUpstream(forceRefresh);
@@ -280,8 +310,8 @@ async function main(): Promise<void> {
   const nameWarnings: string[] = [];
   /** canonical id -> 该模型在各渠道上的能力，用于挑一个作为模型定义 */
   const byCanonical = new Map<string, Array<{ offering: ModelOffering; providerId: string }>>();
-  /** canonical id -> 模型级原始字段（取实验室自己渠道的那份） */
-  const modelFacts = new Map<string, Record<string, unknown>>();
+  /** canonical id -> 模型级原始字段，用于取 name、family、description 等模型级字段 */
+  const modelFacts = new Map<string, ModelFact>();
 
   for (const providerId of PROVIDER_IDS) {
     const upstreamProvider = upstream[providerId];
@@ -348,15 +378,21 @@ async function main(): Promise<void> {
 
       offerings.push(offering);
 
+      const separator = canonical.indexOf('/');
+      const lab = separator < 0 ? canonical : canonical.slice(0, separator);
+      const segment = separator < 0 ? canonical : canonical.slice(separator + 1);
+      const fact: ModelFact = {
+        raw,
+        fromLab: providerId === lab,
+        exact: apiModelId === segment,
+        rank: LIFECYCLE_RANK[offering.lifecycle],
+      };
+      const previous = modelFacts.get(canonical);
+      if (!previous || betterFact(fact, previous)) modelFacts.set(canonical, fact);
+
       const list = byCanonical.get(canonical) ?? [];
       list.push({ offering, providerId });
       byCanonical.set(canonical, list);
-
-      // 实验室自己渠道的条目最接近「模型本身的固有属性」
-      const lab = canonical.includes('/') ? canonical.slice(0, canonical.indexOf('/')) : canonical;
-      if (!modelFacts.has(canonical) || providerId === lab) {
-        modelFacts.set(canonical, raw);
-      }
     }
   }
 
@@ -364,8 +400,8 @@ async function main(): Promise<void> {
   for (const [canonicalId, entries] of byCanonical) {
     const lab = canonicalId.includes('/') ? canonicalId.slice(0, canonicalId.indexOf('/')) : canonicalId;
     // 优先用实验室自己渠道的条目作为模型定义，否则退回任意一条
-    const primary = entries.find((e) => e.providerId === lab) ?? entries[0]!;
-    const raw = modelFacts.get(canonicalId) ?? {};
+    const primary = entries.find((entry) => entry.providerId === lab) ?? entries[0]!;
+    const raw = modelFacts.get(canonicalId)?.raw ?? {};
     const caps = primary.offering.capabilities;
 
     models.push({

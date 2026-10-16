@@ -1,7 +1,7 @@
 // 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
 // 数据来源：https://models.dev/api.json（摘要 a4d28d05）
 // 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
-// 生成时间：2026-10-12T16:55:49.643Z
+// 生成时间：2026-10-16T03:39:39.326Z
 import type { CatalogSnapshot } from '../schema.ts';
 
 /** 递归冻结，防止调用方改到全局快照 */
@@ -19,8 +19,8 @@ function freeze<T>(value: T): T {
 // 数据是否合规由 scripts/validate.ts 用 Schema 实际校验。
 const raw: unknown = {
   "schemaVersion": 1,
-  "snapshotVersion": "2026-10-12+a4d28d05",
-  "generatedAt": "2026-10-12T16:55:49.643Z",
+  "snapshotVersion": "2026-10-16+a4d28d05",
+  "generatedAt": "2026-10-16T03:39:39.326Z",
   "upstream": {
     "source": "https://models.dev/api.json",
     "digest": "a4d28d05"
@@ -11857,7 +11857,7 @@ const raw: unknown = {
     },
     {
       "id": "deepseek/deepseek-v4.1-flash",
-      "name": "DeepSeek V4 Flash",
+      "name": "DeepSeek V4.1 Flash",
       "lab": "deepseek",
       "family": "deepseek-flash",
       "kind": "language",
@@ -22924,11 +22924,11 @@ const raw: unknown = {
     },
     {
       "id": "zhipuai/glm-5.3-flash",
-      "name": "GLM-5.3-FlashX",
+      "name": "GLM-5.3-Flash",
       "lab": "zhipuai",
       "family": "glm-flash",
       "kind": "language",
-      "description": "High-speed GLM-5.3-Flash serving option for coding and agent workflows",
+      "description": "Native multimodal GLM model for efficient coding and long-horizon agent tasks",
       "capabilities": {
         "input": [
           "text",
@@ -22983,8 +22983,8 @@ const raw: unknown = {
       },
       "openWeights": true,
       "knowledge": null,
-      "releasedAt": "2026-09-18",
-      "updatedAt": "2026-09-18"
+      "releasedAt": "2026-08-26",
+      "updatedAt": "2026-08-26"
     },
     {
       "id": "zhipuai/glm-5v-turbo",
