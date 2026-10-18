@@ -79,6 +79,20 @@ test('官方文档核到的硬事实：MiniMax 提供托管联网搜索', () => 
   }
 });
 
+test('官方文档核到的硬事实：DeepSeek 仅 V4 Pro 的 Responses API 支持托管联网搜索', () => {
+  const pro = findOfferings({ providerId: 'deepseek' }).find(
+    (offering) => offering.apiModelId === 'deepseek-v4-pro',
+  );
+  assert.ok(pro, '应存在 DeepSeek V4 Pro offering');
+  assert.equal(readCapability(pro.capabilities, 'hostedTools.webSearch'), 'supported');
+
+  const flash = findOfferings({ providerId: 'deepseek' }).find(
+    (offering) => offering.apiModelId === 'deepseek-flash',
+  );
+  assert.ok(flash, '应存在 DeepSeek Flash offering');
+  assert.equal(readCapability(flash.capabilities, 'hostedTools.webSearch'), 'unsupported');
+});
+
 test('采样支持：小米各渠道随模型记为 supported，kimi 与阿里缺字段保持 unknown', () => {
   // 小米主站与 Token Plan 三集群共享同一批 MiMo 模型，采样随模型；
   // 上游对 tts 等条目缺 temperature 字段，按模型口径记为支持，不留 unknown

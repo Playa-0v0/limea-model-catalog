@@ -4,7 +4,11 @@ import {
   OFFERING_RULES as anthropicOfferings,
   RULES as anthropic,
 } from './vendors/anthropic.ts';
-import { ENDPOINT_RULES as deepseekEndpoints, RULES as deepseek } from './vendors/deepseek.ts';
+import {
+  ENDPOINT_RULES as deepseekEndpoints,
+  OFFERING_RULES as deepseekOfferings,
+  RULES as deepseek,
+} from './vendors/deepseek.ts';
 import {
   ENDPOINT_RULES as glmEndpoints,
   OFFERING_RULES as glmOfferings,
@@ -97,6 +101,7 @@ export const PROVIDER_ENDPOINT_RULES: ProviderEndpointRule[] = [
 /** 单条 offering 级别的例外：同一渠道内按模型区分的能力（如小米只有 v2.5+ 支持联网搜索）。 */
 export const OFFERING_RULES: OfferingRule[] = [
   ...anthropicOfferings,
+  ...deepseekOfferings,
   ...glmOfferings,
   ...kimiOfferings,
   ...volcengineOfferings,

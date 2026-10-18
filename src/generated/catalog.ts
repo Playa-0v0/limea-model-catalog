@@ -1,7 +1,7 @@
 // 本文件由 scripts/build-catalog.ts 生成，请勿手工编辑。
-// 数据来源：https://models.dev/api.json（摘要 a4d28d05）
+// 数据来源：https://models.dev/api.json（摘要 36b67007）
 // 上游 models.dev 依 MIT License 分发，Copyright (c) 2025 models.dev
-// 生成时间：2026-10-16T03:39:39.326Z
+// 生成时间：2026-10-18T05:01:31.004Z
 import type { CatalogSnapshot } from '../schema.ts';
 
 /** 递归冻结，防止调用方改到全局快照 */
@@ -19,11 +19,11 @@ function freeze<T>(value: T): T {
 // 数据是否合规由 scripts/validate.ts 用 Schema 实际校验。
 const raw: unknown = {
   "schemaVersion": 1,
-  "snapshotVersion": "2026-10-16+a4d28d05",
-  "generatedAt": "2026-10-16T03:39:39.326Z",
+  "snapshotVersion": "2026-10-18+36b67007",
+  "generatedAt": "2026-10-18T05:01:31.004Z",
   "upstream": {
     "source": "https://models.dev/api.json",
-    "digest": "a4d28d05"
+    "digest": "36b67007"
   },
   "providers": [
     {
@@ -11841,7 +11841,7 @@ const raw: unknown = {
           "temperature": "supported"
         },
         "hostedTools": {
-          "webSearch": "unknown",
+          "webSearch": "supported",
           "codeExecution": "unknown"
         }
       },
@@ -11862,6 +11862,68 @@ const raw: unknown = {
       "family": "deepseek-flash",
       "kind": "language",
       "description": "DeepSeek V4.1 Flash model for reasoning and agentic coding",
+      "capabilities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ],
+        "streaming": "supported",
+        "tools": {
+          "calling": "supported",
+          "parallel": "supported",
+          "streaming": "supported",
+          "choice": {
+            "auto": "supported",
+            "required": "supported",
+            "none": "supported",
+            "specific": "supported"
+          }
+        },
+        "structuredOutput": {
+          "jsonMode": "supported",
+          "jsonSchema": "supported"
+        },
+        "reasoning": {
+          "supported": "supported",
+          "efforts": [
+            "low",
+            "high",
+            "max"
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
+        },
+        "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
+        "hostedTools": {
+          "webSearch": "supported",
+          "codeExecution": "supported"
+        }
+      },
+      "limits": {
+        "contextWindow": 1000000,
+        "maxInputTokens": null,
+        "maxOutputTokens": 384000
+      },
+      "openWeights": true,
+      "knowledge": "2025-05",
+      "releasedAt": "2026-09-10",
+      "updatedAt": "2026-09-10"
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash-1017",
+      "name": "DeepSeek V4.1 Flash 1017",
+      "lab": "deepseek",
+      "family": "deepseek-flash",
+      "kind": "language",
+      "description": "October 17 update of DeepSeek V4.1 Flash with improved reasoning, coding, agentic tasks, and visual understanding",
       "capabilities": {
         "input": [
           "text",
@@ -11903,7 +11965,7 @@ const raw: unknown = {
           "temperature": "supported"
         },
         "hostedTools": {
-          "webSearch": "unknown",
+          "webSearch": "unsupported",
           "codeExecution": "unknown"
         }
       },
@@ -11914,8 +11976,8 @@ const raw: unknown = {
       },
       "openWeights": true,
       "knowledge": "2025-05",
-      "releasedAt": "2026-09-10",
-      "updatedAt": "2026-09-10"
+      "releasedAt": "2026-10-17",
+      "updatedAt": "2026-10-17"
     },
     {
       "id": "google/deep-research-max-preview-04-2026",
@@ -13579,6 +13641,71 @@ const raw: unknown = {
       "knowledge": null,
       "releasedAt": "2026-09-02",
       "updatedAt": "2026-09-02"
+    },
+    {
+      "id": "google/gemini-4-argon",
+      "name": "Gemini 4 Argon",
+      "lab": "google",
+      "family": "gemini",
+      "kind": "language",
+      "description": "Google's flagship reasoning model for complex software engineering, deep math and science, and long-horizon autonomous agents",
+      "capabilities": {
+        "input": [
+          "text",
+          "image",
+          "pdf",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ],
+        "streaming": "supported",
+        "tools": {
+          "calling": "supported",
+          "parallel": "supported",
+          "streaming": "supported",
+          "choice": {
+            "auto": "supported",
+            "required": "supported",
+            "none": "supported",
+            "specific": "supported"
+          }
+        },
+        "structuredOutput": {
+          "jsonMode": "supported",
+          "jsonSchema": "supported"
+        },
+        "reasoning": {
+          "supported": "supported",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
+        },
+        "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
+        "hostedTools": {
+          "webSearch": "supported",
+          "codeExecution": "supported"
+        }
+      },
+      "limits": {
+        "contextWindow": 1048576,
+        "maxInputTokens": null,
+        "maxOutputTokens": 32768
+      },
+      "openWeights": false,
+      "knowledge": "2026-03",
+      "releasedAt": "2026-10-13",
+      "updatedAt": "2026-10-13"
     },
     {
       "id": "google/gemini-embedding-001",
@@ -35538,7 +35665,7 @@ const raw: unknown = {
     {
       "id": "deepseek/deepseek-flash",
       "providerId": "deepseek",
-      "modelId": "deepseek/deepseek-v4.1-flash",
+      "modelId": "deepseek/deepseek-v4.1-flash-1017",
       "apiModelId": "deepseek-flash",
       "capabilities": {
         "input": [
@@ -35581,7 +35708,7 @@ const raw: unknown = {
           "temperature": "supported"
         },
         "hostedTools": {
-          "webSearch": "unknown",
+          "webSearch": "unsupported",
           "codeExecution": "unknown"
         }
       },
@@ -35595,7 +35722,7 @@ const raw: unknown = {
     {
       "id": "deepseek/deepseek-v4-flash",
       "providerId": "deepseek",
-      "modelId": "deepseek/deepseek-v4.1-flash",
+      "modelId": "deepseek/deepseek-v4.1-flash-1017",
       "apiModelId": "deepseek-v4-flash",
       "capabilities": {
         "input": [
@@ -35638,7 +35765,7 @@ const raw: unknown = {
           "temperature": "supported"
         },
         "hostedTools": {
-          "webSearch": "unknown",
+          "webSearch": "unsupported",
           "codeExecution": "unknown"
         }
       },
@@ -35652,7 +35779,7 @@ const raw: unknown = {
     {
       "id": "deepseek/deepseek-v4-flash-vision-exp",
       "providerId": "deepseek",
-      "modelId": "deepseek/deepseek-v4.1-flash",
+      "modelId": "deepseek/deepseek-v4.1-flash-1017",
       "apiModelId": "deepseek-v4-flash-vision-exp",
       "capabilities": {
         "input": [
@@ -35695,7 +35822,7 @@ const raw: unknown = {
           "temperature": "supported"
         },
         "hostedTools": {
-          "webSearch": "unknown",
+          "webSearch": "unsupported",
           "codeExecution": "unknown"
         }
       },
@@ -35751,7 +35878,7 @@ const raw: unknown = {
           "temperature": "supported"
         },
         "hostedTools": {
-          "webSearch": "unknown",
+          "webSearch": "supported",
           "codeExecution": "unknown"
         }
       },
@@ -37287,6 +37414,66 @@ const raw: unknown = {
         "contextWindow": 1048576,
         "maxInputTokens": null,
         "maxOutputTokens": 65536
+      },
+      "lifecycle": "active"
+    },
+    {
+      "id": "google/gemini-4-argon",
+      "providerId": "google",
+      "modelId": "google/gemini-4-argon",
+      "apiModelId": "gemini-4-argon",
+      "capabilities": {
+        "input": [
+          "text",
+          "image",
+          "pdf",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ],
+        "streaming": "supported",
+        "tools": {
+          "calling": "supported",
+          "parallel": "supported",
+          "streaming": "supported",
+          "choice": {
+            "auto": "supported",
+            "required": "supported",
+            "none": "supported",
+            "specific": "supported"
+          }
+        },
+        "structuredOutput": {
+          "jsonMode": "supported",
+          "jsonSchema": "supported"
+        },
+        "reasoning": {
+          "supported": "supported",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "forms": [
+            "effort"
+          ],
+          "canDisable": "unknown"
+        },
+        "promptCaching": "supported",
+        "sampling": {
+          "temperature": "supported"
+        },
+        "hostedTools": {
+          "webSearch": "supported",
+          "codeExecution": "supported"
+        }
+      },
+      "limits": {
+        "contextWindow": 1048576,
+        "maxInputTokens": null,
+        "maxOutputTokens": 32768
       },
       "lifecycle": "active"
     },
@@ -43464,7 +43651,7 @@ const raw: unknown = {
       "limits": {
         "contextWindow": 1000000,
         "maxInputTokens": null,
-        "maxOutputTokens": 393216
+        "maxOutputTokens": 384000
       },
       "lifecycle": "active"
     },
@@ -46401,7 +46588,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi-token-plan-ams/mimo-v2.5-pro",
@@ -46452,7 +46639,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi-token-plan-ams/mimo-v2.5-tts",
@@ -46861,7 +47048,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi-token-plan-cn/mimo-v2.5-pro",
@@ -46912,7 +47099,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi-token-plan-cn/mimo-v2.5-tts",
@@ -47321,7 +47508,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi-token-plan-sgp/mimo-v2.5-pro",
@@ -47372,7 +47559,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi-token-plan-sgp/mimo-v2.5-tts",
@@ -47838,7 +48025,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi/mimo-v2.5-pro",
@@ -47889,7 +48076,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "active"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi/mimo-v2.5-pro-ultraspeed",
@@ -47940,7 +48127,7 @@ const raw: unknown = {
         "maxInputTokens": null,
         "maxOutputTokens": 131072
       },
-      "lifecycle": "preview"
+      "lifecycle": "deprecated"
     },
     {
       "id": "xiaomi/mimo-v2.6-flash",
